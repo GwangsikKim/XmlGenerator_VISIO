@@ -115,15 +115,11 @@ namespace XMLGeneratorVISIO
                 }
                 else if (PipeLineTypes.Contains(shapeReplace))
                 {
-                    PipeLine pipeLine = new PipeLine();
-                    pipeLine.ID = shape.ID;
-                    PipeLineAttribution(plantModel, pipeLine, shape);
+                    PipeLineAttribution(plantModel, shape);
                 }
                 else if (InstrumentLineTypes.Contains(shapeReplace))
                 {
-                    SignalLine signalLine = new SignalLine();
-                    signalLine.ID = shape.ID;
-                    SignalAttribution(plantModel, signalLine, shape);
+                    SignalAttribution(plantModel, shape);
                 }
                 else if (Enum.IsDefined(typeof(IConnectorLineType), shapeReplace))
                 {
@@ -156,7 +152,53 @@ namespace XMLGeneratorVISIO
             ExtractObjectConnectionInformation(shape, connectionPoint);
             equipment.ConnectionPoints.Add(connectionPoint);
 
+            FindConnectionPoints(plantModel, extent, shape);
+
             plantModel.Equipments.Add(equipment);
+        }
+
+        private void FindConnectionPoints(PlantModel plantModel, Extent extent, Shape shape)
+        {
+            short iRow1 = (short)VisRowIndices.visRowXFormOut;
+
+            var strWidth = shape.get_CellsSRC(
+                    (short)VisSectionIndices.visSectionObject,
+                    iRow1,
+                    (short)VisCellIndices.visXFormWidth
+                    ).get_ResultStr(VisUnitCodes.visNoCast);
+            int width = RemoveUnits(strWidth);
+
+            var strHeight = shape.get_CellsSRC(
+                    (short)VisSectionIndices.visSectionObject,
+                    iRow1,
+                    (short)VisCellIndices.visXFormHeight
+                    ).get_ResultStr(VisUnitCodes.visNoCast);
+            int height = RemoveUnits(strHeight);
+
+            short iRow2 = (short)VisRowIndices.visRowConnectionPts;
+
+            while (shape.get_CellsSRCExists(
+             (short)VisSectionIndices.visSectionConnectionPts,
+             (short)iRow2,
+             (short)VisCellIndices.visX,
+             (short)0) != 0)
+            {
+                var strPinX = shape.get_CellsSRC(
+                    (short)VisSectionIndices.visSectionConnectionPts,
+                    iRow2,
+                    (short)VisCellIndices.visCnnctX
+                    ).get_ResultStr(VisUnitCodes.visNoCast);
+                int pinX = RemoveUnits(strPinX);
+
+                var strPinY = shape.get_CellsSRC(
+                    (short)VisSectionIndices.visSectionConnectionPts,
+                    iRow2,
+                    (short)VisCellIndices.visCnnctY
+                    ).get_ResultStr(VisUnitCodes.visNoCast);
+                int pinY = RemoveUnits(strPinY);
+
+                iRow2++;
+            }
         }
 
         private void PipingComponentAttribution(PlantModel plantModel, PipingComponent pipingComponent, Shape shape)
@@ -197,16 +239,11 @@ namespace XMLGeneratorVISIO
             plantModel.Instruments.Add(instrument);
         }
 
-        private void PipeLineAttribution(PlantModel plantModel, PipeLine pipeLine, Shape shape)
+        private void PipeLineAttribution(PlantModel plantModel, Shape shape)
         {
             Extent extent = new Extent();
             Center center = new Center();
             Angle angle = new Angle();
-
-            ExtractObjectBoxInformation(shape, extent, center, angle);
-
-            pipeLine.Centers = center;
-            pipeLine.Extents = extent;
 
             LineItem lineItem = new LineItem();
 
@@ -214,8 +251,16 @@ namespace XMLGeneratorVISIO
 
             for (int i = 0; i < lineItem.X.Count; i++)
             {
-                if (lineItem.X[i] != lineItem.X.Last())
+                if (i < lineItem.X.Count - 1)
                 {
+                    PipeLine pipeLine = new PipeLine();
+                    pipeLine.ID = shape.ID;
+
+                    ExtractObjectBoxInformation(shape, extent, center, angle);
+                    pipeLine.Centers = center;
+                    pipeLine.Extents = extent;
+
+                    pipeLine.ID = shape.ID + (i * 100);
                     pipeLine.LineEndPoints.BeginPoints.BeginX = lineItem.X[i];
                     pipeLine.LineEndPoints.BeginPoints.BeginY = lineItem.Y[i];
                     pipeLine.LineEndPoints.EndPoints.EndX = lineItem.X[i + 1];
@@ -226,17 +271,11 @@ namespace XMLGeneratorVISIO
             }
         }
 
-
-        private void SignalAttribution(PlantModel plantModel, SignalLine signalLine, Shape shape)
+        private void SignalAttribution(PlantModel plantModel, Shape shape)
         {
             Extent extent = new Extent();
             Center center = new Center();
             Angle angle = new Angle();
-
-            ExtractObjectBoxInformation(shape, extent, center, angle);
-
-            signalLine.Centers = center;
-            signalLine.Extents = extent;
 
             LineItem lineItem = new LineItem();
 
@@ -244,8 +283,16 @@ namespace XMLGeneratorVISIO
 
             for (int i = 0; i < lineItem.X.Count; i++)
             {
-                if (lineItem.X[i] != lineItem.X.Last())
+                if (i < lineItem.X.Count - 1)
                 {
+                    SignalLine signalLine = new SignalLine();
+                    signalLine.ID = shape.ID;
+
+                    ExtractObjectBoxInformation(shape, extent, center, angle);
+
+                    signalLine.Centers = center;
+                    signalLine.Extents = extent;
+
                     signalLine.LineEndPoints.BeginPoints.BeginX = lineItem.X[i];
                     signalLine.LineEndPoints.BeginPoints.BeginY = lineItem.Y[i];
                     signalLine.LineEndPoints.EndPoints.EndX = lineItem.X[i + 1];
@@ -481,7 +528,7 @@ namespace XMLGeneratorVISIO
                     ).get_ResultStr(VisUnitCodes.visNoCast);
                 int lineEndPointX = RemoveUnits(strLinePointX);
 
-                if (lineEndPointX > Math.Abs(2.5))
+                if (Math.Abs(lineEndPointX) > 2.5)
                 {
                     lineEndPoints.X.Add(lineBeginPointX + lineEndPointX);
                 }
@@ -497,7 +544,7 @@ namespace XMLGeneratorVISIO
                     ).get_ResultStr(VisUnitCodes.visNoCast);
                 int lineEndPointY = RemoveUnits(strLinePointY);
 
-                if (lineEndPointY > Math.Abs(2.5))
+                if (Math.Abs(lineEndPointY) > 2.5)
                 {
                     lineEndPoints.Y.Add(lineBeginPointY + lineEndPointY);
                 }
@@ -929,105 +976,5 @@ namespace XMLGeneratorVISIO
 
             return xElement;
         }
-
-        //public XElement CreateXmlSymbolStructure4(XElement xElement, PlantModel plantModel, int i)
-        //{
-        //    XElement idElement = new XElement("iD", plantModel.Texts[i].ID);
-        //    xElement.Add(idElement);
-
-        //    XElement typeElement = new XElement("type", "text");
-        //    xElement.Add(typeElement);
-
-        //    XElement textclassElement = new XElement("class", plantModel.Texts[i].Contents);
-        //    xElement.Add(textclassElement);
-
-        //    //XElement typeElement = new XElement("type", "unspecified_symbol");
-        //    //shapeElement.Add(typeElement);
-
-        //    //if (plantModel.Description[i] == "Insturment")
-        //    //{
-        //    //    XElement typeElement = new XElement("type", "instrument_symbol");
-        //    //    shapeElement.Add(typeElement);
-        //    //}
-        //    //else if (plantModel.Description[i] == "Equipment")
-        //    //{
-        //    //    XElement typeElement = new XElement("type", "equipment_symbol");
-        //    //    shapeElement.Add(typeElement);
-        //    //}
-        //    //else if (plantModel.Description[i] == "Valve")
-        //    //{
-        //    //    XElement typeElement = new XElement("type", "pipe_symbol");
-        //    //    shapeElement.Add(typeElement);
-        //    //}
-        //    //else
-        //    //{
-        //    //    XElement typeElement = new XElement("type", "unspecified_symbol");
-        //    //    shapeElement.Add(typeElement);
-        //    //}
-
-        //    //if (plantModel.Text[i] != null)
-        //    //{
-        //    //    XElement typeElement = new XElement("type", "text");
-        //    //    shapeElement.Add(typeElement);
-
-        //    //    XElement textclassElement = new XElement("class", plantModel.Text[i]);
-        //    //    shapeElement.Add(textclassElement);
-        //    //}
-
-        //    XElement classElement = new XElement("class", "none");
-        //    xElement.Add(classElement);
-
-        //    //if (plantModel.ValveType[i] != null)
-        //    //{
-        //    //    XElement classElement = new XElement("class", plantModel.ValveType[i]);
-        //    //    shapeElement.Add(classElement);
-        //    //}
-        //    //else
-        //    //{
-        //    //    XElement classElement = new XElement("class", plantModel.ShapeClass[i]);
-        //    //    shapeElement.Add(classElement);
-        //    //}
-
-        //    XElement extentElement = new XElement("bndbox");
-        //    XElement xMinElement = new XElement("xmin", plantModel.Texts[i].Extents.Min.X);
-        //    extentElement.Add(xMinElement);
-        //    XElement yMinElement = new XElement("ymin", plantModel.Texts[i].Extents.Min.Y);
-        //    extentElement.Add(yMinElement);
-        //    XElement xMaxElement = new XElement("xmax", plantModel.Texts[i].Extents.Max.X);
-        //    extentElement.Add(xMaxElement);
-        //    XElement yMaxElement = new XElement("ymax", plantModel.Texts[i].Extents.Max.Y);
-        //    extentElement.Add(yMaxElement);
-        //    xElement.Add(extentElement);
-
-        //    XElement degreeElement = new XElement("degree", plantModel.Texts[i].Angle);
-        //    xElement.Add(degreeElement);
-
-        //    XElement flipElement = new XElement("flip", "n");
-        //    xElement.Add(flipElement);
-
-        //    XElement etcElement = new XElement("etc", "none");
-        //    xElement.Add(etcElement);
-
-        //    //if (plantModel.symbolObjects[i].ConnectionPoints != null)
-        //    //{
-        //    //    for (int j = 0; j < plantModel.symbolObjects[i].ConnectionPoints[0].X.Count; j++)
-        //    //    {
-        //    //        XElement connectionElement = new XElement("connetion");
-        //    //        XElement coordinateElement = new XElement("coordinate");
-        //    //        //XAttribute xAttribute = new XAttribute("ID", plantModel.ID[k]);
-        //    //        //coordinateElement.Add(xAttribute);
-        //    //        XElement XElement = new XElement("X", plantModel.symbolObjects[i].ConnectionPoints[0].X[j]);
-        //    //        coordinateElement.Add(XElement);
-        //    //        XElement YElement = new XElement("Y", plantModel.symbolObjects[i].ConnectionPoints[0].Y[j]);
-        //    //        coordinateElement.Add(YElement);
-        //    //        connectionElement.Add(coordinateElement);
-        //    //        shapeElement.Add(connectionElement);
-
-        //    //    }
-        //    //}
-
-        //    return xElement;
-        //}
-
     }
 }
