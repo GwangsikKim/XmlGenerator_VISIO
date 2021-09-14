@@ -14,6 +14,12 @@ namespace XMLGeneratorVISIO
             ConnetionY = new int();
         }
 
+        public int ID
+        {
+            get;
+            set;
+        }
+
         public int ConnetionX
         {
             get;

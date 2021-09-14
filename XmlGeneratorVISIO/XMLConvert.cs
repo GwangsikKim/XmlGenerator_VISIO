@@ -67,17 +67,17 @@ namespace XMLGeneratorVISIO
 
         public XDocument XMLGenerator()
         {
-            List<PlantModel> plantModels = new List<PlantModel>();
+            List<PlantEntity> plantModels = new List<PlantEntity>();
 
             PlantModel plantModel = new PlantModel();
-            PlantTypeClassification(plantModel);
+            PlantTypeClassification(plantModels, plantModel);
 
             var xmlData = XmlMaker(plantModel);
 
             return xmlData;
         }
 
-        public void PlantTypeClassification(PlantModel plantModel)
+        public void PlantTypeClassification(List<PlantEntity> plantModels, PlantModel plantModel)
         {
             foreach (Shape shape in visioPage.Shapes)
             {
@@ -124,10 +124,6 @@ namespace XMLGeneratorVISIO
                 else if (Enum.IsDefined(typeof(IConnectorLineType), shapeReplace))
                 {
                     Console.WriteLine("connect");
-                    //ConnectionPoint connectionPoint = new ConnectionPoint();
-                    //ConnectAttribution(connectionPoint, shape);
-
-                    //plantModel.ConnectionPoints.Add(connectionPoint);
                 }
                 else
                 {
@@ -147,58 +143,10 @@ namespace XMLGeneratorVISIO
             equipment.Centers = center;
             equipment.Extents = extent;
 
-            ConnectionPoint connectionPoint = new ConnectionPoint();
+            ExtractObjectConnectionInformation(shape, plantModel, extent, equipment.ConnectionPoints);
 
-            ExtractObjectConnectionInformation(shape, connectionPoint);
-            equipment.ConnectionPoints.Add(connectionPoint);
-
-            FindConnectionPoints(plantModel, extent, shape);
 
             plantModel.Equipments.Add(equipment);
-        }
-
-        private void FindConnectionPoints(PlantModel plantModel, Extent extent, Shape shape)
-        {
-            short iRow1 = (short)VisRowIndices.visRowXFormOut;
-
-            var strWidth = shape.get_CellsSRC(
-                    (short)VisSectionIndices.visSectionObject,
-                    iRow1,
-                    (short)VisCellIndices.visXFormWidth
-                    ).get_ResultStr(VisUnitCodes.visNoCast);
-            int width = RemoveUnits(strWidth);
-
-            var strHeight = shape.get_CellsSRC(
-                    (short)VisSectionIndices.visSectionObject,
-                    iRow1,
-                    (short)VisCellIndices.visXFormHeight
-                    ).get_ResultStr(VisUnitCodes.visNoCast);
-            int height = RemoveUnits(strHeight);
-
-            short iRow2 = (short)VisRowIndices.visRowConnectionPts;
-
-            while (shape.get_CellsSRCExists(
-             (short)VisSectionIndices.visSectionConnectionPts,
-             (short)iRow2,
-             (short)VisCellIndices.visX,
-             (short)0) != 0)
-            {
-                var strPinX = shape.get_CellsSRC(
-                    (short)VisSectionIndices.visSectionConnectionPts,
-                    iRow2,
-                    (short)VisCellIndices.visCnnctX
-                    ).get_ResultStr(VisUnitCodes.visNoCast);
-                int pinX = RemoveUnits(strPinX);
-
-                var strPinY = shape.get_CellsSRC(
-                    (short)VisSectionIndices.visSectionConnectionPts,
-                    iRow2,
-                    (short)VisCellIndices.visCnnctY
-                    ).get_ResultStr(VisUnitCodes.visNoCast);
-                int pinY = RemoveUnits(strPinY);
-
-                iRow2++;
-            }
         }
 
         private void PipingComponentAttribution(PlantModel plantModel, PipingComponent pipingComponent, Shape shape)
@@ -212,10 +160,7 @@ namespace XMLGeneratorVISIO
             pipingComponent.Centers = center;
             pipingComponent.Extents = extent;
 
-            ConnectionPoint connectionPoint = new ConnectionPoint();
-
-            ExtractObjectConnectionInformation(shape, connectionPoint);
-            pipingComponent.ConnectionPoints.Add(connectionPoint);
+            ExtractObjectConnectionInformation(shape, plantModel, extent, pipingComponent.ConnectionPoints);
 
             plantModel.PipingComponents.Add(pipingComponent);
         }
@@ -231,10 +176,7 @@ namespace XMLGeneratorVISIO
             instrument.Centers = center;
             instrument.Extents = extent;
 
-            ConnectionPoint connectionPoint = new ConnectionPoint();
-
-            ExtractObjectConnectionInformation(shape, connectionPoint);
-            instrument.ConnectionPoints.Add(connectionPoint);
+            ExtractObjectConnectionInformation(shape, plantModel, extent, instrument.ConnectionPoints);
 
             plantModel.Instruments.Add(instrument);
         }
@@ -301,28 +243,6 @@ namespace XMLGeneratorVISIO
                     plantModel.SignalLines.Add(signalLine);
                 }
             }
-        }
-
-
-        private void ConnectAttribution(ConnectionPoint connectionPoint, Shape shape)
-        {
-            short iRow = (short)VisRowIndices.visRowConnectionPts;
-
-            var strPinX = shape.get_CellsSRC(
-                    (short)VisSectionIndices.visSectionConnectionPts,
-                    iRow,
-                    (short)VisCellIndices.visCnnctX
-                    ).get_ResultStr(VisUnitCodes.visNoCast);
-            int pinX = RemoveUnits(strPinX);
-            connectionPoint.ConnetionX = pinX;
-
-            string strPinY = shape.get_CellsSRC(
-                    (short)VisSectionIndices.visSectionConnectionPts,
-                    iRow,
-                    (short)VisCellIndices.visCnnctY
-                    ).get_ResultStr(VisUnitCodes.visNoCast);
-            int pinY = RemoveUnits(strPinY);
-            connectionPoint.ConnetionY = pinY;
         }
 
         private void TextAttribution(Text text, Shape shape)
@@ -452,6 +372,8 @@ namespace XMLGeneratorVISIO
 
         }
 
+
+
         private void ExtractObjectBoxInformation(Shape shape, Extent extent, Center center, Angle angle)
         {
             short iRow = (short)VisRowIndices.visRowXFormOut;
@@ -558,7 +480,7 @@ namespace XMLGeneratorVISIO
             }
         }
 
-        private void ExtractObjectConnectionInformation(Shape shape, ConnectionPoint connectionPoint)
+        private void ExtractObjectConnectionInformation(Shape shape, PlantModel plantModel, Extent extent, List<ConnectionPoint> connectionPoints)
         {
             short iRowCnn = (short)VisRowIndices.visRowConnectionPts;
 
@@ -568,12 +490,15 @@ namespace XMLGeneratorVISIO
                   (short)VisCellIndices.visCnnctX,
                   (short)0) != 0)
             {
+                ConnectionPoint connectionPoint = new ConnectionPoint();
+
                 var strCnnPinX = shape.get_CellsSRC(
                     (short)VisSectionIndices.visSectionConnectionPts,
                     iRowCnn,
                     (short)VisCellIndices.visCnnctX
                     ).get_ResultStr(VisUnitCodes.visNoCast);
                 int cnnPinX = RemoveUnits(strCnnPinX);
+                int pinX = extent.Min.X + cnnPinX;
 
                 string strCnnPinY = shape.get_CellsSRC(
                         (short)VisSectionIndices.visSectionConnectionPts,
@@ -581,13 +506,20 @@ namespace XMLGeneratorVISIO
                         (short)VisCellIndices.visCnnctY
                         ).get_ResultStr(VisUnitCodes.visNoCast);
                 int cnnPinY = RemoveUnits(strCnnPinY);
+                int pinY = extent.Min.Y + cnnPinY;
 
-                connectionPoint.ConnetionX = cnnPinX;
-                connectionPoint.ConnetionY = cnnPinY;
+                connectionPoint.ID = shape.ID;
+                connectionPoint.ConnetionX = pinX;
+                connectionPoint.ConnetionY = pinY;
+
+                connectionPoints.Add(connectionPoint);
+                plantModel.ConnectionPoints.Add(connectionPoint);
 
                 iRowCnn++;
             }
         }
+
+
 
         private Extent Extentmaker(Extent extent, int pinX, int pinY, int width, int height)
         {
@@ -750,7 +682,55 @@ namespace XMLGeneratorVISIO
                 plantModelElement.Add(shapeElement);
             }
 
+            for (int i = 0; i < plantModel.ConnectionPoints.Count; i++)
+            {
+                XElement shapeElement = new XElement("connection_object");
+                CreateXmlConnectionStructure(shapeElement, plantModel, i);
+                plantModelElement.Add(shapeElement);
+            }
+
             return xmlDocument;
+        }
+
+        private void CreateXmlConnectionStructure(XElement xElement, PlantModel plantModel, int i)
+        {
+            XElement idElement = new XElement("iD", i + 1000);
+            xElement.Add(idElement);
+
+            XElement typeElement = new XElement("type", "connection");
+            xElement.Add(typeElement);
+
+            XElement connectLocation = new XElement("coordinate");
+            XElement x = new XElement("X", plantModel.ConnectionPoints[i].ConnetionX);
+            connectLocation.Add(x);
+            XElement y = new XElement("Y", plantModel.ConnectionPoints[i].ConnetionY);
+            connectLocation.Add(y);
+            xElement.Add(connectLocation);
+
+            XElement connectElement = new XElement("connection");
+            XElement connectAttribute = new XElement("Coordinate");
+            XAttribute fromAttribute = new XAttribute("From", plantModel.ConnectionPoints[i].ID);
+            connectAttribute.Add(fromAttribute);
+
+            for (int j = 0; j < plantModel.PipeLines.Count; j++)
+            {
+                if (plantModel.ConnectionPoints[i].ConnetionX == plantModel.PipeLines[j].LineEndPoints.BeginPoints.BeginX && plantModel.ConnectionPoints[i].ConnetionY == plantModel.PipeLines[j].LineEndPoints.BeginPoints.BeginY)
+                {
+                    XAttribute toAttribute = new XAttribute("To", plantModel.PipeLines[j].ID);
+                    connectAttribute.Add(toAttribute);
+                    connectElement.Add(connectAttribute);
+                    xElement.Add(connectElement);
+                }
+                else if (plantModel.ConnectionPoints[i].ConnetionX == plantModel.PipeLines[j].LineEndPoints.EndPoints.EndX && plantModel.ConnectionPoints[i].ConnetionY == plantModel.PipeLines[j].LineEndPoints.EndPoints.EndY)
+                {
+                    XAttribute toAttribute = new XAttribute("To", plantModel.PipeLines[j].ID);
+                    connectAttribute.Add(toAttribute);
+                    connectElement.Add(connectAttribute);
+                    xElement.Add(connectElement);
+                }
+            }
+
+
         }
 
         //수정 필요 PlantModel 리스트 만들것 (09.04)
@@ -769,7 +749,8 @@ namespace XMLGeneratorVISIO
             return bndboxElement;
         }
 
-        public XElement CreateXmlLineStructure1(XElement xElement, PlantModel plantModel, int i)
+        //PipeLine
+        public void CreateXmlLineStructure1(XElement xElement, PlantModel plantModel, int i)
         {
             XElement idElement = new XElement("iD", plantModel.PipeLines[i].ID);
             xElement.Add(idElement);
@@ -800,11 +781,10 @@ namespace XMLGeneratorVISIO
 
             XElement etcElement = new XElement("etc", "none");
             xElement.Add(etcElement);
-
-            return xElement;
         }
 
-        public XElement CreateXmlLineStructure2(XElement xElement, PlantModel plantModel, int i)
+        //SignalLine
+        public void CreateXmlLineStructure2(XElement xElement, PlantModel plantModel, int i)
         {
             XElement idElement = new XElement("iD", plantModel.SignalLines[i].ID);
             xElement.Add(idElement);
@@ -835,11 +815,10 @@ namespace XMLGeneratorVISIO
 
             XElement etcElement = new XElement("etc", "none");
             xElement.Add(etcElement);
-
-            return xElement;
         }
 
-        public XElement CreateXmlSymbolStructure1(XElement xElement, PlantModel plantModel, int i)
+        //Equipment
+        public void CreateXmlSymbolStructure1(XElement xElement, PlantModel plantModel, int i)
         {
             XElement idElement = new XElement("iD", plantModel.Equipments[i].ID);
             xElement.Add(idElement);
@@ -869,11 +848,10 @@ namespace XMLGeneratorVISIO
 
             XElement etcElement = new XElement("etc", "none");
             xElement.Add(etcElement);
-
-            return xElement;
         }
 
-        public XElement CreateXmlSymbolStructure2(XElement xElement, PlantModel plantModel, int i)
+        //Instrument
+        public void CreateXmlSymbolStructure2(XElement xElement, PlantModel plantModel, int i)
         {
             XElement idElement = new XElement("iD", plantModel.Instruments[i].ID);
             xElement.Add(idElement);
@@ -903,11 +881,10 @@ namespace XMLGeneratorVISIO
 
             XElement etcElement = new XElement("etc", "none");
             xElement.Add(etcElement);
-
-            return xElement;
         }
 
-        public XElement CreateXmlSymbolStructure3(XElement xElement, PlantModel plantModel, int i)
+        //PipingComponent
+        public void CreateXmlSymbolStructure3(XElement xElement, PlantModel plantModel, int i)
         {
             XElement idElement = new XElement("iD", plantModel.PipingComponents[i].ID);
             xElement.Add(idElement);
@@ -936,11 +913,10 @@ namespace XMLGeneratorVISIO
 
             XElement etcElement = new XElement("etc", "none");
             xElement.Add(etcElement);
-
-            return xElement;
         }
 
-        public XElement CreateXmlSymbolStructure4(XElement xElement, PlantModel plantModel, int i)
+        //Text
+        public void CreateXmlSymbolStructure4(XElement xElement, PlantModel plantModel, int i)
         {
             XElement idElement = new XElement("iD", plantModel.Texts[i].ID);
             xElement.Add(idElement);
@@ -973,8 +949,6 @@ namespace XMLGeneratorVISIO
 
             XElement etcElement = new XElement("etc", "none");
             xElement.Add(etcElement);
-
-            return xElement;
         }
     }
 }
