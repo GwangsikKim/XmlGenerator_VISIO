@@ -132,5 +132,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\도면인식과제\Code\Src\SmartDesign.MathUtil\SmartDesign.MathUtil.csproj">
+      <Project>{7a268675-5fcb-4a68-9107-6c067b37e9de}</Project>
+      <Name>SmartDesign.MathUtil</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

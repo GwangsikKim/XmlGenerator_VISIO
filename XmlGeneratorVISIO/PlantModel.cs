@@ -20,6 +20,7 @@ namespace XMLGeneratorVISIO
             ConnectionPoints = new List<ConnectionPoint>();
         }
 
+
         public List<Equipment> Equipments
         {
             get;

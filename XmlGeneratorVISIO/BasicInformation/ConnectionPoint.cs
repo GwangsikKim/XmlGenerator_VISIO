@@ -10,8 +10,8 @@ namespace XMLGeneratorVISIO
     {
         public ConnectionPoint()
         {
-            ConnetionX = new int();
-            ConnetionY = new int();
+            ConnetionX = new double();
+            ConnetionY = new double();
         }
 
         public int ID
@@ -20,13 +20,13 @@ namespace XMLGeneratorVISIO
             set;
         }
 
-        public int ConnetionX
+        public double ConnetionX
         {
             get;
             set;
         }
 
-        public int ConnetionY
+        public double ConnetionY
         {
             get;
             set;

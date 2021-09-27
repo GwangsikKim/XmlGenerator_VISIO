@@ -31,23 +31,21 @@ namespace XmlGeneratorVISIO
         {
             this.XmlGeneratorButton = new System.Windows.Forms.Button();
             this.OpenFile = new System.Windows.Forms.Button();
-            this.FilePathTextBox = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // XmlGeneratorButton
             // 
-            this.XmlGeneratorButton.Location = new System.Drawing.Point(675, 46);
+            this.XmlGeneratorButton.Location = new System.Drawing.Point(69, 73);
             this.XmlGeneratorButton.Name = "XmlGeneratorButton";
             this.XmlGeneratorButton.Size = new System.Drawing.Size(120, 28);
             this.XmlGeneratorButton.TabIndex = 0;
-            this.XmlGeneratorButton.Text = "Xml";
+            this.XmlGeneratorButton.Text = "SaveFile";
             this.XmlGeneratorButton.UseVisualStyleBackColor = true;
-            this.XmlGeneratorButton.Click += new System.EventHandler(this.XmlGeneratorButton_Click);
+            this.XmlGeneratorButton.Click += new System.EventHandler(this.SaveFile_Click);
             // 
             // OpenFile
             // 
-            this.OpenFile.Location = new System.Drawing.Point(675, 12);
+            this.OpenFile.Location = new System.Drawing.Point(69, 12);
             this.OpenFile.Name = "OpenFile";
             this.OpenFile.Size = new System.Drawing.Size(120, 28);
             this.OpenFile.TabIndex = 1;
@@ -55,35 +53,13 @@ namespace XmlGeneratorVISIO
             this.OpenFile.UseVisualStyleBackColor = true;
             this.OpenFile.Click += new System.EventHandler(this.OpenFile_Click);
             // 
-            // FilePathTextBox
-            // 
-            this.FilePathTextBox.Location = new System.Drawing.Point(116, 14);
-            this.FilePathTextBox.Name = "FilePathTextBox";
-            this.FilePathTextBox.Size = new System.Drawing.Size(553, 28);
-            this.FilePathTextBox.TabIndex = 2;
-            this.FilePathTextBox.TextChanged += new System.EventHandler(this.FilePath_TextChanged);
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Location = new System.Drawing.Point(10, 17);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 21);
-            this.textBox1.TabIndex = 3;
-            this.textBox1.Text = "FileName";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // XmlGeneratorVisioGui
             // 
-            this.ClientSize = new System.Drawing.Size(807, 462);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.FilePathTextBox);
+            this.ClientSize = new System.Drawing.Size(256, 126);
             this.Controls.Add(this.OpenFile);
             this.Controls.Add(this.XmlGeneratorButton);
             this.Name = "XmlGeneratorVisioGui";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -91,8 +67,6 @@ namespace XmlGeneratorVISIO
 
         private System.Windows.Forms.Button XmlGeneratorButton;
         private System.Windows.Forms.Button OpenFile;
-        private System.Windows.Forms.TextBox FilePathTextBox;
-        private System.Windows.Forms.TextBox textBox1;
     }
 }
 

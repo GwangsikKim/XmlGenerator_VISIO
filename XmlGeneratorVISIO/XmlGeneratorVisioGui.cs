@@ -38,7 +38,6 @@ namespace XmlGeneratorVISIO
                 string fileFullName = openFileDialog.FileName;
 
                 VisioReader visioReader = new VisioReader(fileFullName);
-                this.FilePathTextBox.Text = fileFullName;
                 xDocument = visioReader.XMLGenerator();
             }
             //취소버튼 클릭시 또는 ESC키로 파일창을 종료 했을경우
@@ -48,7 +47,7 @@ namespace XmlGeneratorVISIO
 
         }
 
-        private void XmlGeneratorButton_Click(object sender, EventArgs e)
+        private void SaveFile_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Title = "파일 저장하기";
@@ -60,11 +59,6 @@ namespace XmlGeneratorVISIO
             {
                 xDocument.Save(saveFileDialog.FileName);
             }
-        }
-
-        private void FilePath_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
