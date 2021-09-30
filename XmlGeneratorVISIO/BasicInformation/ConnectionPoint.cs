@@ -12,6 +12,8 @@ namespace XMLGeneratorVISIO
         {
             ConnetionX = new double();
             ConnetionY = new double();
+            ObjCenterX = new double();
+            ObjCenterY = new double();
         }
 
         public int ID
@@ -27,6 +29,18 @@ namespace XMLGeneratorVISIO
         }
 
         public double ConnetionY
+        {
+            get;
+            set;
+        }
+
+        public double ObjCenterX
+        {
+            get;
+            set;
+        }
+
+        public double ObjCenterY
         {
             get;
             set;
