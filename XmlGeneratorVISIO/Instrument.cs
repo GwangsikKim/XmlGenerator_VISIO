@@ -10,7 +10,7 @@ namespace XMLGeneratorVISIO
     {
         public Instrument()
         {
-            ID = new int();
+            ID = null;
             Angle = new int();
             Centers = new Center();
             Extents = new Extent();
@@ -19,7 +19,7 @@ namespace XMLGeneratorVISIO
             ConnectionPoints = new List<ConnectionPoint>();
         }
 
-        public int ID
+        public string ID
         {
             get;
             set;

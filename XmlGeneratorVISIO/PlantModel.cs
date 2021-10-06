@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using XmlGeneratorVISIO;
 
 namespace XMLGeneratorVISIO
 {
@@ -18,6 +19,7 @@ namespace XMLGeneratorVISIO
             PipeLines = new List<PipeLine>();
             SignalLines = new List<SignalLine>();
             ConnectionPoints = new List<ConnectionPoint>();
+            ConnectionLines = new List<ConnectionLine>();
         }
 
 
@@ -58,6 +60,12 @@ namespace XMLGeneratorVISIO
         }
 
         public List<ConnectionPoint> ConnectionPoints
+        {
+            get;
+            set;
+        }
+
+        public List<ConnectionLine> ConnectionLines
         {
             get;
             set;

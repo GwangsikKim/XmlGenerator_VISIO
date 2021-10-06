@@ -10,13 +10,15 @@ namespace XMLGeneratorVISIO
     {
         public ConnectionPoint()
         {
+            ID = null;
+
             ConnetionX = new double();
             ConnetionY = new double();
             ObjCenterX = new double();
             ObjCenterY = new double();
         }
 
-        public int ID
+        public string ID
         {
             get;
             set;

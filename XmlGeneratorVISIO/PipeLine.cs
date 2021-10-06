@@ -10,13 +10,13 @@ namespace XMLGeneratorVISIO
     {
         public PipeLine()
         {
-            ID = new int();
+            ID = null;
             LineEndPoints = new LineEndPoint();
 
             Text = new List<Text>();
         }
 
-        public int ID
+        public string ID
         {
             get;
             set;

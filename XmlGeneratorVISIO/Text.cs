@@ -10,7 +10,7 @@ namespace XMLGeneratorVISIO
     {
         public Text()
         {
-            ID = new int();
+            ID = null;
             Angle = new int();
             Centers = new Center();
             Extents = new Extent();
@@ -24,7 +24,7 @@ namespace XMLGeneratorVISIO
             set;
         }
 
-        public int ID
+        public string ID
         {
             get;
             set;

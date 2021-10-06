@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using XMLGeneratorVISIO;
 
-namespace XMLGeneratorVISIO
+namespace XmlGeneratorVISIO
 {
-    class SignalLine
+    class ConnectionLine
     {
-        public SignalLine()
+        public ConnectionLine()
         {
-            ID = null;
+            ID = new int();
             LineEndPoints = new LineEndPoint();
-
-            Text = new List<Text>();
         }
 
-        public string ID
+
+        public int ID
         {
             get;
             set;
@@ -34,17 +34,10 @@ namespace XMLGeneratorVISIO
             set;
         }
 
-        public List<Text> Text
-        {
-            get;
-            set;
-        }
-
         public LineEndPoint LineEndPoints
         {
             get;
             set;
         }
-
     }
 }
