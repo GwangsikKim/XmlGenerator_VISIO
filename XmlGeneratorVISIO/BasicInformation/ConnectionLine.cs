@@ -11,24 +11,14 @@ namespace XmlGeneratorVISIO
     {
         public ConnectionLine()
         {
-            ID = new int();
+            ID = null;
             LineEndPoints = new LineEndPoint();
+
+            ObjCenterX = new double();
+            ObjCenterY = new double();
         }
 
-
-        public int ID
-        {
-            get;
-            set;
-        }
-
-        public Center Centers
-        {
-            get;
-            set;
-        }
-
-        public Extent Extents
+        public string ID
         {
             get;
             set;
@@ -39,5 +29,18 @@ namespace XmlGeneratorVISIO
             get;
             set;
         }
+
+        public double ObjCenterX
+        {
+            get;
+            set;
+        }
+
+        public double ObjCenterY
+        {
+            get;
+            set;
+        }
+
     }
 }

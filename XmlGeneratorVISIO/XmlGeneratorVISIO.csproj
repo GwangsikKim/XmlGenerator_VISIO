@@ -78,7 +78,7 @@
     <Compile Include="BasicInformation\Center.cs" />
     <Compile Include="BasicInformation\ConnectionPoint.cs" />
     <Compile Include="BasicInformation\EndPoint.cs" />
-    <Compile Include="ConnectionLine.cs" />
+    <Compile Include="BasicInformation\ConnectionLine.cs" />
     <Compile Include="Equipment.cs" />
     <Compile Include="BasicInformation\Extent.cs" />
     <Compile Include="BasicInformation\Flip.cs" />
