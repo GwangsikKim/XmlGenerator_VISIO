@@ -10,8 +10,8 @@ namespace SmartDesign.DrawingDataGenerator
     {
         public Center()
         {
-            PinX = new int();
-            PinY = new int();
+            PinX = 0;
+            PinY = 0;
         }
 
         public int PinX

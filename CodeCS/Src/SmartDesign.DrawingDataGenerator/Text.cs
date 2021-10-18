@@ -11,7 +11,7 @@ namespace SmartDesign.DrawingDataGenerator
         public Text()
         {
             ID = null;
-            Angle = new int();
+            Angle = 0;
             Centers = new Center();
             Extents = new Extent();
 

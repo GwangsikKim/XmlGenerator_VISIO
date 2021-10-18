@@ -14,8 +14,8 @@ namespace SmartDesign.DrawingDataGenerator
             ID = null;
             LineEndPoints = new LineEndPoint();
 
-            ObjCenterX = new double();
-            ObjCenterY = new double();
+            ObjCenterX = 0;
+            ObjCenterY = 0;
         }
 
         public string ID

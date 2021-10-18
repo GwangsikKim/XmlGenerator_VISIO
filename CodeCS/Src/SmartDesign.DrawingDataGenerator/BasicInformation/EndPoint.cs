@@ -10,8 +10,8 @@ namespace SmartDesign.DrawingDataGenerator
     {
         public EndPoint()
         {
-            EndX = new int();
-            EndY = new int();
+            EndX = 0;
+            EndY = 0;
         }
 
 

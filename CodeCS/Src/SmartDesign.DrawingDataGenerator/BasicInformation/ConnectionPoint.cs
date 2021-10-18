@@ -12,10 +12,10 @@ namespace SmartDesign.DrawingDataGenerator
         {
             ID = null;
 
-            ConnetionX = new double();
-            ConnetionY = new double();
-            ObjCenterX = new double();
-            ObjCenterY = new double();
+            ConnetionX = 0;
+            ConnetionY = 0;
+            ObjCenterX = 0;
+            ObjCenterY = 0;
         }
 
         public string ID

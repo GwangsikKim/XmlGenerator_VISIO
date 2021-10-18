@@ -3,7 +3,7 @@
   <basic_drawing_information>
     <folder />
     <filename />
-    <path></path>
+    <path>D:\졸업논문관련\XmlGeneratorVISIO\XmlGenerator_VISIO\Data\SampleP&amp;ID.vsdx</path>
     <size>
       <width>1500</width>
       <height>1000</height>
@@ -307,7 +307,7 @@
       <xmax>842</xmax>
       <ymax>281</ymax>
     </bndbox>
-    <degree>-90</degree>
+    <degree>0</degree>
     <flip>n</flip>
   </symbol_object>
   <symbol_object>
@@ -333,7 +333,7 @@
       <xmax>803</xmax>
       <ymax>402</ymax>
     </bndbox>
-    <degree>90</degree>
+    <degree>0</degree>
     <flip>n</flip>
   </symbol_object>
   <symbol_object>
@@ -346,7 +346,7 @@
       <xmax>803</xmax>
       <ymax>200</ymax>
     </bndbox>
-    <degree>90</degree>
+    <degree>0</degree>
     <flip>n</flip>
   </symbol_object>
   <symbol_object>
@@ -359,7 +359,7 @@
       <xmax>805</xmax>
       <ymax>190</ymax>
     </bndbox>
-    <degree>90</degree>
+    <degree>0</degree>
     <flip>n</flip>
   </symbol_object>
   <symbol_object>
@@ -372,7 +372,7 @@
       <xmax>885</xmax>
       <ymax>190</ymax>
     </bndbox>
-    <degree>90</degree>
+    <degree>0</degree>
     <flip>n</flip>
   </symbol_object>
   <symbol_object>
@@ -424,7 +424,7 @@
       <xmax>705</xmax>
       <ymax>405</ymax>
     </bndbox>
-    <degree>90</degree>
+    <degree>0</degree>
     <flip>n</flip>
   </symbol_object>
   <symbol_object>
@@ -437,7 +437,7 @@
       <xmax>705</xmax>
       <ymax>420</ymax>
     </bndbox>
-    <degree>90</degree>
+    <degree>0</degree>
     <flip>n</flip>
   </symbol_object>
   <symbol_object>
@@ -463,7 +463,7 @@
       <xmax>623</xmax>
       <ymax>408</ymax>
     </bndbox>
-    <degree>-90</degree>
+    <degree>0</degree>
     <flip>n</flip>
   </symbol_object>
   <symbol_object>
@@ -489,7 +489,7 @@
       <xmax>575</xmax>
       <ymax>255</ymax>
     </bndbox>
-    <degree>90</degree>
+    <degree>0</degree>
     <flip>n</flip>
   </symbol_object>
   <symbol_object>
@@ -528,7 +528,7 @@
       <xmax>513</xmax>
       <ymax>255</ymax>
     </bndbox>
-    <degree>90</degree>
+    <degree>0</degree>
     <flip>n</flip>
   </symbol_object>
   <symbol_object>
@@ -619,7 +619,7 @@
       <xmax>365</xmax>
       <ymax>630</ymax>
     </bndbox>
-    <degree>90</degree>
+    <degree>0</degree>
     <flip>n</flip>
   </symbol_object>
   <symbol_object>
@@ -658,7 +658,7 @@
       <xmax>455</xmax>
       <ymax>660</ymax>
     </bndbox>
-    <degree>-90</degree>
+    <degree>0</degree>
     <flip>n</flip>
   </symbol_object>
   <symbol_object>
@@ -684,7 +684,7 @@
       <xmax>475</xmax>
       <ymax>630</ymax>
     </bndbox>
-    <degree>90</degree>
+    <degree>0</degree>
     <flip>n</flip>
   </symbol_object>
   <symbol_object>
@@ -697,7 +697,7 @@
       <xmax>825</xmax>
       <ymax>815</ymax>
     </bndbox>
-    <degree>90</degree>
+    <degree>0</degree>
     <flip>n</flip>
   </symbol_object>
   <symbol_object>
@@ -710,7 +710,7 @@
       <xmax>825</xmax>
       <ymax>831</ymax>
     </bndbox>
-    <degree>90</degree>
+    <degree>0</degree>
     <flip>n</flip>
   </symbol_object>
   <symbol_object>
@@ -736,7 +736,7 @@
       <xmax>715</xmax>
       <ymax>819</ymax>
     </bndbox>
-    <degree>-90</degree>
+    <degree>0</degree>
     <flip>n</flip>
   </symbol_object>
   <symbol_object>
@@ -749,7 +749,7 @@
       <xmax>895</xmax>
       <ymax>815</ymax>
     </bndbox>
-    <degree>-90</degree>
+    <degree>0</degree>
     <flip>n</flip>
   </symbol_object>
   <symbol_object>
@@ -762,7 +762,7 @@
       <xmax>895</xmax>
       <ymax>831</ymax>
     </bndbox>
-    <degree>90</degree>
+    <degree>0</degree>
     <flip>n</flip>
   </symbol_object>
   <symbol_object>
@@ -775,7 +775,7 @@
       <xmax>935</xmax>
       <ymax>819</ymax>
     </bndbox>
-    <degree>-90</degree>
+    <degree>0</degree>
     <flip>n</flip>
   </symbol_object>
   <symbol_object>
@@ -788,7 +788,7 @@
       <xmax>285</xmax>
       <ymax>260</ymax>
     </bndbox>
-    <degree>90</degree>
+    <degree>0</degree>
     <flip>n</flip>
   </symbol_object>
   <symbol_object>
@@ -826,6 +826,692 @@
       <ymin>635</ymin>
       <xmax>1410</xmax>
       <ymax>645</ymax>
+    </bndbox>
+    <degree>0</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>1</id>
+    <type>text</type>
+    <class>3200-V-150</class>
+    <bndbox>
+      <xmin>770</xmin>
+      <ymin>348</ymin>
+      <xmax>826</xmax>
+      <ymax>359</ymax>
+    </bndbox>
+    <degree>0</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>4</id>
+    <type>text</type>
+    <class>DN100-SS-N</class>
+    <bndbox>
+      <xmin>1157</xmin>
+      <ymin>238</ymin>
+      <xmax>1187</xmax>
+      <ymax>245</ymax>
+    </bndbox>
+    <degree>0</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>10</id>
+    <type>text</type>
+    <class>DN50-SS-N</class>
+    <bndbox>
+      <xmin>869</xmin>
+      <ymin>293</ymin>
+      <xmax>876</xmax>
+      <ymax>326</ymax>
+    </bndbox>
+    <degree>90</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>16</id>
+    <type>text</type>
+    <class>DN80</class>
+    <bndbox>
+      <xmin>787</xmin>
+      <ymin>175</ymin>
+      <xmax>792</xmax>
+      <ymax>195</ymax>
+    </bndbox>
+    <degree>-90</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>17</id>
+    <type>text</type>
+    <class>DN50</class>
+    <bndbox>
+      <xmin>867</xmin>
+      <ymin>175</ymin>
+      <xmax>872</xmax>
+      <ymax>195</ymax>
+    </bndbox>
+    <degree>-90</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>24</id>
+    <type>text</type>
+    <class>-SS-N</class>
+    <bndbox>
+      <xmin>689</xmin>
+      <ymin>312</ymin>
+      <xmax>696</xmax>
+      <ymax>342</ymax>
+    </bndbox>
+    <degree>90</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>28</id>
+    <type>text</type>
+    <class>LO</class>
+    <bndbox>
+      <xmin>697</xmin>
+      <ymin>382</ymin>
+      <xmax>702</xmax>
+      <ymax>402</ymax>
+    </bndbox>
+    <degree>-90</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>33</id>
+    <type>text</type>
+    <class>TSO
+NOTE 2</class>
+    <bndbox>
+      <xmin>665</xmin>
+      <ymin>364</ymin>
+      <xmax>685</xmax>
+      <ymax>374</ymax>
+    </bndbox>
+    <degree>0</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>47</id>
+    <type>text</type>
+    <class>-CS-N</class>
+    <bndbox>
+      <xmin>572</xmin>
+      <ymin>439</ymin>
+      <xmax>579</xmax>
+      <ymax>469</ymax>
+    </bndbox>
+    <degree>90</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>48</id>
+    <type>text</type>
+    <class>WEEP HOLE
+Φ 13 mm
+AT LPT</class>
+    <bndbox>
+      <xmin>622</xmin>
+      <ymin>390</ymin>
+      <xmax>637</xmax>
+      <ymax>420</ymax>
+    </bndbox>
+    <degree>90</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>54</id>
+    <type>text</type>
+    <class>PT
+10202</class>
+    <bndbox>
+      <xmin>697</xmin>
+      <ymin>265</ymin>
+      <xmax>710</xmax>
+      <ymax>275</ymax>
+    </bndbox>
+    <degree>0</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>58</id>
+    <type>text</type>
+    <class>PI
+10202</class>
+    <bndbox>
+      <xmin>603</xmin>
+      <ymin>265</ymin>
+      <xmax>616</xmax>
+      <ymax>275</ymax>
+    </bndbox>
+    <degree>0</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>68</id>
+    <type>text</type>
+    <class>PSV
+10204</class>
+    <bndbox>
+      <xmin>693</xmin>
+      <ymin>425</ymin>
+      <xmax>706</xmax>
+      <ymax>435</ymax>
+    </bndbox>
+    <degree>0</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>84</id>
+    <type>text</type>
+    <class>40</class>
+    <bndbox>
+      <xmin>710</xmin>
+      <ymin>422</ymin>
+      <xmax>730</xmax>
+      <ymax>427</ymax>
+    </bndbox>
+    <degree>0</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>91</id>
+    <type>text</type>
+    <class>PZDT
+10311</class>
+    <bndbox>
+      <xmin>533</xmin>
+      <ymin>285</ymin>
+      <xmax>546</xmax>
+      <ymax>295</ymax>
+    </bndbox>
+    <degree>0</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>98</id>
+    <type>text</type>
+    <class>NOTE 1</class>
+    <bndbox>
+      <xmin>545</xmin>
+      <ymin>243</ymin>
+      <xmax>565</xmax>
+      <ymax>248</ymax>
+    </bndbox>
+    <degree>0</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>103</id>
+    <type>text</type>
+    <class>FC</class>
+    <bndbox>
+      <xmin>521</xmin>
+      <ymin>229</ymin>
+      <xmax>541</xmax>
+      <ymax>234</ymax>
+    </bndbox>
+    <degree>0</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>107</id>
+    <type>text</type>
+    <class>XZV
+10311</class>
+    <bndbox>
+      <xmin>524</xmin>
+      <ymin>263</ymin>
+      <xmax>537</xmax>
+      <ymax>273</ymax>
+    </bndbox>
+    <degree>0</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>115</id>
+    <type>text</type>
+    <class>1730</class>
+    <bndbox>
+      <xmin>534</xmin>
+      <ymin>260</ymin>
+      <xmax>567</xmax>
+      <ymax>265</ymax>
+    </bndbox>
+    <degree>0</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>128</id>
+    <type>text</type>
+    <class>DN100-SS-N</class>
+    <bndbox>
+      <xmin>630</xmin>
+      <ymin>242</ymin>
+      <xmax>660</xmax>
+      <ymax>249</ymax>
+    </bndbox>
+    <degree>0</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>133</id>
+    <type>text</type>
+    <class>DN150-SS-N</class>
+    <bndbox>
+      <xmin>310</xmin>
+      <ymin>432</ymin>
+      <xmax>317</xmax>
+      <ymax>462</ymax>
+    </bndbox>
+    <degree>90</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>134</id>
+    <type>text</type>
+    <class>DN150-SS-N</class>
+    <bndbox>
+      <xmin>198</xmin>
+      <ymin>241</ymin>
+      <xmax>228</xmax>
+      <ymax>248</ymax>
+    </bndbox>
+    <degree>0</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>138</id>
+    <type>text</type>
+    <class>DN20</class>
+    <bndbox>
+      <xmin>347</xmin>
+      <ymin>615</ymin>
+      <xmax>352</xmax>
+      <ymax>635</ymax>
+    </bndbox>
+    <degree>-90</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>141</id>
+    <type>text</type>
+    <class>FC</class>
+    <bndbox>
+      <xmin>395</xmin>
+      <ymin>629</ymin>
+      <xmax>415</xmax>
+      <ymax>634</ymax>
+    </bndbox>
+    <degree>0</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>147</id>
+    <type>text</type>
+    <class>PT
+10200</class>
+    <bndbox>
+      <xmin>443</xmin>
+      <ymin>685</ymin>
+      <xmax>456</xmax>
+      <ymax>695</ymax>
+    </bndbox>
+    <degree>0</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>151</id>
+    <type>text</type>
+    <class>PIC
+10200</class>
+    <bndbox>
+      <xmin>443</xmin>
+      <ymin>755</ymin>
+      <xmax>456</xmax>
+      <ymax>765</ymax>
+    </bndbox>
+    <degree>0</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>163</id>
+    <type>text</type>
+    <class>DN20</class>
+    <bndbox>
+      <xmin>457</xmin>
+      <ymin>615</ymin>
+      <xmax>462</xmax>
+      <ymax>635</ymax>
+    </bndbox>
+    <degree>-90</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>165</id>
+    <type>text</type>
+    <class>-CS-N</class>
+    <bndbox>
+      <xmin>809</xmin>
+      <ymin>694</ymin>
+      <xmax>816</xmax>
+      <ymax>724</ymax>
+    </bndbox>
+    <degree>90</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>166</id>
+    <type>text</type>
+    <class>LO</class>
+    <bndbox>
+      <xmin>817</xmin>
+      <ymin>791</ymin>
+      <xmax>822</xmax>
+      <ymax>811</ymax>
+    </bndbox>
+    <degree>-90</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>171</id>
+    <type>text</type>
+    <class>NOTE 2</class>
+    <bndbox>
+      <xmin>785</xmin>
+      <ymin>802</ymin>
+      <xmax>805</xmax>
+      <ymax>807</ymax>
+    </bndbox>
+    <degree>0</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>176</id>
+    <type>text</type>
+    <class>ATM
+AT SAFE
+LOCATION</class>
+    <bndbox>
+      <xmin>675</xmin>
+      <ymin>871</ymin>
+      <xmax>705</xmax>
+      <ymax>889</ymax>
+    </bndbox>
+    <degree>0</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>177</id>
+    <type>text</type>
+    <class>WEEP HOLE
+Φ 13 mm
+AT LPT</class>
+    <bndbox>
+      <xmin>714</xmin>
+      <ymin>801</ymin>
+      <xmax>729</xmax>
+      <ymax>831</ymax>
+    </bndbox>
+    <degree>90</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>180</id>
+    <type>text</type>
+    <class>PSV
+10205</class>
+    <bndbox>
+      <xmin>813</xmin>
+      <ymin>836</ymin>
+      <xmax>826</xmax>
+      <ymax>846</ymax>
+    </bndbox>
+    <degree>0</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>185</id>
+    <type>text</type>
+    <class>10.5</class>
+    <bndbox>
+      <xmin>835</xmin>
+      <ymin>833</ymin>
+      <xmax>844</xmax>
+      <ymax>838</ymax>
+    </bndbox>
+    <degree>0</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>191</id>
+    <type>text</type>
+    <class>-CS-N</class>
+    <bndbox>
+      <xmin>725</xmin>
+      <ymin>826</ymin>
+      <xmax>755</xmax>
+      <ymax>833</ymax>
+    </bndbox>
+    <degree>0</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>197</id>
+    <type>text</type>
+    <class>-CS-N</class>
+    <bndbox>
+      <xmin>881</xmin>
+      <ymin>694</ymin>
+      <xmax>888</xmax>
+      <ymax>724</ymax>
+    </bndbox>
+    <degree>90</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>198</id>
+    <type>text</type>
+    <class>LC</class>
+    <bndbox>
+      <xmin>887</xmin>
+      <ymin>791</ymin>
+      <xmax>892</xmax>
+      <ymax>811</ymax>
+    </bndbox>
+    <degree>90</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>202</id>
+    <type>text</type>
+    <class>-CS-N</class>
+    <bndbox>
+      <xmin>911</xmin>
+      <ymin>825</ymin>
+      <xmax>944</xmax>
+      <ymax>832</ymax>
+    </bndbox>
+    <degree>0</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>203</id>
+    <type>text</type>
+    <class>PSV
+10206</class>
+    <bndbox>
+      <xmin>883</xmin>
+      <ymin>836</ymin>
+      <xmax>896</xmax>
+      <ymax>846</ymax>
+    </bndbox>
+    <degree>0</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>208</id>
+    <type>text</type>
+    <class>10.5</class>
+    <bndbox>
+      <xmin>865</xmin>
+      <ymin>833</ymin>
+      <xmax>874</xmax>
+      <ymax>838</ymax>
+    </bndbox>
+    <degree>0</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>212</id>
+    <type>text</type>
+    <class>WEEP HOLE
+1Φ 3 mm
+AT LPT</class>
+    <bndbox>
+      <xmin>934</xmin>
+      <ymin>801</ymin>
+      <xmax>949</xmax>
+      <ymax>831</ymax>
+    </bndbox>
+    <degree>90</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>216</id>
+    <type>text</type>
+    <class>ATM
+AT SAFE
+LOCATION</class>
+    <bndbox>
+      <xmin>955</xmin>
+      <ymin>870</ymin>
+      <xmax>985</xmax>
+      <ymax>888</ymax>
+    </bndbox>
+    <degree>0</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>221</id>
+    <type>text</type>
+    <class>DN150-CS-N</class>
+    <bndbox>
+      <xmin>1161</xmin>
+      <ymin>642</ymin>
+      <xmax>1191</xmax>
+      <ymax>649</ymax>
+    </bndbox>
+    <degree>0</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>225</id>
+    <type>text</type>
+    <class>PT
+10201</class>
+    <bndbox>
+      <xmin>273</xmin>
+      <ymin>285</ymin>
+      <xmax>286</xmax>
+      <ymax>295</ymax>
+    </bndbox>
+    <degree>0</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>229</id>
+    <type>text</type>
+    <class>PIC
+10201</class>
+    <bndbox>
+      <xmin>273</xmin>
+      <ymin>345</ymin>
+      <xmax>286</xmax>
+      <ymax>355</ymax>
+    </bndbox>
+    <degree>0</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>235</id>
+    <type>text</type>
+    <class>PZDI
+10314</class>
+    <bndbox>
+      <xmin>533</xmin>
+      <ymin>318</ymin>
+      <xmax>546</xmax>
+      <ymax>328</ymax>
+    </bndbox>
+    <degree>0</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>239</id>
+    <type>text</type>
+    <class>1730</class>
+    <bndbox>
+      <xmin>543</xmin>
+      <ymin>315</ymin>
+      <xmax>576</xmax>
+      <ymax>320</ymax>
+    </bndbox>
+    <degree>0</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>251</id>
+    <type>text</type>
+    <class>MH</class>
+    <bndbox>
+      <xmin>835</xmin>
+      <ymin>280</ymin>
+      <xmax>842</xmax>
+      <ymax>300</ymax>
+    </bndbox>
+    <degree>90</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>254</id>
+    <type>text</type>
+    <class>PID0215</class>
+    <bndbox>
+      <xmin>120</xmin>
+      <ymin>237</ymin>
+      <xmax>140</xmax>
+      <ymax>242</ymax>
+    </bndbox>
+    <degree>0</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>256</id>
+    <type>text</type>
+    <class>PID0102</class>
+    <bndbox>
+      <xmin>1375</xmin>
+      <ymin>237</ymin>
+      <xmax>1405</xmax>
+      <ymax>242</ymax>
+    </bndbox>
+    <degree>0</degree>
+    <flip>n</flip>
+  </symbol_object>
+  <symbol_object>
+    <id>258</id>
+    <type>text</type>
+    <class>PID0102</class>
+    <bndbox>
+      <xmin>1375</xmin>
+      <ymin>637</ymin>
+      <xmax>1405</xmax>
+      <ymax>642</ymax>
     </bndbox>
     <degree>0</degree>
     <flip>n</flip>
@@ -2150,743 +2836,6 @@
       <end>none</end>
     </endtype>
   </line_object>
-  <symbol_object>
-    <id>1</id>
-    <type>text</type>
-    <class>3200-V-150</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>770</xmin>
-      <ymin>348</ymin>
-      <xmax>826</xmax>
-      <ymax>359</ymax>
-    </bndbox>
-    <degree>0</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>4</id>
-    <type>text</type>
-    <class>DN100-SS-N</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>1157</xmin>
-      <ymin>238</ymin>
-      <xmax>1187</xmax>
-      <ymax>245</ymax>
-    </bndbox>
-    <degree>0</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>10</id>
-    <type>text</type>
-    <class>DN50-SS-N</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>869</xmin>
-      <ymin>293</ymin>
-      <xmax>876</xmax>
-      <ymax>326</ymax>
-    </bndbox>
-    <degree>90</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>16</id>
-    <type>text</type>
-    <class>DN80</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>787</xmin>
-      <ymin>175</ymin>
-      <xmax>792</xmax>
-      <ymax>195</ymax>
-    </bndbox>
-    <degree>-90</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>17</id>
-    <type>text</type>
-    <class>DN50</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>867</xmin>
-      <ymin>175</ymin>
-      <xmax>872</xmax>
-      <ymax>195</ymax>
-    </bndbox>
-    <degree>-90</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>24</id>
-    <type>text</type>
-    <class>-SS-N</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>689</xmin>
-      <ymin>312</ymin>
-      <xmax>696</xmax>
-      <ymax>342</ymax>
-    </bndbox>
-    <degree>90</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>28</id>
-    <type>text</type>
-    <class>LO</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>697</xmin>
-      <ymin>382</ymin>
-      <xmax>702</xmax>
-      <ymax>402</ymax>
-    </bndbox>
-    <degree>-90</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>33</id>
-    <type>text</type>
-    <class>TSO
-NOTE 2</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>665</xmin>
-      <ymin>364</ymin>
-      <xmax>685</xmax>
-      <ymax>374</ymax>
-    </bndbox>
-    <degree>0</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>47</id>
-    <type>text</type>
-    <class>-CS-N</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>572</xmin>
-      <ymin>439</ymin>
-      <xmax>579</xmax>
-      <ymax>469</ymax>
-    </bndbox>
-    <degree>90</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>48</id>
-    <type>text</type>
-    <class>WEEP HOLE
-Φ 13 mm
-AT LPT</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>622</xmin>
-      <ymin>390</ymin>
-      <xmax>637</xmax>
-      <ymax>420</ymax>
-    </bndbox>
-    <degree>90</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>54</id>
-    <type>text</type>
-    <class>PT
-10202</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>697</xmin>
-      <ymin>265</ymin>
-      <xmax>710</xmax>
-      <ymax>275</ymax>
-    </bndbox>
-    <degree>0</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>58</id>
-    <type>text</type>
-    <class>PI
-10202</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>603</xmin>
-      <ymin>265</ymin>
-      <xmax>616</xmax>
-      <ymax>275</ymax>
-    </bndbox>
-    <degree>0</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>68</id>
-    <type>text</type>
-    <class>PSV
-10204</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>693</xmin>
-      <ymin>425</ymin>
-      <xmax>706</xmax>
-      <ymax>435</ymax>
-    </bndbox>
-    <degree>0</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>84</id>
-    <type>text</type>
-    <class>40</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>710</xmin>
-      <ymin>422</ymin>
-      <xmax>730</xmax>
-      <ymax>427</ymax>
-    </bndbox>
-    <degree>0</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>91</id>
-    <type>text</type>
-    <class>PZDT
-10311</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>533</xmin>
-      <ymin>285</ymin>
-      <xmax>546</xmax>
-      <ymax>295</ymax>
-    </bndbox>
-    <degree>0</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>98</id>
-    <type>text</type>
-    <class>NOTE 1</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>545</xmin>
-      <ymin>243</ymin>
-      <xmax>565</xmax>
-      <ymax>248</ymax>
-    </bndbox>
-    <degree>0</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>103</id>
-    <type>text</type>
-    <class>FC</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>521</xmin>
-      <ymin>229</ymin>
-      <xmax>541</xmax>
-      <ymax>234</ymax>
-    </bndbox>
-    <degree>0</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>107</id>
-    <type>text</type>
-    <class>XZV
-10311</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>524</xmin>
-      <ymin>263</ymin>
-      <xmax>537</xmax>
-      <ymax>273</ymax>
-    </bndbox>
-    <degree>0</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>115</id>
-    <type>text</type>
-    <class>1730</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>534</xmin>
-      <ymin>260</ymin>
-      <xmax>567</xmax>
-      <ymax>265</ymax>
-    </bndbox>
-    <degree>0</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>128</id>
-    <type>text</type>
-    <class>DN100-SS-N</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>630</xmin>
-      <ymin>242</ymin>
-      <xmax>660</xmax>
-      <ymax>249</ymax>
-    </bndbox>
-    <degree>0</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>133</id>
-    <type>text</type>
-    <class>DN150-SS-N</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>310</xmin>
-      <ymin>432</ymin>
-      <xmax>317</xmax>
-      <ymax>462</ymax>
-    </bndbox>
-    <degree>90</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>134</id>
-    <type>text</type>
-    <class>DN150-SS-N</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>198</xmin>
-      <ymin>241</ymin>
-      <xmax>228</xmax>
-      <ymax>248</ymax>
-    </bndbox>
-    <degree>0</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>138</id>
-    <type>text</type>
-    <class>DN20</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>347</xmin>
-      <ymin>615</ymin>
-      <xmax>352</xmax>
-      <ymax>635</ymax>
-    </bndbox>
-    <degree>-90</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>141</id>
-    <type>text</type>
-    <class>FC</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>395</xmin>
-      <ymin>629</ymin>
-      <xmax>415</xmax>
-      <ymax>634</ymax>
-    </bndbox>
-    <degree>0</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>147</id>
-    <type>text</type>
-    <class>PT
-10200</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>443</xmin>
-      <ymin>685</ymin>
-      <xmax>456</xmax>
-      <ymax>695</ymax>
-    </bndbox>
-    <degree>0</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>151</id>
-    <type>text</type>
-    <class>PIC
-10200</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>443</xmin>
-      <ymin>755</ymin>
-      <xmax>456</xmax>
-      <ymax>765</ymax>
-    </bndbox>
-    <degree>0</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>163</id>
-    <type>text</type>
-    <class>DN20</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>457</xmin>
-      <ymin>615</ymin>
-      <xmax>462</xmax>
-      <ymax>635</ymax>
-    </bndbox>
-    <degree>-90</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>165</id>
-    <type>text</type>
-    <class>-CS-N</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>809</xmin>
-      <ymin>694</ymin>
-      <xmax>816</xmax>
-      <ymax>724</ymax>
-    </bndbox>
-    <degree>90</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>166</id>
-    <type>text</type>
-    <class>LO</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>817</xmin>
-      <ymin>791</ymin>
-      <xmax>822</xmax>
-      <ymax>811</ymax>
-    </bndbox>
-    <degree>-90</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>171</id>
-    <type>text</type>
-    <class>NOTE 2</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>785</xmin>
-      <ymin>802</ymin>
-      <xmax>805</xmax>
-      <ymax>807</ymax>
-    </bndbox>
-    <degree>0</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>176</id>
-    <type>text</type>
-    <class>ATM
-AT SAFE
-LOCATION</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>675</xmin>
-      <ymin>871</ymin>
-      <xmax>705</xmax>
-      <ymax>889</ymax>
-    </bndbox>
-    <degree>0</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>177</id>
-    <type>text</type>
-    <class>WEEP HOLE
-Φ 13 mm
-AT LPT</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>714</xmin>
-      <ymin>801</ymin>
-      <xmax>729</xmax>
-      <ymax>831</ymax>
-    </bndbox>
-    <degree>90</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>180</id>
-    <type>text</type>
-    <class>PSV
-10205</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>813</xmin>
-      <ymin>836</ymin>
-      <xmax>826</xmax>
-      <ymax>846</ymax>
-    </bndbox>
-    <degree>0</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>185</id>
-    <type>text</type>
-    <class>10.5</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>835</xmin>
-      <ymin>833</ymin>
-      <xmax>844</xmax>
-      <ymax>838</ymax>
-    </bndbox>
-    <degree>0</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>191</id>
-    <type>text</type>
-    <class>-CS-N</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>725</xmin>
-      <ymin>826</ymin>
-      <xmax>755</xmax>
-      <ymax>833</ymax>
-    </bndbox>
-    <degree>0</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>197</id>
-    <type>text</type>
-    <class>-CS-N</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>881</xmin>
-      <ymin>694</ymin>
-      <xmax>888</xmax>
-      <ymax>724</ymax>
-    </bndbox>
-    <degree>90</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>198</id>
-    <type>text</type>
-    <class>LC</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>887</xmin>
-      <ymin>791</ymin>
-      <xmax>892</xmax>
-      <ymax>811</ymax>
-    </bndbox>
-    <degree>90</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>202</id>
-    <type>text</type>
-    <class>-CS-N</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>911</xmin>
-      <ymin>825</ymin>
-      <xmax>944</xmax>
-      <ymax>832</ymax>
-    </bndbox>
-    <degree>0</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>203</id>
-    <type>text</type>
-    <class>PSV
-10206</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>883</xmin>
-      <ymin>836</ymin>
-      <xmax>896</xmax>
-      <ymax>846</ymax>
-    </bndbox>
-    <degree>0</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>208</id>
-    <type>text</type>
-    <class>10.5</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>865</xmin>
-      <ymin>833</ymin>
-      <xmax>874</xmax>
-      <ymax>838</ymax>
-    </bndbox>
-    <degree>0</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>212</id>
-    <type>text</type>
-    <class>WEEP HOLE
-1Φ 3 mm
-AT LPT</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>934</xmin>
-      <ymin>801</ymin>
-      <xmax>949</xmax>
-      <ymax>831</ymax>
-    </bndbox>
-    <degree>90</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>216</id>
-    <type>text</type>
-    <class>ATM
-AT SAFE
-LOCATION</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>955</xmin>
-      <ymin>870</ymin>
-      <xmax>985</xmax>
-      <ymax>888</ymax>
-    </bndbox>
-    <degree>0</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>221</id>
-    <type>text</type>
-    <class>DN150-CS-N</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>1161</xmin>
-      <ymin>642</ymin>
-      <xmax>1191</xmax>
-      <ymax>649</ymax>
-    </bndbox>
-    <degree>0</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>225</id>
-    <type>text</type>
-    <class>PT
-10201</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>273</xmin>
-      <ymin>285</ymin>
-      <xmax>286</xmax>
-      <ymax>295</ymax>
-    </bndbox>
-    <degree>0</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>229</id>
-    <type>text</type>
-    <class>PIC
-10201</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>273</xmin>
-      <ymin>345</ymin>
-      <xmax>286</xmax>
-      <ymax>355</ymax>
-    </bndbox>
-    <degree>0</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>235</id>
-    <type>text</type>
-    <class>PZDI
-10314</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>533</xmin>
-      <ymin>318</ymin>
-      <xmax>546</xmax>
-      <ymax>328</ymax>
-    </bndbox>
-    <degree>0</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>239</id>
-    <type>text</type>
-    <class>1730</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>543</xmin>
-      <ymin>315</ymin>
-      <xmax>576</xmax>
-      <ymax>320</ymax>
-    </bndbox>
-    <degree>0</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>251</id>
-    <type>text</type>
-    <class>MH</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>835</xmin>
-      <ymin>280</ymin>
-      <xmax>842</xmax>
-      <ymax>300</ymax>
-    </bndbox>
-    <degree>90</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>254</id>
-    <type>text</type>
-    <class>PID0215</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>120</xmin>
-      <ymin>237</ymin>
-      <xmax>140</xmax>
-      <ymax>242</ymax>
-    </bndbox>
-    <degree>0</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>256</id>
-    <type>text</type>
-    <class>PID0102</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>1375</xmin>
-      <ymin>237</ymin>
-      <xmax>1405</xmax>
-      <ymax>242</ymax>
-    </bndbox>
-    <degree>0</degree>
-    <flip>n</flip>
-  </symbol_object>
-  <symbol_object>
-    <id>258</id>
-    <type>text</type>
-    <class>PID0102</class>
-    <class>none</class>
-    <bndbox>
-      <xmin>1375</xmin>
-      <ymin>637</ymin>
-      <xmax>1405</xmax>
-      <ymax>642</ymax>
-    </bndbox>
-    <degree>0</degree>
-    <flip>n</flip>
-  </symbol_object>
   <connection_object>
     <id>1Connect</id>
     <class>connection</class>
@@ -2995,67 +2944,49 @@ LOCATION</class>
     <id>7Connect</id>
     <class>connection</class>
     <connectionpoint>
-      <X>800</X>
-      <Y>400</Y>
+      <X>797</X>
+      <Y>403</Y>
     </connectionpoint>
-    <connectionobject>
-      <connection From="7" To="6PipeL-0" />
-    </connectionobject>
   </connection_object>
   <connection_object>
     <id>7Connect</id>
     <class>connection</class>
     <connectionpoint>
-      <X>800</X>
-      <Y>402</Y>
+      <X>799</X>
+      <Y>403</Y>
     </connectionpoint>
-    <connectionobject>
-      <connection From="7" To="9PipeL-0" />
-    </connectionobject>
   </connection_object>
   <connection_object>
     <id>13Connect</id>
     <class>connection</class>
     <connectionpoint>
-      <X>800</X>
-      <Y>200</Y>
+      <X>799</X>
+      <Y>201</Y>
     </connectionpoint>
-    <connectionobject>
-      <connection From="13" To="12PipeL-0" />
-    </connectionobject>
   </connection_object>
   <connection_object>
     <id>13Connect</id>
     <class>connection</class>
     <connectionpoint>
-      <X>800</X>
-      <Y>198</Y>
+      <X>797</X>
+      <Y>201</Y>
     </connectionpoint>
-    <connectionobject>
-      <connection From="13" To="14PipeL-0" />
-    </connectionobject>
   </connection_object>
   <connection_object>
     <id>16Connect</id>
     <class>connection</class>
     <connectionpoint>
-      <X>800</X>
-      <Y>190</Y>
+      <X>805</X>
+      <Y>185</Y>
     </connectionpoint>
-    <connectionobject>
-      <connection From="16" To="14PipeL-0" />
-    </connectionobject>
   </connection_object>
   <connection_object>
     <id>17Connect</id>
     <class>connection</class>
     <connectionpoint>
-      <X>880</X>
-      <Y>190</Y>
+      <X>885</X>
+      <Y>185</Y>
     </connectionpoint>
-    <connectionobject>
-      <connection From="17" To="10PipeL-0" />
-    </connectionobject>
   </connection_object>
   <connection_object>
     <id>18Connect</id>
@@ -3127,22 +3058,27 @@ LOCATION</class>
     <id>28Connect</id>
     <class>connection</class>
     <connectionpoint>
-      <X>700</X>
-      <Y>395</Y>
+      <X>695</X>
+      <Y>400</Y>
     </connectionpoint>
-    <connectionobject>
-      <connection From="28" To="121PipeL-0" />
-    </connectionobject>
   </connection_object>
   <connection_object>
     <id>28Connect</id>
     <class>connection</class>
     <connectionpoint>
+      <X>705</X>
+      <Y>400</Y>
+    </connectionpoint>
+  </connection_object>
+  <connection_object>
+    <id>30Connect</id>
+    <class>connection</class>
+    <connectionpoint>
       <X>700</X>
-      <Y>405</Y>
+      <Y>410</Y>
     </connectionpoint>
     <connectionobject>
-      <connection From="28" To="29PipeL-0" />
+      <connection From="30" To="29PipeL-0" />
     </connectionobject>
   </connection_object>
   <connection_object>
@@ -3160,23 +3096,9 @@ LOCATION</class>
     <id>30Connect</id>
     <class>connection</class>
     <connectionpoint>
-      <X>700</X>
-      <Y>410</Y>
+      <X>705</X>
+      <Y>415</Y>
     </connectionpoint>
-    <connectionobject>
-      <connection From="30" To="29PipeL-0" />
-    </connectionobject>
-  </connection_object>
-  <connection_object>
-    <id>30Connect</id>
-    <class>connection</class>
-    <connectionpoint>
-      <X>700</X>
-      <Y>420</Y>
-    </connectionpoint>
-    <connectionobject>
-      <connection From="30" To="68" />
-    </connectionobject>
   </connection_object>
   <connection_object>
     <id>33Connect</id>
@@ -3278,9 +3200,6 @@ LOCATION</class>
       <X>700</X>
       <Y>420</Y>
     </connectionpoint>
-    <connectionobject>
-      <connection From="68" To="30" />
-    </connectionobject>
   </connection_object>
   <connection_object>
     <id>68Connect</id>
@@ -3308,23 +3227,17 @@ LOCATION</class>
     <id>89Connect</id>
     <class>connection</class>
     <connectionpoint>
-      <X>570</X>
-      <Y>255</Y>
+      <X>575</X>
+      <Y>250</Y>
     </connectionpoint>
-    <connectionobject>
-      <connection From="89" To="90PipeL-1" />
-    </connectionobject>
   </connection_object>
   <connection_object>
     <id>89Connect</id>
     <class>connection</class>
     <connectionpoint>
-      <X>570</X>
-      <Y>245</Y>
+      <X>565</X>
+      <Y>250</Y>
     </connectionpoint>
-    <connectionobject>
-      <connection From="89" To="88PipeL-0" />
-    </connectionobject>
   </connection_object>
   <connection_object>
     <id>91Connect</id>
@@ -3451,23 +3364,17 @@ LOCATION</class>
     <id>117Connect</id>
     <class>connection</class>
     <connectionpoint>
-      <X>508</X>
-      <Y>255</Y>
+      <X>513</X>
+      <Y>250</Y>
     </connectionpoint>
-    <connectionobject>
-      <connection From="117" To="94PipeL-0" />
-    </connectionobject>
   </connection_object>
   <connection_object>
     <id>117Connect</id>
     <class>connection</class>
     <connectionpoint>
-      <X>508</X>
-      <Y>245</Y>
+      <X>503</X>
+      <Y>250</Y>
     </connectionpoint>
-    <connectionobject>
-      <connection From="117" To="118PipeL-0" />
-    </connectionobject>
   </connection_object>
   <connection_object>
     <id>119Connect</id>
@@ -3549,12 +3456,9 @@ LOCATION</class>
     <id>138Connect</id>
     <class>connection</class>
     <connectionpoint>
-      <X>360</X>
-      <Y>630</Y>
+      <X>365</X>
+      <Y>625</Y>
     </connectionpoint>
-    <connectionobject>
-      <connection From="138" To="137PipeL-0" />
-    </connectionobject>
   </connection_object>
   <connection_object>
     <id>140Connect</id>
@@ -3702,33 +3606,35 @@ LOCATION</class>
     <id>163Connect</id>
     <class>connection</class>
     <connectionpoint>
-      <X>470</X>
-      <Y>630</Y>
+      <X>475</X>
+      <Y>625</Y>
     </connectionpoint>
-    <connectionobject>
-      <connection From="163" To="161PipeL-0" />
-    </connectionobject>
   </connection_object>
   <connection_object>
     <id>166Connect</id>
     <class>connection</class>
     <connectionpoint>
-      <X>820</X>
-      <Y>805</Y>
+      <X>815</X>
+      <Y>810</Y>
     </connectionpoint>
-    <connectionobject>
-      <connection From="166" To="188PipeL-0" />
-    </connectionobject>
   </connection_object>
   <connection_object>
     <id>166Connect</id>
     <class>connection</class>
     <connectionpoint>
+      <X>825</X>
+      <Y>810</Y>
+    </connectionpoint>
+  </connection_object>
+  <connection_object>
+    <id>168Connect</id>
+    <class>connection</class>
+    <connectionpoint>
       <X>820</X>
-      <Y>815</Y>
+      <Y>821</Y>
     </connectionpoint>
     <connectionobject>
-      <connection From="166" To="167PipeL-0" />
+      <connection From="168" To="167PipeL-0" />
     </connectionobject>
   </connection_object>
   <connection_object>
@@ -3746,23 +3652,9 @@ LOCATION</class>
     <id>168Connect</id>
     <class>connection</class>
     <connectionpoint>
-      <X>820</X>
-      <Y>821</Y>
+      <X>825</X>
+      <Y>826</Y>
     </connectionpoint>
-    <connectionobject>
-      <connection From="168" To="167PipeL-0" />
-    </connectionobject>
-  </connection_object>
-  <connection_object>
-    <id>168Connect</id>
-    <class>connection</class>
-    <connectionpoint>
-      <X>820</X>
-      <Y>831</Y>
-    </connectionpoint>
-    <connectionobject>
-      <connection From="168" To="180" />
-    </connectionobject>
   </connection_object>
   <connection_object>
     <id>171Connect</id>
@@ -3801,9 +3693,6 @@ LOCATION</class>
       <X>820</X>
       <Y>831</Y>
     </connectionpoint>
-    <connectionobject>
-      <connection From="180" To="168" />
-    </connectionobject>
   </connection_object>
   <connection_object>
     <id>180Connect</id>
@@ -3847,14 +3736,6 @@ LOCATION</class>
     <id>199Connect</id>
     <class>connection</class>
     <connectionpoint>
-      <X>885</X>
-      <Y>826</Y>
-    </connectionpoint>
-  </connection_object>
-  <connection_object>
-    <id>199Connect</id>
-    <class>connection</class>
-    <connectionpoint>
       <X>890</X>
       <Y>821</Y>
     </connectionpoint>
@@ -3866,11 +3747,19 @@ LOCATION</class>
     <id>199Connect</id>
     <class>connection</class>
     <connectionpoint>
-      <X>890</X>
-      <Y>831</Y>
+      <X>885</X>
+      <Y>826</Y>
+    </connectionpoint>
+  </connection_object>
+  <connection_object>
+    <id>199Connect</id>
+    <class>connection</class>
+    <connectionpoint>
+      <X>895</X>
+      <Y>826</Y>
     </connectionpoint>
     <connectionobject>
-      <connection From="199" To="203" />
+      <connection From="199" To="202PipeL-0" />
     </connectionobject>
   </connection_object>
   <connection_object>
@@ -3880,9 +3769,6 @@ LOCATION</class>
       <X>890</X>
       <Y>831</Y>
     </connectionpoint>
-    <connectionobject>
-      <connection From="203" To="199" />
-    </connectionobject>
   </connection_object>
   <connection_object>
     <id>203Connect</id>
@@ -3918,23 +3804,17 @@ LOCATION</class>
     <id>223Connect</id>
     <class>connection</class>
     <connectionpoint>
-      <X>280</X>
-      <Y>260</Y>
+      <X>285</X>
+      <Y>255</Y>
     </connectionpoint>
-    <connectionobject>
-      <connection From="223" To="224PipeL-0" />
-    </connectionobject>
   </connection_object>
   <connection_object>
     <id>223Connect</id>
     <class>connection</class>
     <connectionpoint>
-      <X>280</X>
-      <Y>250</Y>
+      <X>275</X>
+      <Y>255</Y>
     </connectionpoint>
-    <connectionobject>
-      <connection From="223" To="222PipeL-0" />
-    </connectionobject>
   </connection_object>
   <connection_object>
     <id>225Connect</id>

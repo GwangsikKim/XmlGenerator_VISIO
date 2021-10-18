@@ -69,14 +69,15 @@ namespace SmartDesign.DrawingDataGenerator
             Visio.Page visioPage = app.ActivePage;
 
             PlantModel plantModel = new PlantModel();
-            PlantTypeClassification(plantModel, visioPage);
+            ClassifyPlantType(plantModel, visioPage);
 
-            var xmlData = XmlMaker(plantModel);
+            XMLConverter xMLConverter = new XMLConverter();
+            var xmlData = xMLConverter.ConvertToXML(plantModel, path);
 
             return xmlData;
         }
 
-        public void PlantTypeClassification(PlantModel plantModel, Visio.Page visioPage)
+        public void ClassifyPlantType(PlantModel plantModel, Visio.Page visioPage)
         {
             foreach (Shape shape in visioPage.Shapes)
             {
@@ -84,7 +85,7 @@ namespace SmartDesign.DrawingDataGenerator
 
                 string shapeTypeName = RemoveSpecificCharacters(shapeDeleteSpace);
 
-                if (shape.Text != null && shape.Text != "" && shape.Text != "￼") //수정
+                if (shape.Text != null && shape.Text != "" && shape.Text != "￼") //string.IsNullOrEmpty(shape.Text))//
                 {
                     Text text = new Text();
                     text.ID = shape.ID.ToString();
@@ -129,7 +130,6 @@ namespace SmartDesign.DrawingDataGenerator
 
         private void CreateEquipmentProperties(PlantModel plantModel, Equipment equipment, Shape shape)
         {
-            //수정
             Extent extent = new Extent();
             Center center = new Center();
             int angle = 0;
@@ -282,9 +282,6 @@ namespace SmartDesign.DrawingDataGenerator
         {
             Extent extent = new Extent();
             Center center = new Center();
-            int angle = 0;
-
-            ConnectionPoint connectionPoint = new ConnectionPoint();
 
             short iRow1 = (short)VisRowIndices.visRowXFormOut;
             short iRow2 = (short)VisRowIndices.visRowTextXForm;
@@ -364,9 +361,9 @@ namespace SmartDesign.DrawingDataGenerator
                    iRow2,
                    (short)VisCellIndices.visXFormAngle
                    ).get_ResultStr(VisUnitCodes.visNoCast);
-            angle = RemoveUnits(strAngle);
+            int angle = RemoveUnits(strAngle);
 
-            Extentmaker(extent, textcenterX, textcenterY, width, height, angle);
+            CreateBox(extent, textcenterX, textcenterY, width, height, angle);
 
             text.Centers = center;
             text.Extents = extent;
@@ -423,7 +420,7 @@ namespace SmartDesign.DrawingDataGenerator
                     ).get_ResultStr(VisUnitCodes.visNoCast);
             angle = RemoveUnits(strAngle);
 
-            Extentmaker(extent, pinX, pinY, width, height, angle);
+            CreateBox(extent, pinX, pinY, width, height, angle);
         }
 
         private void ExtractLineInformation(Shape shape, LineItem lineEndPoints)
@@ -543,7 +540,7 @@ namespace SmartDesign.DrawingDataGenerator
             }
         }
 
-        private Extent Extentmaker(Extent extent, int pinX, int pinY, int width, int height, int angle)
+        private Extent CreateBox(Extent extent, int pinX, int pinY, int width, int height, int angle)
         {
             Min min = new Min();
             Max max = new Max();
@@ -598,7 +595,7 @@ namespace SmartDesign.DrawingDataGenerator
 
         private int RemoveUnits(string strValue)
         {
-            string[] charsToRemove = new string[] { " mm", " 도", " pt" };
+            string[] charsToRemove = new string[] { " mm", " 도", " pt"};
 
             foreach (var chars in charsToRemove)
             {
@@ -625,610 +622,6 @@ namespace SmartDesign.DrawingDataGenerator
             }
 
             return 0;
-        }
-
-        public XDocument XmlMaker(PlantModel plantModel)
-        {
-            XDocument xmlDocument = new XDocument();
-
-            XElement plantModelElement = new XElement("annotation");
-            xmlDocument.Add(plantModelElement);
-
-            XElement drawinginformationElement = new XElement("basic_drawing_information");
-
-            XElement folderPathElement = new XElement("folder");
-            drawinginformationElement.Add(folderPathElement);
-
-            XElement fileNameElement = new XElement("filename");
-            drawinginformationElement.Add(fileNameElement);
-
-            XElement pathElement = new XElement("path", path);
-            drawinginformationElement.Add(pathElement);
-
-            XElement basicSizeElement = new XElement("size");
-            XElement widthElement = new XElement("width", 1500);
-            basicSizeElement.Add(widthElement);
-            XElement heightElement = new XElement("height", 1000);
-            basicSizeElement.Add(heightElement);
-            XElement depthElement = new XElement("depth", 4);
-            basicSizeElement.Add(depthElement);
-            drawinginformationElement.Add(basicSizeElement);
-
-            XElement borderLineElement = new XElement("external_border_line");
-            XElement borderbndboxElement = new XElement("bndbox");
-            var bnbboxBorderElement = BasicbnbBoxInformation(borderbndboxElement);
-            borderLineElement.Add(bnbboxBorderElement);
-            drawinginformationElement.Add(borderLineElement);
-
-            XElement drawingAreaElement = new XElement("pure_drawing_area");
-            XElement drawingbndboxElement = new XElement("bndbox");
-            var bnbboxDrawingElement = BasicbnbBoxInformation(drawingbndboxElement);
-            drawingAreaElement.Add(bnbboxDrawingElement);
-            drawinginformationElement.Add(drawingAreaElement);
-
-            XElement noteElement = new XElement("note_area");
-            XElement noteBndboxElement = new XElement("bndbox");
-            var bnbboxNoteElement = BasicbnbBoxInformation(noteBndboxElement);
-            noteElement.Add(bnbboxNoteElement);
-            drawinginformationElement.Add(noteElement);
-
-            XElement titleElement = new XElement("title_area");
-            XElement titleBndboxElement = new XElement("bndbox");
-            var bnbboxTitleElement = BasicbnbBoxInformation(titleBndboxElement);
-            titleElement.Add(bnbboxTitleElement);
-            drawinginformationElement.Add(titleElement);
-
-            XElement separatorElement = new XElement("drawing_area_separator");
-            XElement separatorBndboxElement = new XElement("edge");
-            XElement xminElement = new XElement("xstart", 0);
-            separatorBndboxElement.Add(xminElement);
-            XElement yminElement = new XElement("ystart", 0);
-            separatorBndboxElement.Add(yminElement);
-            XElement xmaxElement = new XElement("xend", 0);
-            separatorBndboxElement.Add(xmaxElement);
-            XElement ymaxElement = new XElement("yend", 0);
-            separatorBndboxElement.Add(ymaxElement);
-            separatorElement.Add(separatorBndboxElement);
-            drawinginformationElement.Add(separatorElement);
-
-            plantModelElement.Add(drawinginformationElement);
-
-            for (int i = 0; i < plantModel.Equipments.Count; i++)
-            {
-                XElement shapeElement = new XElement("symbol_object");
-                CreateXmlSymbolStructure1(shapeElement, plantModel, i);
-                plantModelElement.Add(shapeElement);
-            }
-
-            for (int i = 0; i < plantModel.Instruments.Count; i++)
-            {
-                XElement shapeElement = new XElement("symbol_object");
-                CreateXmlSymbolStructure2(shapeElement, plantModel, i);
-                plantModelElement.Add(shapeElement);
-            }
-
-            for (int i = 0; i < plantModel.PipingComponents.Count; i++)
-            {
-                XElement shapeElement = new XElement("symbol_object");
-                CreateXmlSymbolStructure3(shapeElement, plantModel, i);
-                plantModelElement.Add(shapeElement);
-            }
-
-            for (int i = 0; i < plantModel.PipeLines.Count; i++)
-            {
-                XElement shapeElement = new XElement("line_object");
-                CreateXmlLineStructure1(shapeElement, plantModel, i);
-                plantModelElement.Add(shapeElement);
-            }
-
-            for (int i = 0; i < plantModel.SignalLines.Count; i++)
-            {
-                XElement shapeElement = new XElement("line_object");
-                CreateXmlLineStructure2(shapeElement, plantModel, i);
-                plantModelElement.Add(shapeElement);
-            }
-
-            for (int i = 0; i < plantModel.Texts.Count; i++)
-            {
-                XElement shapeElement = new XElement("symbol_object");
-                CreateXmlSymbolStructure4(shapeElement, plantModel, i);
-                plantModelElement.Add(shapeElement);
-            }
-
-            for (int i = 0; i < plantModel.ConnectionPoints.Count; i++)
-            {
-                XElement shapeElement = new XElement("connection_object");
-                CreateXmlConnectionStructure(shapeElement, plantModel, i);
-                plantModelElement.Add(shapeElement);
-            }
-
-            for (int i = 0; i < plantModel.ConnectionLines.Count; i++)
-            {
-                var shapeElements = CheckePipeTee(plantModel, plantModel.ConnectionLines[i]);
-                foreach (var item in shapeElements)
-                {
-                    plantModelElement.Add(item);
-                }
-            }
-
-            return xmlDocument;
-        }
-
-        private List<XElement> CheckePipeTee(PlantModel plantModel, ConnectionLine connectionLine)
-        {
-            List<XElement> xElements = new List<XElement>();
-
-            var standardStartCnnX = connectionLine.LineEndPoints.BeginPoints.BeginX;
-            var standardStartCnnY = connectionLine.LineEndPoints.BeginPoints.BeginY;
-            var standardEndCnnX = connectionLine.LineEndPoints.EndPoints.EndX;
-            var standardEndCnnY = connectionLine.LineEndPoints.EndPoints.EndY;
-
-            for (int j = 0; j < plantModel.PipeLines.Count; j++)
-            {
-                if (connectionLine.ID != plantModel.PipeLines[j].ID)
-                {
-                    var startX = plantModel.PipeLines[j].LineEndPoints.BeginPoints.BeginX;
-                    var startY = plantModel.PipeLines[j].LineEndPoints.BeginPoints.BeginY;
-                    var endX = plantModel.PipeLines[j].LineEndPoints.EndPoints.EndX;
-                    var endY = plantModel.PipeLines[j].LineEndPoints.EndPoints.EndY;
-
-                    var startConnectPositon = new Position2(standardStartCnnX, standardStartCnnY);
-                    var endConnectPositon = new Position2(standardEndCnnX, standardEndCnnY);
-                    var startPositon = new Position2(startX, startY);
-                    var EndPositon = new Position2(endX, endY);
-
-                    if (Tolerance.IsZeroDistance(Position2.Distance(startConnectPositon, startPositon)))
-                    {
-                        var xElement = CreateXmlConnectionLineStructure(connectionLine, startConnectPositon, plantModel.PipeLines[j].ID);
-                        xElements.Add(xElement);
-                    }
-                    else if (Tolerance.IsZeroDistance(Position2.Distance(startConnectPositon, EndPositon)))
-                    {
-                        var xElement = CreateXmlConnectionLineStructure(connectionLine, startConnectPositon, plantModel.PipeLines[j].ID);
-                        xElements.Add(xElement);
-                    }
-                    else if (Tolerance.IsZeroDistance(Position2.Distance(endConnectPositon, startPositon)))
-                    {
-                        var xElement = CreateXmlConnectionLineStructure(connectionLine, endConnectPositon, plantModel.PipeLines[j].ID);
-                        xElements.Add(xElement);
-                    }
-                    else if (Tolerance.IsZeroDistance(Position2.Distance(endConnectPositon, EndPositon)))
-                    {
-                        var xElement = CreateXmlConnectionLineStructure(connectionLine, endConnectPositon, plantModel.PipeLines[j].ID);
-                        xElements.Add(xElement);
-                    }
-                }
-            }
-
-            for (int j = 0; j < plantModel.SignalLines.Count; j++)
-            {
-                if (connectionLine.ID != plantModel.SignalLines[j].ID)
-                {
-                    var startX = plantModel.SignalLines[j].LineEndPoints.BeginPoints.BeginX;
-                    var startY = plantModel.SignalLines[j].LineEndPoints.BeginPoints.BeginY;
-                    var endX = plantModel.SignalLines[j].LineEndPoints.EndPoints.EndX;
-                    var endY = plantModel.SignalLines[j].LineEndPoints.EndPoints.EndY;
-
-                    var startConnectPositon = new Position2(standardStartCnnX, standardStartCnnY);
-                    var endConnectPositon = new Position2(standardEndCnnX, standardEndCnnY);
-                    var startPositon = new Position2(startX, startY);
-                    var EndPositon = new Position2(endX, endY);
-
-                    if (Tolerance.IsZeroDistance(Position2.Distance(startConnectPositon, startPositon)))
-                    {
-                        var xElement = CreateXmlConnectionLineStructure(connectionLine, startConnectPositon, plantModel.SignalLines[j].ID);
-                        xElements.Add(xElement);
-                    }
-                    else if (Tolerance.IsZeroDistance(Position2.Distance(startConnectPositon, EndPositon)))
-                    {
-                        var xElement = CreateXmlConnectionLineStructure(connectionLine, startConnectPositon, plantModel.SignalLines[j].ID);
-                        xElements.Add(xElement);
-                    }
-                    else if (Tolerance.IsZeroDistance(Position2.Distance(endConnectPositon, startPositon)))
-                    {
-                        var xElement = CreateXmlConnectionLineStructure(connectionLine, endConnectPositon, plantModel.SignalLines[j].ID);
-                        xElements.Add(xElement);
-                    }
-                    else if (Tolerance.IsZeroDistance(Position2.Distance(endConnectPositon, EndPositon)))
-                    {
-                        var xElement = CreateXmlConnectionLineStructure(connectionLine, endConnectPositon, plantModel.SignalLines[j].ID);
-                        xElements.Add(xElement);
-                    }
-                }
-            }
-
-            return xElements;
-        }
-
-        private XElement CreateXmlConnectionLineStructure(ConnectionLine connectionLine, Position2 position2, string id)
-        {
-            XElement xElement = new XElement("connection_object");
-
-            XElement idElement = new XElement("id", connectionLine.ID + "Connect");
-            xElement.Add(idElement);
-
-            XElement classElement = new XElement("class", "connection");
-            xElement.Add(classElement);
-
-            XElement connectLocation = new XElement("connectionpoint");
-            XElement x = new XElement("X", position2.X);
-            connectLocation.Add(x);
-            XElement y = new XElement("Y", position2.Y);
-            connectLocation.Add(y);
-            xElement.Add(connectLocation);
-
-            XElement connectElement = new XElement("connectionobject");
-            XElement connectAttribute = new XElement("connection");
-            XAttribute fromAttribute = new XAttribute("From", connectionLine.ID);
-            connectAttribute.Add(fromAttribute);
-
-            XAttribute toAttribute = new XAttribute("To", id);
-            connectAttribute.Add(toAttribute);
-            connectElement.Add(connectAttribute);
-            xElement.Add(connectElement);
-
-            return xElement;
-        }
-
-        private XElement CreateXmlConnectionStructure(XElement xElement, PlantModel plantModel, int i)
-        {
-            XElement idElement = new XElement("id", plantModel.ConnectionPoints[i].ID + "Connect");
-            xElement.Add(idElement);
-
-            XElement classElement = new XElement("class", "connection");
-            xElement.Add(classElement);
-
-            XElement connectLocation = new XElement("connectionpoint");
-            XElement x = new XElement("X", plantModel.ConnectionPoints[i].ConnetionX);
-            connectLocation.Add(x);
-            XElement y = new XElement("Y", plantModel.ConnectionPoints[i].ConnetionY);
-            connectLocation.Add(y);
-            xElement.Add(connectLocation);
-
-            XElement connectElement = new XElement("connectionobject");
-            XElement connectAttribute = new XElement("connection");
-            XAttribute fromAttribute = new XAttribute("From", plantModel.ConnectionPoints[i].ID);
-            connectAttribute.Add(fromAttribute);
-
-            var standardCnnX = plantModel.ConnectionPoints[i].ConnetionX;
-            var standardCnnY = plantModel.ConnectionPoints[i].ConnetionY;
-
-            for (int j = 0; j < plantModel.Equipments.Count; j++)
-            {
-                if (plantModel.ConnectionPoints[i].ID != plantModel.Equipments[j].ID)
-                    foreach (var targetConnetionPoint in plantModel.Equipments[j].ConnectionPoints)
-                    {
-                        var targetStartX = targetConnetionPoint.ConnetionX;
-                        var targetStartY = targetConnetionPoint.ConnetionY;
-
-                        var startPositon = new Position2(standardCnnX, standardCnnY);
-                        var EndPositon = new Position2(targetStartX, targetStartY);
-
-                        if (Tolerance.IsZeroDistance(Position2.Distance(startPositon, EndPositon)))
-                        {
-                            XAttribute toAttribute = new XAttribute("To", plantModel.Equipments[j].ID);
-                            connectAttribute.Add(toAttribute);
-                            connectElement.Add(connectAttribute);
-                            xElement.Add(connectElement);
-
-                            return xElement;
-                        }
-                    }
-            }
-
-            for (int j = 0; j < plantModel.Instruments.Count; j++)
-            {
-                if (plantModel.ConnectionPoints[i].ID != plantModel.Instruments[j].ID)
-                    foreach (var targetConnetionPoint in plantModel.Instruments[j].ConnectionPoints)
-                    {
-                        var targetStartX = targetConnetionPoint.ConnetionX;
-                        var targetStartY = targetConnetionPoint.ConnetionY;
-
-                        var startPositon = new Position2(standardCnnX, standardCnnY);
-                        var EndPositon = new Position2(targetStartX, targetStartY);
-
-                        if (Tolerance.IsZeroDistance(Position2.Distance(startPositon, EndPositon)))
-                        {
-                            XAttribute toAttribute = new XAttribute("To", plantModel.Instruments[j].ID);
-                            connectAttribute.Add(toAttribute);
-                            connectElement.Add(connectAttribute);
-                            xElement.Add(connectElement);
-
-                            return xElement;
-                        }
-                    }
-            }
-
-            for (int j = 0; j < plantModel.PipingComponents.Count; j++)
-            {
-                if (plantModel.ConnectionPoints[i].ID != plantModel.PipingComponents[j].ID)
-                    foreach (var targetConnetionPoint in plantModel.PipingComponents[j].ConnectionPoints)
-                    {
-                        var targetStartX = targetConnetionPoint.ConnetionX;
-                        var targetStartY = targetConnetionPoint.ConnetionY;
-
-                        var startPositon = new Position2(standardCnnX, standardCnnY);
-                        var EndPositon = new Position2(targetStartX, targetStartY);
-
-                        if (Tolerance.IsZeroDistance(Position2.Distance(startPositon, EndPositon)))
-                        {
-                            XAttribute toAttribute = new XAttribute("To", plantModel.PipingComponents[j].ID);
-                            connectAttribute.Add(toAttribute);
-                            connectElement.Add(connectAttribute);
-                            xElement.Add(connectElement);
-
-                            return xElement;
-                        }
-                    }
-            }
-
-            for (int j = 0; j < plantModel.PipeLines.Count; j++)
-            {
-                if (plantModel.ConnectionPoints[i].ID != plantModel.PipeLines[j].ID)
-                {
-                    var startX = plantModel.PipeLines[j].LineEndPoints.BeginPoints.BeginX;
-                    var startY = plantModel.PipeLines[j].LineEndPoints.BeginPoints.BeginY;
-                    var endX = plantModel.PipeLines[j].LineEndPoints.EndPoints.EndX;
-                    var endY = plantModel.PipeLines[j].LineEndPoints.EndPoints.EndY;
-
-                    var symbolConnectPositon = new Position2(standardCnnX, standardCnnY);
-                    var startPositon = new Position2(startX, startY);
-                    var EndPositon = new Position2(endX, endY);
-
-                    if (Tolerance.IsZeroDistance(Position2.Distance(symbolConnectPositon, startPositon)))
-                    {
-                        XAttribute toAttribute = new XAttribute("To", plantModel.PipeLines[j].ID);
-                        connectAttribute.Add(toAttribute);
-                        connectElement.Add(connectAttribute);
-                        xElement.Add(connectElement);
-
-                        return xElement;
-                    }
-                    else if (Tolerance.IsZeroDistance(Position2.Distance(symbolConnectPositon, EndPositon)))
-                    {
-                        XAttribute toAttribute = new XAttribute("To", plantModel.PipeLines[j].ID);
-                        connectAttribute.Add(toAttribute);
-                        connectElement.Add(connectAttribute);
-                        xElement.Add(connectElement);
-
-                        return xElement;
-                    }
-                }
-            }
-
-            for (int j = 0; j < plantModel.SignalLines.Count; j++)
-            {
-                if (plantModel.ConnectionPoints[i].ID != plantModel.SignalLines[j].ID)
-                {
-                    var startX = plantModel.SignalLines[j].LineEndPoints.BeginPoints.BeginX;
-                    var startY = plantModel.SignalLines[j].LineEndPoints.BeginPoints.BeginY;
-                    var endX = plantModel.SignalLines[j].LineEndPoints.EndPoints.EndX;
-                    var endY = plantModel.SignalLines[j].LineEndPoints.EndPoints.EndY;
-
-                    var symbolConnectPositon = new Position2(standardCnnX, standardCnnY);
-                    var startPositon = new Position2(startX, startY);
-                    var EndPositon = new Position2(endX, endY);
-
-                    if (Tolerance.IsZeroDistance(Position2.Distance(symbolConnectPositon, startPositon)))
-                    {
-                        XAttribute toAttribute = new XAttribute("To", plantModel.SignalLines[j].ID);
-                        connectAttribute.Add(toAttribute);
-                        connectElement.Add(connectAttribute);
-                        xElement.Add(connectElement);
-
-                        return xElement;
-                    }
-                    else if (Tolerance.IsZeroDistance(Position2.Distance(symbolConnectPositon, EndPositon)))
-                    {
-                        XAttribute toAttribute = new XAttribute("To", plantModel.SignalLines[j].ID);
-                        connectAttribute.Add(toAttribute);
-                        connectElement.Add(connectAttribute);
-                        xElement.Add(connectElement);
-
-                        return xElement;
-                    }
-                }
-            }
-
-            return xElement;
-        }
-
-        private XElement BasicbnbBoxInformation(XElement bndboxElement)
-        {
-            XElement xminElement = new XElement("xmin", 0);
-            bndboxElement.Add(xminElement);
-            XElement yminElement = new XElement("ymin", 0);
-            bndboxElement.Add(yminElement);
-            XElement xmaxElement = new XElement("xmax", 0);
-            bndboxElement.Add(xmaxElement);
-            XElement ymaxElement = new XElement("ymax", 0);
-            bndboxElement.Add(ymaxElement);
-
-            return bndboxElement;
-        }
-
-        //PipeLine
-        public void CreateXmlLineStructure1(XElement xElement, PlantModel plantModel, int i)
-        {
-            XElement idElement = new XElement("id", plantModel.PipeLines[i].ID);
-            xElement.Add(idElement);
-
-            XElement typeElement = new XElement("type", "unspecified_line");
-            xElement.Add(typeElement);
-
-            XElement classElement = new XElement("class", "solid");
-            xElement.Add(classElement);
-
-            XElement extentElement = new XElement("edge");
-            XElement xStartElement = new XElement("xstart", plantModel.PipeLines[i].LineEndPoints.BeginPoints.BeginX);
-            extentElement.Add(xStartElement);
-            XElement yStartElement = new XElement("ystart", plantModel.PipeLines[i].LineEndPoints.BeginPoints.BeginY);
-            extentElement.Add(yStartElement);
-            XElement xEndElement = new XElement("xend", plantModel.PipeLines[i].LineEndPoints.EndPoints.EndX);
-            extentElement.Add(xEndElement);
-            XElement yEndElement = new XElement("yend", plantModel.PipeLines[i].LineEndPoints.EndPoints.EndY);
-            extentElement.Add(yEndElement);
-            xElement.Add(extentElement);
-
-            XElement endtypeElement = new XElement("endtype");
-            XElement startElement = new XElement("start", "none");
-            endtypeElement.Add(startElement);
-            XElement endElement = new XElement("end", "none");
-            endtypeElement.Add(endElement);
-            xElement.Add(endtypeElement);
-        }
-
-        //SignalLine
-        public void CreateXmlLineStructure2(XElement xElement, PlantModel plantModel, int i)
-        {
-            XElement idElement = new XElement("id", plantModel.SignalLines[i].ID);
-            xElement.Add(idElement);
-
-            XElement typeElement = new XElement("type", "unspecified_line");
-            xElement.Add(typeElement);
-
-            XElement classElement = new XElement("class", "dashed");
-            xElement.Add(classElement);
-
-            XElement extentElement = new XElement("edge");
-            XElement xStartElement = new XElement("xstart", plantModel.SignalLines[i].LineEndPoints.BeginPoints.BeginX);
-            extentElement.Add(xStartElement);
-            XElement yStartElement = new XElement("ystart", plantModel.SignalLines[i].LineEndPoints.BeginPoints.BeginY);
-            extentElement.Add(yStartElement);
-            XElement xEndElement = new XElement("xend", plantModel.SignalLines[i].LineEndPoints.EndPoints.EndX);
-            extentElement.Add(xEndElement);
-            XElement yEndElement = new XElement("yend", plantModel.SignalLines[i].LineEndPoints.EndPoints.EndY);
-            extentElement.Add(yEndElement);
-            xElement.Add(extentElement);
-
-            XElement endtypeElement = new XElement("endtype");
-            XElement startElement = new XElement("start", "none");
-            endtypeElement.Add(startElement);
-            XElement endElement = new XElement("end", "none");
-            endtypeElement.Add(endElement);
-            xElement.Add(endtypeElement);
-        }
-
-        //Equipment
-        public void CreateXmlSymbolStructure1(XElement xElement, PlantModel plantModel, int i)
-        {
-            XElement idElement = new XElement("id", plantModel.Equipments[i].ID);
-            xElement.Add(idElement);
-
-            XElement typeElement = new XElement("type", "equipment_symbol");
-            xElement.Add(typeElement);
-
-            XElement classElement = new XElement("class", "none");
-            xElement.Add(classElement);
-
-            XElement extentElement = new XElement("bndbox");
-            XElement xMinElement = new XElement("xmin", plantModel.Equipments[i].Extents.Min.X);
-            extentElement.Add(xMinElement);
-            XElement yMinElement = new XElement("ymin", plantModel.Equipments[i].Extents.Min.Y);
-            extentElement.Add(yMinElement);
-            XElement xMaxElement = new XElement("xmax", plantModel.Equipments[i].Extents.Max.X);
-            extentElement.Add(xMaxElement);
-            XElement yMaxElement = new XElement("ymax", plantModel.Equipments[i].Extents.Max.Y);
-            extentElement.Add(yMaxElement);
-            xElement.Add(extentElement);
-
-            XElement degreeElement = new XElement("degree", plantModel.Equipments[i].Angle);
-            xElement.Add(degreeElement);
-
-            XElement flipElement = new XElement("flip", "n");
-            xElement.Add(flipElement);
-        }
-
-        //Instrument
-        public void CreateXmlSymbolStructure2(XElement xElement, PlantModel plantModel, int i)
-        {
-            XElement idElement = new XElement("id", plantModel.Instruments[i].ID);
-            xElement.Add(idElement);
-
-            XElement typeElement = new XElement("type", "instrument_symbol");
-            xElement.Add(typeElement);
-
-            XElement classElement = new XElement("class", "none");
-            xElement.Add(classElement);
-
-            XElement extentElement = new XElement("bndbox");
-            XElement xMinElement = new XElement("xmin", plantModel.Instruments[i].Extents.Min.X);
-            extentElement.Add(xMinElement);
-            XElement yMinElement = new XElement("ymin", plantModel.Instruments[i].Extents.Min.Y);
-            extentElement.Add(yMinElement);
-            XElement xMaxElement = new XElement("xmax", plantModel.Instruments[i].Extents.Max.X);
-            extentElement.Add(xMaxElement);
-            XElement yMaxElement = new XElement("ymax", plantModel.Instruments[i].Extents.Max.Y);
-            extentElement.Add(yMaxElement);
-            xElement.Add(extentElement);
-
-            XElement degreeElement = new XElement("degree", plantModel.Instruments[i].Angle);
-            xElement.Add(degreeElement);
-
-            XElement flipElement = new XElement("flip", "n");
-            xElement.Add(flipElement);
-        }
-
-        //PipingComponent
-        public void CreateXmlSymbolStructure3(XElement xElement, PlantModel plantModel, int i)
-        {
-            XElement idElement = new XElement("id", plantModel.PipingComponents[i].ID);
-            xElement.Add(idElement);
-
-            XElement typeElement = new XElement("type", "pipe_symbol");
-            xElement.Add(typeElement);
-
-            XElement classElement = new XElement("class", "none");
-            xElement.Add(classElement);
-            XElement extentElement = new XElement("bndbox");
-            XElement xMinElement = new XElement("xmin", plantModel.PipingComponents[i].Extents.Min.X);
-            extentElement.Add(xMinElement);
-            XElement yMinElement = new XElement("ymin", plantModel.PipingComponents[i].Extents.Min.Y);
-            extentElement.Add(yMinElement);
-            XElement xMaxElement = new XElement("xmax", plantModel.PipingComponents[i].Extents.Max.X);
-            extentElement.Add(xMaxElement);
-            XElement yMaxElement = new XElement("ymax", plantModel.PipingComponents[i].Extents.Max.Y);
-            extentElement.Add(yMaxElement);
-            xElement.Add(extentElement);
-
-            XElement degreeElement = new XElement("degree", plantModel.PipingComponents[i].Angle);
-            xElement.Add(degreeElement);
-
-            XElement flipElement = new XElement("flip", "n");
-            xElement.Add(flipElement);
-        }
-
-        //Text
-        public void CreateXmlSymbolStructure4(XElement xElement, PlantModel plantModel, int i)
-        {
-            XElement idElement = new XElement("id", plantModel.Texts[i].ID);
-            xElement.Add(idElement);
-
-            XElement typeElement = new XElement("type", "text");
-            xElement.Add(typeElement);
-
-            XElement textclassElement = new XElement("class", plantModel.Texts[i].Contents);
-            xElement.Add(textclassElement);
-
-            XElement classElement = new XElement("class", "none");
-            xElement.Add(classElement);
-
-            XElement extentElement = new XElement("bndbox");
-            XElement xMinElement = new XElement("xmin", plantModel.Texts[i].Extents.Min.X);
-            extentElement.Add(xMinElement);
-            XElement yMinElement = new XElement("ymin", plantModel.Texts[i].Extents.Min.Y);
-            extentElement.Add(yMinElement);
-            XElement xMaxElement = new XElement("xmax", plantModel.Texts[i].Extents.Max.X);
-            extentElement.Add(xMaxElement);
-            XElement yMaxElement = new XElement("ymax", plantModel.Texts[i].Extents.Max.Y);
-            extentElement.Add(yMaxElement);
-            xElement.Add(extentElement);
-
-            XElement degreeElement = new XElement("degree", plantModel.Texts[i].Angle);
-            xElement.Add(degreeElement);
-
-            XElement flipElement = new XElement("flip", "n");
-            xElement.Add(flipElement);
         }
     }
 }

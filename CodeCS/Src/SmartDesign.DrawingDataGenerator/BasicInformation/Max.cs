@@ -10,8 +10,8 @@ namespace SmartDesign.DrawingDataGenerator
     {
         public Max()
         {
-            X = new int();
-            Y = new int();
+            X = 0;
+            Y = 0;
         }
 
         public int X

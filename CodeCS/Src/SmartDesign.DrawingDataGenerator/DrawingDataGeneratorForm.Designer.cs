@@ -55,6 +55,7 @@ namespace SmartDesign.DrawingDataGenerator
             // 
             // DrawingDataGeneratorForm
             // 
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(256, 126);
             this.Controls.Add(this.openButton);
             this.Controls.Add(this.saveButton);

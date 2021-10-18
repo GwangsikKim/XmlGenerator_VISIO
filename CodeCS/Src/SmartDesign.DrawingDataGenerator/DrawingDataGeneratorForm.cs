@@ -20,6 +20,7 @@ namespace SmartDesign.DrawingDataGenerator
         public DrawingDataGeneratorForm()
         {
             InitializeComponent();
+            this.MaximizeBox = false;
         }
 
 
@@ -33,11 +34,14 @@ namespace SmartDesign.DrawingDataGenerator
 
             DialogResult dr = openFileDialog.ShowDialog();
 
+            Cursor.Current = Cursors.WaitCursor; //Waitting
+
             if (dr == DialogResult.OK)
             {
                 string fileFullName = openFileDialog.FileName;
 
                 VisioReader visioReader = new VisioReader(fileFullName);
+               
                 xDocument = visioReader.GenerateXML();
             }
             //취소버튼 클릭시 또는 ESC키로 파일창을 종료 했을경우
@@ -45,6 +49,7 @@ namespace SmartDesign.DrawingDataGenerator
             {
             }
 
+            Cursor.Current = Cursors.Default;
         }
 
         private void SaveButton_Click(object sender, EventArgs e)

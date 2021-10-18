@@ -10,8 +10,8 @@ namespace SmartDesign.DrawingDataGenerator
     {
         public BeginPoint()
         {
-            BeginX = new int();
-            BeginY = new int();
+            BeginX = 0;
+            BeginY = 0;
         }
 
 
