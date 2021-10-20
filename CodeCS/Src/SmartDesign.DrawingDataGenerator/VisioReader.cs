@@ -381,6 +381,9 @@ namespace SmartDesign.DrawingDataGenerator
 
         private void ExtractObjectBoxInformation(Shape shape, Extent extent, Center center, int angle)
         {
+           // Obb2 obb2 = new Obb2();
+
+
             short iRow = (short)VisRowIndices.visRowXFormOut;
 
             var strPinX = shape.get_CellsSRC(

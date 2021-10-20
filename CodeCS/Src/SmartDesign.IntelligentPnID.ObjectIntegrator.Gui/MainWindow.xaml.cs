@@ -1,20 +1,14 @@
-﻿ using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
-using System.Windows.Input;
-using System.Windows.Media;
-using SmartDesign.IntelligentPnID.ObjectIntegrator.ObjectRecognition;
-using SmartDesign.IntelligentPnID.ObjectIntegrator.Models;
-using DevExpress.Xpf.Core;
+﻿using DevExpress.Xpf.Core;
 using Microsoft.Win32;
-using System.Diagnostics;
-using SmartDesign.IntelligentPnID.ObjectIntegrator.Gui.Shapes;
+using SmartDesign.IntelligentPnID.ObjectIntegrator.Models;
+using SmartDesign.IntelligentPnID.ObjectIntegrator.ObjectRecognition;
 using SmartDesign.MathUtil;
 using System;
-using System.Windows.Threading;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
-using System.Xml;
 using System.Reflection;
+using System.Windows;
 
 namespace SmartDesign.IntelligentPnID.ObjectIntegrator.Gui
 {

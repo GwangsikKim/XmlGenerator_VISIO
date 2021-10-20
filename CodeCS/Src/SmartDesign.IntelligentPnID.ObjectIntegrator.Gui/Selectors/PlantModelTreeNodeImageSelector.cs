@@ -87,7 +87,6 @@ namespace SmartDesign.IntelligentPnID.ObjectIntegrator.Gui.Selectors
 
             else
                 throw new ArgumentException("지원하지 않는 클래스 타입입니다.", nameof(rowData));
-
         }
     }
 }
