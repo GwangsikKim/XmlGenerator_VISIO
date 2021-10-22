@@ -74,14 +74,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BasicInformation\BeginPoint.cs" />
-    <Compile Include="BasicInformation\Center.cs" />
     <Compile Include="BasicInformation\ConnectionPoint.cs" />
     <Compile Include="BasicInformation\EndPoint.cs" />
     <Compile Include="BasicInformation\ConnectionLine.cs" />
     <Compile Include="Equipment.cs" />
-    <Compile Include="BasicInformation\Extent.cs" />
     <Compile Include="BasicInformation\Flip.cs" />
     <Compile Include="BasicInformation\LineItem.cs" />
+    <Compile Include="obb2.cs" />
     <Compile Include="PlantEntity.cs" />
     <Compile Include="SignalLine.cs" />
     <Compile Include="Text.cs" />
@@ -94,8 +93,6 @@
     </Compile>
     <Compile Include="Instrument.cs" />
     <Compile Include="BasicInformation\LineEndPoint.cs" />
-    <Compile Include="BasicInformation\Max.cs" />
-    <Compile Include="BasicInformation\Min.cs" />
     <Compile Include="PipeLine.cs" />
     <Compile Include="PipingComponent.cs" />
     <Compile Include="PlantModel.cs" />

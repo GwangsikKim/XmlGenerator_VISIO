@@ -23,14 +23,11 @@ namespace SmartDesign.IntelligentPnID.ObjectIntegrator
             {
                 List<PlantEntity> plantEntities = new List<PlantEntity>();
 
-                var a = "";
-                var b = "";
-
                 for (int i = 0; i < plantEntity.Children.Count; i++)
                 {
                     if (connection.From == plantEntity.Children[i].OriginalID)
                     {
-                        a = plantEntity.Children[i].OriginalID;
+                        //var a = plantEntity.Children[i].OriginalID;
                         plantEntities.Add(plantEntity.Children[i]);
                         break;
                     }
@@ -40,7 +37,7 @@ namespace SmartDesign.IntelligentPnID.ObjectIntegrator
                 {
                     if (connection.To == plantEntity.Children[i].OriginalID)
                     {
-                        b = plantEntity.Children[i].OriginalID;
+                        //var b = plantEntity.Children[i].OriginalID;
                         plantEntities.Add(plantEntity.Children[i]);
                         break;
                     }

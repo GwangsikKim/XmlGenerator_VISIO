@@ -88,14 +88,10 @@ namespace SmartDesign.DrawingDataGenerator
                 var id = equipment.ID;
                 var type = "equipment_symbol";
                 var className = "none";
-                var minX = equipment.Extents.Min.X;
-                var minY = equipment.Extents.Min.Y;
-                var maxX = equipment.Extents.Max.X;
-                var maxY = equipment.Extents.Max.Y;
                 var flip = "n";
                 var degree = equipment.Angle;
 
-                CreateXmlSymbolStructure(shapeElement, id, type, className, minX, minY, maxX, maxY, flip, degree);
+                CreateXmlSymbolStructure(shapeElement, id, type, className, equipment.Extent, flip, degree);
                 plantModelElement.Add(shapeElement);
             }
 
@@ -106,14 +102,10 @@ namespace SmartDesign.DrawingDataGenerator
                 var id = instrument.ID;
                 var type = "instrument_symbol";
                 var className = "none";
-                var minX = instrument.Extents.Min.X;
-                var minY = instrument.Extents.Min.Y;
-                var maxX = instrument.Extents.Max.X;
-                var maxY = instrument.Extents.Max.Y;
                 var flip = "n";
                 var degree = instrument.Angle;
 
-                CreateXmlSymbolStructure(shapeElement, id, type, className, minX, minY, maxX, maxY, flip, degree);
+                CreateXmlSymbolStructure(shapeElement, id, type, className, instrument.Extent, flip, degree);
                 plantModelElement.Add(shapeElement);
             }
 
@@ -124,14 +116,10 @@ namespace SmartDesign.DrawingDataGenerator
                 var id = pipingComponent.ID;
                 var type = "pipe_symbol";
                 var className = "none";
-                var minX = pipingComponent.Extents.Min.X;
-                var minY = pipingComponent.Extents.Min.Y;
-                var maxX = pipingComponent.Extents.Max.X;
-                var maxY = pipingComponent.Extents.Max.Y;
                 var flip = "n";
                 var degree = pipingComponent.Angle;
 
-                CreateXmlSymbolStructure(shapeElement, id, type, className, minX, minY, maxX, maxY, flip, degree);
+                CreateXmlSymbolStructure(shapeElement, id, type, className, pipingComponent.Extent, flip, degree);
                 plantModelElement.Add(shapeElement);
             }
 
@@ -142,14 +130,10 @@ namespace SmartDesign.DrawingDataGenerator
                 var id = text.ID;
                 var type = "text";
                 var className = text.Contents;
-                var minX = text.Extents.Min.X;
-                var minY = text.Extents.Min.Y;
-                var maxX = text.Extents.Max.X;
-                var maxY = text.Extents.Max.Y;
                 var flip = "n";
                 var degree = text.Angle;
 
-                CreateXmlSymbolStructure(shapeElement, id, type, className, minX, minY, maxX, maxY, flip, degree);
+                CreateXmlSymbolStructure(shapeElement, id, type, className, text.Extent, flip, degree);
                 plantModelElement.Add(shapeElement);
             }
 
@@ -238,7 +222,7 @@ namespace SmartDesign.DrawingDataGenerator
             xElement.Add(endtypeElement);
         }
 
-        private void CreateXmlSymbolStructure(XElement xElement, string id, string type, string className, int minX, int minY, int maxX, int maxY, string flip, int degree)
+        private void CreateXmlSymbolStructure(XElement xElement, string id, string type, string className, Obb2 extent, string flip, double degree)
         {
             XElement idElement = new XElement("id", id);
             xElement.Add(idElement);
@@ -261,13 +245,13 @@ namespace SmartDesign.DrawingDataGenerator
             }
 
             XElement extentElement = new XElement("bndbox");
-            XElement xMinElement = new XElement("xmin", minX);
+            XElement xMinElement = new XElement("xmin", Math.Ceiling(extent.GlobalMin.X));
             extentElement.Add(xMinElement);
-            XElement yMinElement = new XElement("ymin", minY);
+            XElement yMinElement = new XElement("ymin", Math.Ceiling(extent.GlobalMin.Y));
             extentElement.Add(yMinElement);
-            XElement xMaxElement = new XElement("xmax", maxX);
+            XElement xMaxElement = new XElement("xmax", Math.Ceiling(extent.GlobalMax.X));
             extentElement.Add(xMaxElement);
-            XElement yMaxElement = new XElement("ymax", maxY);
+            XElement yMaxElement = new XElement("ymax", Math.Ceiling(extent.GlobalMax.Y));
             extentElement.Add(yMaxElement);
             xElement.Add(extentElement);
 

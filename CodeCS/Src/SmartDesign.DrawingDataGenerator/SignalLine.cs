@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SmartDesign.MathUtil;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ namespace SmartDesign.DrawingDataGenerator
         {
             ID = null;
             LineEndPoints = new LineEndPoint();
+            Extent = new Obb2();
 
             Text = new List<Text>();
         }
@@ -22,13 +24,7 @@ namespace SmartDesign.DrawingDataGenerator
             set;
         }
 
-        public Center Centers
-        {
-            get;
-            set;
-        }
-
-        public Extent Extents
+        public Obb2 Extent
         {
             get;
             set;

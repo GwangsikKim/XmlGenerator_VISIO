@@ -130,58 +130,36 @@ namespace SmartDesign.DrawingDataGenerator
 
         private void CreateEquipmentProperties(PlantModel plantModel, Equipment equipment, Shape shape)
         {
-            Extent extent = new Extent();
-            Center center = new Center();
-            int angle = 0;
+            equipment.Extent = ExtractObjectBoxInformation(shape, equipment.Extent);
+            equipment.Angle = ExtractObjectBoxInformationAngle(shape, equipment.Angle);
 
-            ExtractObjectBoxInformation(shape, extent, center, angle);
-            equipment.Centers = center;
-            equipment.Extents = extent;
-            equipment.Angle = angle;
-
-            ExtractObjectConnectionInformation(shape, plantModel, extent, center, angle, equipment.ConnectionPoints);
+            ExtractObjectConnectionInformation(shape, plantModel, equipment.Extent, equipment.Angle, equipment.ConnectionPoints);
 
             plantModel.Equipments.Add(equipment);
         }
 
         private void CreatePipingComponentProperties(PlantModel plantModel, PipingComponent pipingComponent, Shape shape)
         {
-            Extent extent = new Extent();
-            Center center = new Center();
-            int angle = 0;
+            pipingComponent.Extent = ExtractObjectBoxInformation(shape, pipingComponent.Extent);
+            pipingComponent.Angle = ExtractObjectBoxInformationAngle(shape, pipingComponent.Angle);
 
-            ExtractObjectBoxInformation(shape, extent, center, angle);
-            pipingComponent.Angle = angle;
-            pipingComponent.Centers = center;
-            pipingComponent.Extents = extent;
-
-            ExtractObjectConnectionInformation(shape, plantModel, extent, center, angle, pipingComponent.ConnectionPoints);
+            ExtractObjectConnectionInformation(shape, plantModel, pipingComponent.Extent, pipingComponent.Angle, pipingComponent.ConnectionPoints);
 
             plantModel.PipingComponents.Add(pipingComponent);
         }
 
         private void CreateInstrumentProperties(PlantModel plantModel, Instrument instrument, Shape shape)
         {
-            Extent extent = new Extent();
-            Center center = new Center();
-            int angle = 0;
+            instrument.Extent = ExtractObjectBoxInformation(shape, instrument.Extent);
+            instrument.Angle = ExtractObjectBoxInformationAngle(shape, instrument.Angle);
 
-            ExtractObjectBoxInformation(shape, extent, center, angle);
-            instrument.Angle = angle;
-            instrument.Centers = center;
-            instrument.Extents = extent;
-
-            ExtractObjectConnectionInformation(shape, plantModel, extent, center, angle, instrument.ConnectionPoints);
+            ExtractObjectConnectionInformation(shape, plantModel, instrument.Extent, instrument.Angle, instrument.ConnectionPoints);
 
             plantModel.Instruments.Add(instrument);
         }
 
         private void CreatePipeLineProperties(PlantModel plantModel, Shape shape)
         {
-            Extent extent = new Extent();
-            Center center = new Center();
-            int angle = 0;
-
             LineItem lineItem = new LineItem();
 
             ExtractLineInformation(shape, lineItem);
@@ -194,21 +172,12 @@ namespace SmartDesign.DrawingDataGenerator
                     ConnectionLine connectionLine = new ConnectionLine();
                     pipeLine.ID = shape.ID.ToString() + "PipeL" + "-" + i;
 
-                    ExtractObjectBoxInformation(shape, extent, center, angle);
-                    pipeLine.Extents = extent;
+                    pipeLine.Extent = ExtractObjectBoxInformation(shape, pipeLine.Extent);
 
                     pipeLine.LineEndPoints.BeginPoints.BeginX = lineItem.X[i];
                     pipeLine.LineEndPoints.BeginPoints.BeginY = lineItem.Y[i];
                     pipeLine.LineEndPoints.EndPoints.EndX = lineItem.X[i + 1];
                     pipeLine.LineEndPoints.EndPoints.EndY = lineItem.Y[i + 1];
-
-                    double linePinX = (lineItem.X[i] + lineItem.X[i + 1]) * 0.5;
-                    double linePinY = (lineItem.Y[i] + lineItem.Y[i + 1]) * 0.5;
-
-                    center.PinX = Math.Abs((int)linePinX);
-                    center.PinY = Math.Abs((int)linePinY);
-
-                    pipeLine.Centers = center;
 
                     plantModel.PipeLines.Add(pipeLine);
 
@@ -219,8 +188,8 @@ namespace SmartDesign.DrawingDataGenerator
                     connectionLine.LineEndPoints.EndPoints.EndX = pipeLine.LineEndPoints.EndPoints.EndX;
                     connectionLine.LineEndPoints.EndPoints.EndY = pipeLine.LineEndPoints.EndPoints.EndY;
 
-                    connectionLine.ObjCenterX = center.PinX;
-                    connectionLine.ObjCenterY = center.PinY;
+                    connectionLine.ObjCenterX = pipeLine.Extent.Center.X;
+                    connectionLine.ObjCenterY = pipeLine.Extent.Center.Y;
 
                     plantModel.ConnectionLines.Add(connectionLine);
                 }
@@ -229,10 +198,6 @@ namespace SmartDesign.DrawingDataGenerator
 
         private void CreateSignalLineProperties(PlantModel plantModel, Shape shape)
         {
-            Extent extent = new Extent();
-            Center center = new Center();
-            int angle = 0;
-
             LineItem lineItem = new LineItem();
 
             ExtractLineInformation(shape, lineItem);
@@ -245,21 +210,12 @@ namespace SmartDesign.DrawingDataGenerator
                     ConnectionLine connectionLine = new ConnectionLine();
                     signalLine.ID = shape.ID.ToString() + "SignalL" + "-" + i;
 
-                    ExtractObjectBoxInformation(shape, extent, center, angle);
-                    signalLine.Extents = extent;
+                    signalLine.Extent = ExtractObjectBoxInformation(shape, signalLine.Extent);
 
                     signalLine.LineEndPoints.BeginPoints.BeginX = lineItem.X[i];
                     signalLine.LineEndPoints.BeginPoints.BeginY = lineItem.Y[i];
                     signalLine.LineEndPoints.EndPoints.EndX = lineItem.X[i + 1];
                     signalLine.LineEndPoints.EndPoints.EndY = lineItem.Y[i + 1];
-
-                    double linePinX = (lineItem.X[i] + lineItem.X[i + 1]) * 0.5;
-                    double linePinY = (lineItem.Y[i] + lineItem.Y[i + 1]) * 0.5;
-
-                    center.PinX = Math.Abs((int)linePinX);
-                    center.PinY = Math.Abs((int)linePinY);
-
-                    signalLine.Centers = center;
 
                     plantModel.SignalLines.Add(signalLine);
 
@@ -270,8 +226,8 @@ namespace SmartDesign.DrawingDataGenerator
                     connectionLine.LineEndPoints.EndPoints.EndX = signalLine.LineEndPoints.EndPoints.EndX;
                     connectionLine.LineEndPoints.EndPoints.EndY = signalLine.LineEndPoints.EndPoints.EndY;
 
-                    connectionLine.ObjCenterX = center.PinX;
-                    connectionLine.ObjCenterY = center.PinY;
+                    connectionLine.ObjCenterX = signalLine.Extent.Center.X;
+                    connectionLine.ObjCenterY = signalLine.Extent.Center.Y;
 
                     plantModel.ConnectionLines.Add(connectionLine);
                 }
@@ -280,9 +236,6 @@ namespace SmartDesign.DrawingDataGenerator
 
         private void CreateTextProperties(PlantModel plantModel, Text text, Shape shape)
         {
-            Extent extent = new Extent();
-            Center center = new Center();
-
             short iRow1 = (short)VisRowIndices.visRowXFormOut;
             short iRow2 = (short)VisRowIndices.visRowTextXForm;
 
@@ -328,19 +281,11 @@ namespace SmartDesign.DrawingDataGenerator
                     ).get_ResultStr(VisUnitCodes.visNoCast);
             int pinY = RemoveUnits(strPinY);
 
-            Min min = new Min();
-
             var minX = shapePinX - shapeWidth * 0.5;
             var minY = shapePinY - shapeHeight * 0.5;
 
-            min.X = (int)minX;
-            min.Y = (int)minY;
-
             int textcenterX = (int)minX + pinX;
             int textcenterY = (int)minY + pinY;
-
-            center.PinX = textcenterX;
-            center.PinY = textcenterY;
 
             string strWidth = shape.get_CellsSRC(
                     (short)VisSectionIndices.visSectionObject,
@@ -363,27 +308,21 @@ namespace SmartDesign.DrawingDataGenerator
                    ).get_ResultStr(VisUnitCodes.visNoCast);
             int angle = RemoveUnits(strAngle);
 
-            CreateBox(extent, textcenterX, textcenterY, width, height, angle);
-
-            text.Centers = center;
-            text.Extents = extent;
+            text.Extent = CreateBox(text.Extent, textcenterX, textcenterY, width, height);
             text.Angle = angle;
 
-            ConnectionLine connectionLine = new ConnectionLine();
-            connectionLine.ID = shape.ID.ToString() + 'T';
-            connectionLine.LineEndPoints.BeginPoints.BeginX = center.PinX;
-            connectionLine.LineEndPoints.BeginPoints.BeginY = center.PinY;
-            connectionLine.LineEndPoints.EndPoints.EndX = shapePinX;
-            connectionLine.LineEndPoints.EndPoints.EndY = shapePinY;
+            //ConnectionLine connectionLine = new ConnectionLine();
+            //connectionLine.ID = shape.ID.ToString() + 'T';
+            //connectionLine.LineEndPoints.BeginPoints.BeginX = text.Extent.Center.X;
+            //connectionLine.LineEndPoints.BeginPoints.BeginY = text.Extent.Center.Y;
+            //connectionLine.LineEndPoints.EndPoints.EndX = shapePinX;
+            //connectionLine.LineEndPoints.EndPoints.EndY = shapePinY;
 
-            plantModel.ConnectionLines.Add(connectionLine);
+            //plantModel.ConnectionLines.Add(connectionLine);
         }
 
-        private void ExtractObjectBoxInformation(Shape shape, Extent extent, Center center, int angle)
+        private Obb2 ExtractObjectBoxInformation(Shape shape, Obb2 obb2)
         {
-           // Obb2 obb2 = new Obb2();
-
-
             short iRow = (short)VisRowIndices.visRowXFormOut;
 
             var strPinX = shape.get_CellsSRC(
@@ -392,7 +331,6 @@ namespace SmartDesign.DrawingDataGenerator
                     (short)VisCellIndices.visXFormPinX
                     ).get_ResultStr(VisUnitCodes.visNoCast);
             int pinX = RemoveUnits(strPinX);
-            center.PinX = pinX;
 
             string strPinY = shape.get_CellsSRC(
                     (short)VisSectionIndices.visSectionObject,
@@ -400,7 +338,6 @@ namespace SmartDesign.DrawingDataGenerator
                     (short)VisCellIndices.visXFormPinY
                     ).get_ResultStr(VisUnitCodes.visNoCast);
             int pinY = RemoveUnits(strPinY);
-            center.PinY = pinY;
 
             string strWidth = shape.get_CellsSRC(
                     (short)VisSectionIndices.visSectionObject,
@@ -416,14 +353,8 @@ namespace SmartDesign.DrawingDataGenerator
                     ).get_ResultStr(VisUnitCodes.visNoCast);
             int height = RemoveUnits(strHeight);
 
-            string strAngle = shape.get_CellsSRC(
-                    (short)VisSectionIndices.visSectionObject,
-                    iRow,
-                    (short)VisCellIndices.visXFormAngle
-                    ).get_ResultStr(VisUnitCodes.visNoCast);
-            angle = RemoveUnits(strAngle);
-
-            CreateBox(extent, pinX, pinY, width, height, angle);
+            var extent = CreateBox(obb2, pinX, pinY, width, height);
+            return extent;
         }
 
         private void ExtractLineInformation(Shape shape, LineItem lineEndPoints)
@@ -487,7 +418,7 @@ namespace SmartDesign.DrawingDataGenerator
             }
         }
 
-        private void ExtractObjectConnectionInformation(Shape shape, PlantModel plantModel, Extent extent, Center center, int angle, List<ConnectionPoint> connectionPoints)
+        private void ExtractObjectConnectionInformation(Shape shape, PlantModel plantModel, Obb2 extent, double angle, List<ConnectionPoint> connectionPoints)
         {
             short iRowCnn = (short)VisRowIndices.visRowConnectionPts;
             double radian = Math.PI * Convert.ToDouble(angle) / 180.0;
@@ -519,22 +450,22 @@ namespace SmartDesign.DrawingDataGenerator
                     //double x2 = Math.Cos(radian) * cnnPinX - Math.Sin(radian) * cnnPinX;
                     //double y2 = Math.Sin(radian) * cnnPinY + Math.Cos(radian) * cnnPinY;
 
-                    double pinX = extent.Min.X + cnnPinY;
-                    double pinY = extent.Min.Y + cnnPinX;
+                    double pinX = extent.GlobalMin.X + cnnPinY;
+                    double pinY = extent.GlobalMin.Y + cnnPinX;
 
                     connectionPoint.ConnetionX = pinX;
                     connectionPoint.ConnetionY = pinY;
                 }
                 else
                 {
-                    connectionPoint.ConnetionX = extent.Min.X + cnnPinX;
-                    connectionPoint.ConnetionY = extent.Min.Y + cnnPinY;
+                    connectionPoint.ConnetionX = extent.GlobalMin.X + cnnPinX;
+                    connectionPoint.ConnetionY = extent.GlobalMin.Y + cnnPinY;
                 }
 
                 connectionPoint.ID = shape.ID.ToString();
 
-                connectionPoint.ObjCenterX = center.PinX;
-                connectionPoint.ObjCenterY = center.PinY;
+                connectionPoint.ObjCenterX = extent.Center.X;
+                connectionPoint.ObjCenterY = extent.Center.Y;
 
                 connectionPoints.Add(connectionPoint);
                 plantModel.ConnectionPoints.Add(connectionPoint);
@@ -543,42 +474,38 @@ namespace SmartDesign.DrawingDataGenerator
             }
         }
 
-        private Extent CreateBox(Extent extent, int pinX, int pinY, int width, int height, int angle)
+
+        private double ExtractObjectBoxInformationAngle(Shape shape, double angle)
         {
-            Min min = new Min();
-            Max max = new Max();
+            short iRow = (short)VisRowIndices.visRowXFormOut;
 
-            if (angle == 90 || angle == -90)
-            {
-                var minX = pinX - height * 0.5;
-                var minY = pinY - width * 0.5;
-                var maxX = pinX + height * 0.5;
-                var maxY = pinY + width * 0.5;
+            string strAngle = shape.get_CellsSRC(
+                    (short)VisSectionIndices.visSectionObject,
+                    iRow,
+                    (short)VisCellIndices.visXFormAngle
+                    ).get_ResultStr(VisUnitCodes.visNoCast);
+            angle = RemoveUnits(strAngle);
 
-                min.X = (int)minX;
-                min.Y = (int)minY;
-                max.X = (int)maxX;
-                max.Y = (int)maxY;
-            }
-            else
-            {
-                var minX = pinX - width * 0.5;
-                var minY = pinY - height * 0.5;
-                var maxX = pinX + width * 0.5;
-                var maxY = pinY + height * 0.5;
-
-                min.X = (int)minX;
-                min.Y = (int)minY;
-                max.X = (int)maxX;
-                max.Y = (int)maxY;
-            }
-
-
-            extent.Min = min;
-            extent.Max = max;
-
-            return extent;
+            return angle;
         }
+
+        private Obb2 CreateBox(Obb2 obb2, int pinX, int pinY, int width, int height)
+        {
+            var minX = pinX - width * 0.5;
+            var minY = pinY - height * 0.5;
+            var maxX = pinX + width * 0.5;
+            var maxY = pinY + height * 0.5;
+
+            Position2 startmin = new Position2(minX, minY);
+            Position2 endmax = new Position2(maxX, maxY);
+            obb2 = Obb2.Create(startmin, endmax);
+
+            return obb2;
+        }
+
+
+
+
 
         private string RemoveSpecificCharacters(string shapeDeleteSpace)
         {
@@ -598,7 +525,7 @@ namespace SmartDesign.DrawingDataGenerator
 
         private int RemoveUnits(string strValue)
         {
-            string[] charsToRemove = new string[] { " mm", " 도", " pt"};
+            string[] charsToRemove = new string[] { " mm", " 도", " pt" };
 
             foreach (var chars in charsToRemove)
             {
