@@ -80,8 +80,6 @@
     <Compile Include="Equipment.cs" />
     <Compile Include="BasicInformation\Flip.cs" />
     <Compile Include="BasicInformation\LineItem.cs" />
-    <Compile Include="obb2.cs" />
-    <Compile Include="PlantEntity.cs" />
     <Compile Include="SignalLine.cs" />
     <Compile Include="Text.cs" />
     <Compile Include="VisioReader.cs" />

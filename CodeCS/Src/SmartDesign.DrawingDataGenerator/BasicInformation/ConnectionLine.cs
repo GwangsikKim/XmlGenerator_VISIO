@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SmartDesign.DrawingDataGenerator;
+using SmartDesign.MathUtil;
 
 namespace SmartDesign.DrawingDataGenerator
 {
@@ -12,6 +13,7 @@ namespace SmartDesign.DrawingDataGenerator
         public ConnectionLine()
         {
             ID = null;
+            
             LineEndPoints = new LineEndPoint();
 
             ObjCenterX = 0;

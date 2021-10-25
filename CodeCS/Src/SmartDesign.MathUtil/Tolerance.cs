@@ -8,7 +8,7 @@ namespace SmartDesign.MathUtil
 {
     public static class Tolerance
     {
-        public static double DistanceTolerance = 1.0e-5;
+        public static double DistanceTolerance = 1.0e-4;
         public static double AngleTolerance = 1.0e-12;
         public static double ValueTolerance = 1.0e-7;        
 

@@ -10,8 +10,10 @@ namespace SmartDesign.DrawingDataGenerator
 {
     class XMLConverter
     {
+        public static double DistanceTolerance = 5.0;
+
         public XMLConverter()
-        {
+        {            
 
         }
 
@@ -173,11 +175,16 @@ namespace SmartDesign.DrawingDataGenerator
                 plantModelElement.Add(shapeElement);
             }
 
-            for (int i = 0; i < plantModel.ConnectionPoints.Count; i++)
+            foreach (var connectionPoint in plantModel.ConnectionPoints)
             {
                 XElement shapeElement = new XElement("connection_object");
-                CreateXmlConnectionStructure(shapeElement, plantModel, i);
+                CreateXmlConnectionStructure(shapeElement, plantModel, connectionPoint);
                 plantModelElement.Add(shapeElement);
+            }
+
+            foreach (var connectionLine in plantModel.ConnectionLines)
+            {
+
             }
 
             for (int i = 0; i < plantModel.ConnectionLines.Count; i++)
@@ -271,14 +278,14 @@ namespace SmartDesign.DrawingDataGenerator
             var standardEndCnnX = connectionLine.LineEndPoints.EndPoints.EndX;
             var standardEndCnnY = connectionLine.LineEndPoints.EndPoints.EndY;
 
-            for (int j = 0; j < plantModel.PipeLines.Count; j++)
+            foreach (var pipeLine in plantModel.PipeLines)
             {
-                if (connectionLine.ID != plantModel.PipeLines[j].ID)
+                if (connectionLine.ID != pipeLine.ID)
                 {
-                    var startX = plantModel.PipeLines[j].LineEndPoints.BeginPoints.BeginX;
-                    var startY = plantModel.PipeLines[j].LineEndPoints.BeginPoints.BeginY;
-                    var endX = plantModel.PipeLines[j].LineEndPoints.EndPoints.EndX;
-                    var endY = plantModel.PipeLines[j].LineEndPoints.EndPoints.EndY;
+                    var startX = pipeLine.LineEndPoints.BeginPoints.BeginX;
+                    var startY = pipeLine.LineEndPoints.BeginPoints.BeginY;
+                    var endX = pipeLine.LineEndPoints.EndPoints.EndX;
+                    var endY = pipeLine.LineEndPoints.EndPoints.EndY;
 
                     var startConnectPositon = new Position2(standardStartCnnX, standardStartCnnY);
                     var endConnectPositon = new Position2(standardEndCnnX, standardEndCnnY);
@@ -287,35 +294,35 @@ namespace SmartDesign.DrawingDataGenerator
 
                     if (Tolerance.IsZeroDistance(Position2.Distance(startConnectPositon, startPositon)))
                     {
-                        var xElement = CreateXmlConnectionLineStructure(connectionLine, startConnectPositon, plantModel.PipeLines[j].ID);
+                        var xElement = CreateXmlConnectionLineStructure(connectionLine, startConnectPositon, pipeLine.ID);
                         xElements.Add(xElement);
                     }
                     else if (Tolerance.IsZeroDistance(Position2.Distance(startConnectPositon, EndPositon)))
                     {
-                        var xElement = CreateXmlConnectionLineStructure(connectionLine, startConnectPositon, plantModel.PipeLines[j].ID);
+                        var xElement = CreateXmlConnectionLineStructure(connectionLine, startConnectPositon, pipeLine.ID);
                         xElements.Add(xElement);
                     }
                     else if (Tolerance.IsZeroDistance(Position2.Distance(endConnectPositon, startPositon)))
                     {
-                        var xElement = CreateXmlConnectionLineStructure(connectionLine, endConnectPositon, plantModel.PipeLines[j].ID);
+                        var xElement = CreateXmlConnectionLineStructure(connectionLine, endConnectPositon, pipeLine.ID);
                         xElements.Add(xElement);
                     }
                     else if (Tolerance.IsZeroDistance(Position2.Distance(endConnectPositon, EndPositon)))
                     {
-                        var xElement = CreateXmlConnectionLineStructure(connectionLine, endConnectPositon, plantModel.PipeLines[j].ID);
+                        var xElement = CreateXmlConnectionLineStructure(connectionLine, endConnectPositon, pipeLine.ID);
                         xElements.Add(xElement);
                     }
                 }
             }
 
-            for (int j = 0; j < plantModel.SignalLines.Count; j++)
+            foreach (var signalLine in plantModel.SignalLines)
             {
-                if (connectionLine.ID != plantModel.SignalLines[j].ID)
+                if (connectionLine.ID != signalLine.ID)
                 {
-                    var startX = plantModel.SignalLines[j].LineEndPoints.BeginPoints.BeginX;
-                    var startY = plantModel.SignalLines[j].LineEndPoints.BeginPoints.BeginY;
-                    var endX = plantModel.SignalLines[j].LineEndPoints.EndPoints.EndX;
-                    var endY = plantModel.SignalLines[j].LineEndPoints.EndPoints.EndY;
+                    var startX = signalLine.LineEndPoints.BeginPoints.BeginX;
+                    var startY = signalLine.LineEndPoints.BeginPoints.BeginY;
+                    var endX = signalLine.LineEndPoints.EndPoints.EndX;
+                    var endY = signalLine.LineEndPoints.EndPoints.EndY;
 
                     var startConnectPositon = new Position2(standardStartCnnX, standardStartCnnY);
                     var endConnectPositon = new Position2(standardEndCnnX, standardEndCnnY);
@@ -324,22 +331,22 @@ namespace SmartDesign.DrawingDataGenerator
 
                     if (Tolerance.IsZeroDistance(Position2.Distance(startConnectPositon, startPositon)))
                     {
-                        var xElement = CreateXmlConnectionLineStructure(connectionLine, startConnectPositon, plantModel.SignalLines[j].ID);
+                        var xElement = CreateXmlConnectionLineStructure(connectionLine, startConnectPositon, signalLine.ID);
                         xElements.Add(xElement);
                     }
                     else if (Tolerance.IsZeroDistance(Position2.Distance(startConnectPositon, EndPositon)))
                     {
-                        var xElement = CreateXmlConnectionLineStructure(connectionLine, startConnectPositon, plantModel.SignalLines[j].ID);
+                        var xElement = CreateXmlConnectionLineStructure(connectionLine, startConnectPositon, signalLine.ID);
                         xElements.Add(xElement);
                     }
                     else if (Tolerance.IsZeroDistance(Position2.Distance(endConnectPositon, startPositon)))
                     {
-                        var xElement = CreateXmlConnectionLineStructure(connectionLine, endConnectPositon, plantModel.SignalLines[j].ID);
+                        var xElement = CreateXmlConnectionLineStructure(connectionLine, endConnectPositon, signalLine.ID);
                         xElements.Add(xElement);
                     }
                     else if (Tolerance.IsZeroDistance(Position2.Distance(endConnectPositon, EndPositon)))
                     {
-                        var xElement = CreateXmlConnectionLineStructure(connectionLine, endConnectPositon, plantModel.SignalLines[j].ID);
+                        var xElement = CreateXmlConnectionLineStructure(connectionLine, endConnectPositon, signalLine.ID);
                         xElements.Add(xElement);
                     }
                 }
@@ -378,33 +385,33 @@ namespace SmartDesign.DrawingDataGenerator
             return xElement;
         }
 
-        private XElement CreateXmlConnectionStructure(XElement xElement, PlantModel plantModel, int i)
+        private XElement CreateXmlConnectionStructure(XElement xElement, PlantModel plantModel, ConnectionPoint connectionPoint)
         {
-            XElement idElement = new XElement("id", plantModel.ConnectionPoints[i].ID + "Connect");
+            XElement idElement = new XElement("id", connectionPoint.ID + "Connect");
             xElement.Add(idElement);
 
             XElement classElement = new XElement("class", "connection");
             xElement.Add(classElement);
 
             XElement connectLocation = new XElement("connectionpoint");
-            XElement x = new XElement("X", plantModel.ConnectionPoints[i].ConnetionX);
+            XElement x = new XElement("X", connectionPoint.ConnetionX);
             connectLocation.Add(x);
-            XElement y = new XElement("Y", plantModel.ConnectionPoints[i].ConnetionY);
+            XElement y = new XElement("Y", connectionPoint.ConnetionY);
             connectLocation.Add(y);
             xElement.Add(connectLocation);
 
             XElement connectElement = new XElement("connectionobject");
             XElement connectAttribute = new XElement("connection");
-            XAttribute fromAttribute = new XAttribute("From", plantModel.ConnectionPoints[i].ID);
+            XAttribute fromAttribute = new XAttribute("From", connectionPoint.ID);
             connectAttribute.Add(fromAttribute);
 
-            var standardCnnX = plantModel.ConnectionPoints[i].ConnetionX;
-            var standardCnnY = plantModel.ConnectionPoints[i].ConnetionY;
+            var standardCnnX = connectionPoint.ConnetionX;
+            var standardCnnY = connectionPoint.ConnetionY;
 
-            for (int j = 0; j < plantModel.Equipments.Count; j++)
+            foreach (var equipment in plantModel.Equipments)
             {
-                if (plantModel.ConnectionPoints[i].ID != plantModel.Equipments[j].ID)
-                    foreach (var targetConnetionPoint in plantModel.Equipments[j].ConnectionPoints)
+                if (connectionPoint.ID != equipment.ID)
+                    foreach (var targetConnetionPoint in equipment.ConnectionPoints)
                     {
                         var targetStartX = targetConnetionPoint.ConnetionX;
                         var targetStartY = targetConnetionPoint.ConnetionY;
@@ -412,9 +419,9 @@ namespace SmartDesign.DrawingDataGenerator
                         var startPositon = new Position2(standardCnnX, standardCnnY);
                         var EndPositon = new Position2(targetStartX, targetStartY);
 
-                        if (Tolerance.IsZeroDistance(Position2.Distance(startPositon, EndPositon)))
+                        if (Tolerance.IsZeroDistance(Position2.Distance(startPositon, EndPositon), DistanceTolerance))
                         {
-                            XAttribute toAttribute = new XAttribute("To", plantModel.Equipments[j].ID);
+                            XAttribute toAttribute = new XAttribute("To", equipment.ID);
                             connectAttribute.Add(toAttribute);
                             connectElement.Add(connectAttribute);
                             xElement.Add(connectElement);
@@ -424,10 +431,10 @@ namespace SmartDesign.DrawingDataGenerator
                     }
             }
 
-            for (int j = 0; j < plantModel.Instruments.Count; j++)
+            foreach (var instrument in plantModel.Instruments)
             {
-                if (plantModel.ConnectionPoints[i].ID != plantModel.Instruments[j].ID)
-                    foreach (var targetConnetionPoint in plantModel.Instruments[j].ConnectionPoints)
+                if (connectionPoint.ID != instrument.ID)
+                    foreach (var targetConnetionPoint in instrument.ConnectionPoints)
                     {
                         var targetStartX = targetConnetionPoint.ConnetionX;
                         var targetStartY = targetConnetionPoint.ConnetionY;
@@ -435,9 +442,9 @@ namespace SmartDesign.DrawingDataGenerator
                         var startPositon = new Position2(standardCnnX, standardCnnY);
                         var EndPositon = new Position2(targetStartX, targetStartY);
 
-                        if (Tolerance.IsZeroDistance(Position2.Distance(startPositon, EndPositon)))
+                        if (Tolerance.IsZeroDistance(Position2.Distance(startPositon, EndPositon), DistanceTolerance))
                         {
-                            XAttribute toAttribute = new XAttribute("To", plantModel.Instruments[j].ID);
+                            XAttribute toAttribute = new XAttribute("To", instrument.ID);
                             connectAttribute.Add(toAttribute);
                             connectElement.Add(connectAttribute);
                             xElement.Add(connectElement);
@@ -447,10 +454,10 @@ namespace SmartDesign.DrawingDataGenerator
                     }
             }
 
-            for (int j = 0; j < plantModel.PipingComponents.Count; j++)
+            foreach (var pipingComponent in plantModel.PipingComponents)
             {
-                if (plantModel.ConnectionPoints[i].ID != plantModel.PipingComponents[j].ID)
-                    foreach (var targetConnetionPoint in plantModel.PipingComponents[j].ConnectionPoints)
+                if (connectionPoint.ID != pipingComponent.ID)
+                    foreach (var targetConnetionPoint in pipingComponent.ConnectionPoints)
                     {
                         var targetStartX = targetConnetionPoint.ConnetionX;
                         var targetStartY = targetConnetionPoint.ConnetionY;
@@ -458,9 +465,9 @@ namespace SmartDesign.DrawingDataGenerator
                         var startPositon = new Position2(standardCnnX, standardCnnY);
                         var EndPositon = new Position2(targetStartX, targetStartY);
 
-                        if (Tolerance.IsZeroDistance(Position2.Distance(startPositon, EndPositon)))
+                        if (Tolerance.IsZeroDistance(Position2.Distance(startPositon, EndPositon), DistanceTolerance))
                         {
-                            XAttribute toAttribute = new XAttribute("To", plantModel.PipingComponents[j].ID);
+                            XAttribute toAttribute = new XAttribute("To", pipingComponent.ID);
                             connectAttribute.Add(toAttribute);
                             connectElement.Add(connectAttribute);
                             xElement.Add(connectElement);
@@ -470,31 +477,31 @@ namespace SmartDesign.DrawingDataGenerator
                     }
             }
 
-            for (int j = 0; j < plantModel.PipeLines.Count; j++)
+            foreach (var pipeLine in plantModel.PipeLines)
             {
-                if (plantModel.ConnectionPoints[i].ID != plantModel.PipeLines[j].ID)
+                if (connectionPoint.ID != pipeLine.ID)
                 {
-                    var startX = plantModel.PipeLines[j].LineEndPoints.BeginPoints.BeginX;
-                    var startY = plantModel.PipeLines[j].LineEndPoints.BeginPoints.BeginY;
-                    var endX = plantModel.PipeLines[j].LineEndPoints.EndPoints.EndX;
-                    var endY = plantModel.PipeLines[j].LineEndPoints.EndPoints.EndY;
+                    var startX = pipeLine.LineEndPoints.BeginPoints.BeginX;
+                    var startY = pipeLine.LineEndPoints.BeginPoints.BeginY;
+                    var endX = pipeLine.LineEndPoints.EndPoints.EndX;
+                    var endY = pipeLine.LineEndPoints.EndPoints.EndY;
 
                     var symbolConnectPositon = new Position2(standardCnnX, standardCnnY);
                     var startPositon = new Position2(startX, startY);
                     var EndPositon = new Position2(endX, endY);
 
-                    if (Tolerance.IsZeroDistance(Position2.Distance(symbolConnectPositon, startPositon)))
+                    if (Tolerance.IsZeroDistance(Position2.Distance(symbolConnectPositon, startPositon), DistanceTolerance))
                     {
-                        XAttribute toAttribute = new XAttribute("To", plantModel.PipeLines[j].ID);
+                        XAttribute toAttribute = new XAttribute("To", pipeLine.ID);
                         connectAttribute.Add(toAttribute);
                         connectElement.Add(connectAttribute);
                         xElement.Add(connectElement);
 
                         return xElement;
                     }
-                    else if (Tolerance.IsZeroDistance(Position2.Distance(symbolConnectPositon, EndPositon)))
+                    else if (Tolerance.IsZeroDistance(Position2.Distance(symbolConnectPositon, EndPositon), DistanceTolerance))
                     {
-                        XAttribute toAttribute = new XAttribute("To", plantModel.PipeLines[j].ID);
+                        XAttribute toAttribute = new XAttribute("To", pipeLine.ID);
                         connectAttribute.Add(toAttribute);
                         connectElement.Add(connectAttribute);
                         xElement.Add(connectElement);
@@ -504,31 +511,31 @@ namespace SmartDesign.DrawingDataGenerator
                 }
             }
 
-            for (int j = 0; j < plantModel.SignalLines.Count; j++)
+            foreach (var signalLine in plantModel.SignalLines)
             {
-                if (plantModel.ConnectionPoints[i].ID != plantModel.SignalLines[j].ID)
+                if (connectionPoint.ID != signalLine.ID)
                 {
-                    var startX = plantModel.SignalLines[j].LineEndPoints.BeginPoints.BeginX;
-                    var startY = plantModel.SignalLines[j].LineEndPoints.BeginPoints.BeginY;
-                    var endX = plantModel.SignalLines[j].LineEndPoints.EndPoints.EndX;
-                    var endY = plantModel.SignalLines[j].LineEndPoints.EndPoints.EndY;
+                    var startX = signalLine.LineEndPoints.BeginPoints.BeginX;
+                    var startY = signalLine.LineEndPoints.BeginPoints.BeginY;
+                    var endX = signalLine.LineEndPoints.EndPoints.EndX;
+                    var endY = signalLine.LineEndPoints.EndPoints.EndY;
 
                     var symbolConnectPositon = new Position2(standardCnnX, standardCnnY);
                     var startPositon = new Position2(startX, startY);
                     var EndPositon = new Position2(endX, endY);
 
-                    if (Tolerance.IsZeroDistance(Position2.Distance(symbolConnectPositon, startPositon)))
+                    if (Tolerance.IsZeroDistance(Position2.Distance(symbolConnectPositon, startPositon), DistanceTolerance))
                     {
-                        XAttribute toAttribute = new XAttribute("To", plantModel.SignalLines[j].ID);
+                        XAttribute toAttribute = new XAttribute("To", signalLine.ID);
                         connectAttribute.Add(toAttribute);
                         connectElement.Add(connectAttribute);
                         xElement.Add(connectElement);
 
                         return xElement;
                     }
-                    else if (Tolerance.IsZeroDistance(Position2.Distance(symbolConnectPositon, EndPositon)))
+                    else if (Tolerance.IsZeroDistance(Position2.Distance(symbolConnectPositon, EndPositon), DistanceTolerance))
                     {
-                        XAttribute toAttribute = new XAttribute("To", plantModel.SignalLines[j].ID);
+                        XAttribute toAttribute = new XAttribute("To", signalLine.ID);
                         connectAttribute.Add(toAttribute);
                         connectElement.Add(connectAttribute);
                         xElement.Add(connectElement);

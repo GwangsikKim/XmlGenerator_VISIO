@@ -445,7 +445,7 @@ namespace SmartDesign.DrawingDataGenerator
                         ).get_ResultStr(VisUnitCodes.visNoCast);
                 int cnnPinY = RemoveUnits(strCnnPinY);
 
-                if (angle == 90) // 아래 각도별 인식으로 바꾸기(임시로 생성)
+                if (angle != 0) // 아래 각도별 인식으로 바꾸기(임시로 생성)
                 {
                     //double x2 = Math.Cos(radian) * cnnPinX - Math.Sin(radian) * cnnPinX;
                     //double y2 = Math.Sin(radian) * cnnPinY + Math.Cos(radian) * cnnPinY;
@@ -474,7 +474,6 @@ namespace SmartDesign.DrawingDataGenerator
             }
         }
 
-
         private double ExtractObjectBoxInformationAngle(Shape shape, double angle)
         {
             short iRow = (short)VisRowIndices.visRowXFormOut;
@@ -502,10 +501,6 @@ namespace SmartDesign.DrawingDataGenerator
 
             return obb2;
         }
-
-
-
-
 
         private string RemoveSpecificCharacters(string shapeDeleteSpace)
         {
