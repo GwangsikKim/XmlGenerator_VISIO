@@ -133,9 +133,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DrawingPaper.cs" />
-    <Compile Include="FindWindow.xaml.cs">
-      <DependentUpon>FindWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Selectors\PlantModelTreeChildNodesSelector.cs" />
     <Compile Include="Selectors\PlantModelTreeNodeImageSelector.cs" />
     <Compile Include="Shapes\LineShape.cs" />
@@ -151,10 +148,6 @@
     <Compile Include="Shapes\SymbolShape.cs" />
     <Compile Include="Shapes\TextShape.cs" />
     <Compile Include="WaitCursor.cs" />
-    <Page Include="FindWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
