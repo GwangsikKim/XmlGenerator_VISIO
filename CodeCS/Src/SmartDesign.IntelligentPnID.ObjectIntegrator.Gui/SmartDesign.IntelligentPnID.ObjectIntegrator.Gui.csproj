@@ -136,9 +136,6 @@
     <Compile Include="FindWindow.xaml.cs">
       <DependentUpon>FindWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="InterfaceConfiguration.cs" />
-    <Compile Include="InterfaceFileReader.cs" />
-    <Compile Include="InterfaceStep.cs" />
     <Compile Include="Selectors\PlantModelTreeChildNodesSelector.cs" />
     <Compile Include="Selectors\PlantModelTreeNodeImageSelector.cs" />
     <Compile Include="Shapes\LineShape.cs" />

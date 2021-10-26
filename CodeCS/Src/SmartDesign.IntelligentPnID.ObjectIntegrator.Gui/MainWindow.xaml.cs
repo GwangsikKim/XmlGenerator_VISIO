@@ -24,14 +24,11 @@ namespace SmartDesign.IntelligentPnID.ObjectIntegrator.Gui
         public MainWindow()
         {
             InitializeComponent();
-            IsServerMode = false;
+
             IsDirty = false;
             DocumentFilePath = string.Empty;
             EnableIntegration = false;
         }        
-
-        private bool IsServerMode { get; set; }
-        private InterfaceConfiguration InterfaceConfiguration { get; set; }
 
         private bool EnableIntegration { get; set; }
 
@@ -40,71 +37,6 @@ namespace SmartDesign.IntelligentPnID.ObjectIntegrator.Gui
 
         private PlantModel PlantModel { get; set; }
         private List<PlantEntity> ModelTreeRoot { get; set; }
-
-        //private FindWindow findWindow = null;
-
-        public bool SetCommandLineArguments(string[] args)
-        {
-            if(log.IsInfoEnabled)
-            {
-                log.Info($"명령행 인자 개수: {args.Length}");
-                foreach (var arg in args)
-                    log.Info($"명령행 인자: {arg}");
-            }
-
-            if (args.Length == 0 || args == null)
-            {
-                IsServerMode = false;
-                return true;
-            }
-
-            if (args.Length != 1)
-            {
-                string message = "전달받은 명령행 인자의 개수가 1개가 아닙니다. 명령행 인자를 확인해 주세요.";
-                
-                if (log.IsErrorEnabled)
-                    log.Error(message);
-
-                ThemedMessageBox.Show("오류", message, MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
-            }
-
-            if (!File.Exists(args[0]))
-            {
-                string message = $"인터페이스 파일을 찾을 수 없습니다. 경로: {args[0]}";
-                
-                if (log.IsErrorEnabled)
-                    log.Error(message);
-
-                ThemedMessageBox.Show("오류", message, MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
-            }
-
-            try
-            {
-                ReadInterfaceFile(args[0]);
-            }
-            catch (Exception e)
-            {
-                string message = $"인터페이스 파일을 읽는데 실패했습니다. 오류: {e.Message}";
-
-                if (log.IsErrorEnabled)
-                    log.Error(message);
-
-                ThemedMessageBox.Show("오류", message, MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
-            }
-
-            IsServerMode = true;
-
-            return true;
-        }
-
-        private void ReadInterfaceFile(string path)
-        {
-            InterfaceFileReader reader = new InterfaceFileReader();
-            InterfaceConfiguration = reader.Read(path);
-        }
 
         private void Clear()
         {
@@ -297,11 +229,6 @@ namespace SmartDesign.IntelligentPnID.ObjectIntegrator.Gui
             if(IsDirty)
             {
                 title += "*";
-            }
-
-            if(IsServerMode)
-            {
-                title += " [통합모드]";
             }
 
             Title = title;

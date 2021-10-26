@@ -24,20 +24,6 @@ namespace SmartDesign.IntelligentPnID.ObjectIntegrator.Gui
                 log.Info("프로그램 시작");
 
             MainWindow mainWindow = new MainWindow();
-
-            if (e.Args.Length > 0)
-            {
-                bool result = mainWindow.SetCommandLineArguments(e.Args);
-                if(!result)
-                {
-                    if (log.IsErrorEnabled)
-                        log.Error("명령행 인자 오류로 프로그램을 종료.");
-
-                    Current.Shutdown(1);
-                    return;
-                }
-            }
-
             Current.MainWindow = mainWindow;
             Current.MainWindow.Show();
         }
