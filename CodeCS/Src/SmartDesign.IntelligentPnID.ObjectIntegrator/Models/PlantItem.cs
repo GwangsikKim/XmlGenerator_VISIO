@@ -1,6 +1,4 @@
-﻿using DevExpress.Skins;
-
-using SmartDesign.IntelligentPnID.ObjectIntegrator.ObjectRecognition;
+﻿using SmartDesign.IntelligentPnID.ObjectIntegrator.ObjectRecognition;
 using SmartDesign.MathUtil;
 using System;
 using System.Collections.Generic;

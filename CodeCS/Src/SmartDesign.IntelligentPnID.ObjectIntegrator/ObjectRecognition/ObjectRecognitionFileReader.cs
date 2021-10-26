@@ -1,5 +1,4 @@
-﻿using DevExpress.Utils.Text;
-using SmartDesign.IntelligentPnID.ObjectIntegrator.Models;
+﻿using SmartDesign.IntelligentPnID.ObjectIntegrator.Models;
 using SmartDesign.MathUtil;
 using System;
 using System.Collections.Generic;

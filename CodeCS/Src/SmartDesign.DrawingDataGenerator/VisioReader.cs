@@ -3,13 +3,7 @@ using Microsoft.Office.Interop.Visio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
 using System.Xml.Linq;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using SmartDesign.DrawingDataGenerator;
 using System.Text.RegularExpressions;
 using SmartDesign.MathUtil;
 
