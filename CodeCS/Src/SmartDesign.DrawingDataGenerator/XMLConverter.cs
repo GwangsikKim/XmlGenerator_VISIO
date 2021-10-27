@@ -10,7 +10,7 @@ namespace SmartDesign.DrawingDataGenerator
 {
     class XMLConverter
     {
-        public static double DistanceTolerance = 3.0;
+        public static double DistanceTolerance = 2.0;
 
         public XMLConverter()
         {            
