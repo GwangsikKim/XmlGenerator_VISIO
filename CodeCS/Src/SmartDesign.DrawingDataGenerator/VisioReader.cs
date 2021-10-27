@@ -50,7 +50,6 @@ namespace SmartDesign.DrawingDataGenerator
 
         string path = "";
 
-
         public VisioReader(string path)
         {
             this.path = path;
@@ -93,27 +92,30 @@ namespace SmartDesign.DrawingDataGenerator
                 {
                     Equipment equipment = new Equipment();
                     equipment.ID = shape.ID.ToString();
+                    equipment.ClassName = shapeTypeName;
                     CreateEquipmentProperties(plantModel, equipment, shape);
                 }
                 else if (PipeSymbolTypes.Contains(shapeTypeName))
                 {
                     PipingComponent pipingComponent = new PipingComponent();
                     pipingComponent.ID = shape.ID.ToString();
+                    pipingComponent.ClassName = shapeTypeName;
                     CreatePipingComponentProperties(plantModel, pipingComponent, shape);
                 }
                 else if (InstrumentSymbolTypes.Contains(shapeTypeName))
                 {
                     Instrument instrument = new Instrument();
                     instrument.ID = shape.ID.ToString();
+                    instrument.ClassName = shapeTypeName;
                     CreateInstrumentProperties(plantModel, instrument, shape);
                 }
                 else if (PipeLineTypes.Contains(shapeTypeName))
                 {
-                    CreatePipeLineProperties(plantModel, shape);
+                    CreatePipeLineProperties(plantModel, shape, shapeTypeName);
                 }
                 else if (InstrumentLineTypes.Contains(shapeTypeName))
                 {
-                    CreateSignalLineProperties(plantModel, shape);
+                    CreateSignalLineProperties(plantModel, shape, shapeTypeName);
                 }
                 else
                 {
@@ -124,8 +126,8 @@ namespace SmartDesign.DrawingDataGenerator
 
         private void CreateEquipmentProperties(PlantModel plantModel, Equipment equipment, Shape shape)
         {
-            equipment.Extent = ExtractObjectBoxInformation(shape, equipment.Extent);
-            equipment.Angle = ExtractObjectBoxInformationAngle(shape, equipment.Angle);
+            equipment.Extent = ExtractObjectBoxInformationSize(shape);
+            equipment.Angle = ExtractObjectBoxInformationAngle(shape);
 
             ExtractObjectConnectionInformation(shape, plantModel, equipment.Extent, equipment.Angle, equipment.ConnectionPoints);
 
@@ -134,8 +136,8 @@ namespace SmartDesign.DrawingDataGenerator
 
         private void CreatePipingComponentProperties(PlantModel plantModel, PipingComponent pipingComponent, Shape shape)
         {
-            pipingComponent.Extent = ExtractObjectBoxInformation(shape, pipingComponent.Extent);
-            pipingComponent.Angle = ExtractObjectBoxInformationAngle(shape, pipingComponent.Angle);
+            pipingComponent.Extent = ExtractObjectBoxInformationSize(shape);
+            pipingComponent.Angle = ExtractObjectBoxInformationAngle(shape);
 
             ExtractObjectConnectionInformation(shape, plantModel, pipingComponent.Extent, pipingComponent.Angle, pipingComponent.ConnectionPoints);
 
@@ -144,15 +146,15 @@ namespace SmartDesign.DrawingDataGenerator
 
         private void CreateInstrumentProperties(PlantModel plantModel, Instrument instrument, Shape shape)
         {
-            instrument.Extent = ExtractObjectBoxInformation(shape, instrument.Extent);
-            instrument.Angle = ExtractObjectBoxInformationAngle(shape, instrument.Angle);
+            instrument.Extent = ExtractObjectBoxInformationSize(shape);
+            instrument.Angle = ExtractObjectBoxInformationAngle(shape);
 
             ExtractObjectConnectionInformation(shape, plantModel, instrument.Extent, instrument.Angle, instrument.ConnectionPoints);
 
             plantModel.Instruments.Add(instrument);
         }
 
-        private void CreatePipeLineProperties(PlantModel plantModel, Shape shape)
+        private void CreatePipeLineProperties(PlantModel plantModel, Shape shape, string shapeName)
         {
             LineItem lineItem = new LineItem();
 
@@ -165,8 +167,9 @@ namespace SmartDesign.DrawingDataGenerator
                     PipeLine pipeLine = new PipeLine();
                     ConnectionLine connectionLine = new ConnectionLine();
                     pipeLine.ID = shape.ID.ToString() + "PipeL" + "-" + i;
+                    pipeLine.ClassName = shapeName;
 
-                    pipeLine.Extent = ExtractObjectBoxInformation(shape, pipeLine.Extent);
+                    pipeLine.Extent = ExtractObjectBoxInformationSize(shape);
 
                     pipeLine.LineEndPoints.BeginPoints.BeginX = lineItem.X[i];
                     pipeLine.LineEndPoints.BeginPoints.BeginY = lineItem.Y[i];
@@ -190,7 +193,7 @@ namespace SmartDesign.DrawingDataGenerator
             }
         }
 
-        private void CreateSignalLineProperties(PlantModel plantModel, Shape shape)
+        private void CreateSignalLineProperties(PlantModel plantModel, Shape shape, string shapeName)
         {
             LineItem lineItem = new LineItem();
 
@@ -203,8 +206,9 @@ namespace SmartDesign.DrawingDataGenerator
                     SignalLine signalLine = new SignalLine();
                     ConnectionLine connectionLine = new ConnectionLine();
                     signalLine.ID = shape.ID.ToString() + "SignalL" + "-" + i;
+                    signalLine.ClassName = shapeName;
 
-                    signalLine.Extent = ExtractObjectBoxInformation(shape, signalLine.Extent);
+                    signalLine.Extent = ExtractObjectBoxInformationSize(shape);
 
                     signalLine.LineEndPoints.BeginPoints.BeginX = lineItem.X[i];
                     signalLine.LineEndPoints.BeginPoints.BeginY = lineItem.Y[i];
@@ -302,7 +306,7 @@ namespace SmartDesign.DrawingDataGenerator
                    ).get_ResultStr(VisUnitCodes.visNoCast);
             int angle = RemoveUnits(strAngle);
 
-            text.Extent = CreateBox(text.Extent, textcenterX, textcenterY, width, height);
+            text.Extent = CreateBox(textcenterX, textcenterY, width, height);
             text.Angle = angle;
 
             //ConnectionLine connectionLine = new ConnectionLine();
@@ -315,7 +319,7 @@ namespace SmartDesign.DrawingDataGenerator
             //plantModel.ConnectionLines.Add(connectionLine);
         }
 
-        private Obb2 ExtractObjectBoxInformation(Shape shape, Obb2 obb2)
+        private Obb2 ExtractObjectBoxInformationSize(Shape shape)
         {
             short iRow = (short)VisRowIndices.visRowXFormOut;
 
@@ -347,7 +351,7 @@ namespace SmartDesign.DrawingDataGenerator
                     ).get_ResultStr(VisUnitCodes.visNoCast);
             int height = RemoveUnits(strHeight);
 
-            var extent = CreateBox(obb2, pinX, pinY, width, height);
+            var extent = CreateBox(pinX, pinY, width, height);
             return extent;
         }
 
@@ -468,7 +472,7 @@ namespace SmartDesign.DrawingDataGenerator
             }
         }
 
-        private double ExtractObjectBoxInformationAngle(Shape shape, double angle)
+        private double ExtractObjectBoxInformationAngle(Shape shape)
         {
             short iRow = (short)VisRowIndices.visRowXFormOut;
 
@@ -477,12 +481,12 @@ namespace SmartDesign.DrawingDataGenerator
                     iRow,
                     (short)VisCellIndices.visXFormAngle
                     ).get_ResultStr(VisUnitCodes.visNoCast);
-            angle = RemoveUnits(strAngle);
+            double angle = RemoveUnits(strAngle);
 
             return angle;
         }
 
-        private Obb2 CreateBox(Obb2 obb2, int pinX, int pinY, int width, int height)
+        private Obb2 CreateBox(int pinX, int pinY, int width, int height)
         {
             var minX = pinX - width * 0.5;
             var minY = pinY - height * 0.5;
@@ -491,7 +495,7 @@ namespace SmartDesign.DrawingDataGenerator
 
             Position2 startmin = new Position2(minX, minY);
             Position2 endmax = new Position2(maxX, maxY);
-            obb2 = Obb2.Create(startmin, endmax);
+            Obb2 obb2 = Obb2.Create(startmin, endmax);
 
             return obb2;
         }

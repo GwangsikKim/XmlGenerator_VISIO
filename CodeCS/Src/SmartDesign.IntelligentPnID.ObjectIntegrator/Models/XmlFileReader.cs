@@ -294,29 +294,6 @@ namespace SmartDesign.IntelligentPnID.ObjectIntegrator.Models
             }
         }
 
-        //private Connection ReadConnectionElement(XElement connectionElement)
-        //{
-        //    Connection connection = new Connection();
-
-        //    XAttribute fromAttribute = connectionElement.Attribute("From");
-        //    if (fromAttribute != null)
-        //    {
-        //        Node fromNode = new Node();
-        //        fromNode.ID = fromAttribute.Value;
-        //        connection.From = fromNode;
-        //    }
-
-        //    XAttribute toAttribute = connectionElement.Attribute("To");
-        //    if (toAttribute != null)
-        //    {
-        //        Node toNode = new Node();
-        //        toNode.ID = toAttribute.Value;
-        //        connection.To = toNode;
-        //    }
-
-        //    return connection;
-        //}
-
         private CenterLine ReadCenterLineElement(XElement centerLineElement)
         {
             CenterLine centerLine = new CenterLine();
@@ -737,66 +714,6 @@ namespace SmartDesign.IntelligentPnID.ObjectIntegrator.Models
                 }
             }
         }
-
-        //private void MakeUpLineConnections(PlantModel plantModel)
-        //{
-        //    var descendants = plantModel.GetAllDecendants();
-        //    var hasNodesItems = descendants.OfType<IHasNodes>();
-        //    var nodes = hasNodesItems.SelectMany(x => x.Nodes).Where(node => node != null);
-
-        //    var lineItems = descendants.OfType<LineItem>();
-
-        //    foreach(var lineItem in lineItems)
-        //    {
-        //        Node fromNode = lineItem.Connection.From;
-        //        if(fromNode != null)
-        //        {
-        //            string fromId = fromNode.ID;
-        //            if (string.IsNullOrEmpty(fromId))
-        //            {
-        //                string message = string.Format("ID가 {0}인 아이템에 있는 Connection의 From ID가 비어있습니다.", lineItem.ID);
-        //                Trace.WriteLine(message);
-
-        //                lineItem.Connection.From = null;
-        //            }
-        //            else
-        //            {
-        //                var node = nodes.FirstOrDefault(x => x.ID == fromId);
-        //                if (node == null)
-        //                {
-        //                    string message = string.Format("ID가 {0}인 아이템에 있는 Connection의 From ID가 {1}인 노드를 찾을 수 없습니다.", lineItem.ID, fromId);
-        //                    throw new ArgumentNullException(message);
-        //                }
-
-        //                lineItem.Connection.From = node;
-        //            }
-        //        }
-
-        //        Node toNode = lineItem.Connection.To;
-        //        if(toNode != null)
-        //        {
-        //            string toId = toNode.ID;
-        //            if (string.IsNullOrEmpty(toId))
-        //            {
-        //                string message = string.Format("ID가 {0}인 아이템에 있는 Connection의 To ID가 비어있습니다.", lineItem.ID);
-        //                Trace.WriteLine(message);
-
-        //                lineItem.Connection.To = null;
-        //            }
-        //            else
-        //            {
-        //                var node = nodes.FirstOrDefault(x => x.ID == toId);
-        //                if (node == null)
-        //                {
-        //                    string message = string.Format("ID가 {0}인 아이템에 있는 Connection의 To ID가 {1}인 노드를 찾을 수 없습니다.", lineItem.ID, toId);
-        //                    throw new ArgumentNullException(message);
-        //                }
-
-        //                lineItem.Connection.To = node;
-        //            }
-        //        }                
-        //    }
-        //}
 
         private static string GetXmlPosition(IXmlLineInfo lineInfo)
         {

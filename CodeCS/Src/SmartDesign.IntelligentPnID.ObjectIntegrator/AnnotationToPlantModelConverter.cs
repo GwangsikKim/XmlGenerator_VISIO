@@ -64,20 +64,17 @@ namespace SmartDesign.IntelligentPnID.ObjectIntegrator
         private void ConvertConnectionObject(ConnectionObject connectionObject, PlantModel plantModel)
         {
             Connection connection = new Connection();
-            ConvertConnectionItem(connectionObject, connection, plantModel);
-
+            ConvertConnectionItem(connectionObject, connection);
+                        
             connection.From = connectionObject.From;
             connection.To = connectionObject.To;
 
             plantModel.Add(connection);
         }
 
-        private void ConvertConnectionItem(ConnectionObject connectionObject, PlantItem plantItem, PlantModel plantModel)
+        private void ConvertConnectionItem(ConnectionObject connectionObject, PlantItem plantItem)
         {
             plantItem.OriginalID = connectionObject.Id;
-
-            if (!string.IsNullOrEmpty(connectionObject.ClassName))
-                plantItem.ComponentClass = connectionObject.ClassName;
         }
 
         private void FillExtent(Annotation annotation, PlantModel plantModel)

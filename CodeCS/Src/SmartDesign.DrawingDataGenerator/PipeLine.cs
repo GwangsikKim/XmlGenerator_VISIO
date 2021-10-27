@@ -12,6 +12,7 @@ namespace SmartDesign.DrawingDataGenerator
         public PipeLine()
         {
             ID = null;
+            ClassName = "none";
             LineEndPoints = new LineEndPoint();
 
             Extent = new Obb2();
@@ -20,6 +21,12 @@ namespace SmartDesign.DrawingDataGenerator
         }
 
         public string ID
+        {
+            get;
+            set;
+        }
+
+        public string ClassName
         {
             get;
             set;

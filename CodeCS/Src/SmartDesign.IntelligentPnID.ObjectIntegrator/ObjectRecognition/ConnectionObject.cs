@@ -15,7 +15,6 @@ namespace SmartDesign.IntelligentPnID.ObjectIntegrator
         public ConnectionObject()
         {
             Id = string.Empty;
-            ClassName = ClassNameDefault;
 
             X = string.Empty;
             Y = string.Empty;
@@ -25,8 +24,6 @@ namespace SmartDesign.IntelligentPnID.ObjectIntegrator
         }
 
         public string Id { get; set; }
-
-        public string ClassName { get; set; }
 
         public string X { get; set; }
 

@@ -12,6 +12,7 @@ namespace SmartDesign.DrawingDataGenerator
         public Instrument()
         {
             ID = null;
+            ClassName = "none";
             Angle = 0;
             Extent = new Obb2();
 
@@ -20,6 +21,12 @@ namespace SmartDesign.DrawingDataGenerator
         }
 
         public string ID
+        {
+            get;
+            set;
+        }
+
+        public string ClassName
         {
             get;
             set;

@@ -30,7 +30,10 @@ namespace SmartDesign.IntelligentPnID.ObjectIntegrator.ObjectRecognition
             "general_liquid_filter", "suction_filter",
             "pump_liquid_type_general", "pump_reciprocating_piston_type",
             "general_compressor", "centrifugal_compressor", "reciprocating_compressor",
-            "general_blower", "general_turbine", "general_electric_motor"
+            "general_blower", "general_turbine", "general_electric_motor",
+            
+            //VisioTypes
+            "Vessel", "Selectablecompressor", "Selectablecompressor1", "Heatexchanger1" ,"Fluidcontacting", "Barrel"
         };
 
         private readonly string[] PipeSymbolTypes =
@@ -43,12 +46,22 @@ namespace SmartDesign.IntelligentPnID.ObjectIntegrator.ObjectRecognition
             "ejector", "desuperheater", "removable_spool", "flexible_hose", "expansion_joint", "damper",
             "breather", "flange", "cap", "concentric_reducer", "eccentric_reducer",
             "hose_connection", "spacer", "blank", "open_figure_8_blind", "closed_figure_8_blind",
-            "plug", "blind_flange", "off_page_connector", "utility_connector", "tie_in_symbol"
+            "plug", "blind_flange", "off_page_connector", "utility_connector", "tie_in_symbol",
+            
+            //VisioTypes
+            "Flangedvalve","Flanged/bolted", "Gatevalve", "Relief", "Junction", "Globevalve", "Checkvalve", "Poweredvalve", "Reducer",
+            "Diaphragmvalve", "Endcaps", "Endcaps2", "Relief(angle)", "Off-SheetLabel3", "Butterflyvalve", "Callout3", "Ballvalve",
+            "Screw-downvalve","CapillaryTube", "Sleevejoint"
+
+
         };
 
         private readonly string[] ValveSymbolTypes =
         {
-            "gate_valve", "check_valve", "globe_valve", "butterfly_valve", "ball_valve", "three_way_valve"
+            "gate_valve", "check_valve", "globe_valve", "butterfly_valve", "ball_valve", "three_way_valve",
+
+            //VisioTypes
+            "Gatevalve", "Relief", "Diaphragmvalve", "Globevalve", "Checkvalve", "Poweredvalve", "Butterflyvalve", "Ballvalve"
         };
 
         private readonly string[] InstrumentSymbolTypes =
@@ -60,7 +73,10 @@ namespace SmartDesign.IntelligentPnID.ObjectIntegrator.ObjectRecognition
             "primary_location_normally_inaccessible_dcs", "primary_location_normally_inaccessible_plc", "auxiliary_location_normally_accessible_discrete_instruments",
             "auxiliary_location_normally_accessible_dcs", "auxiliary_location_normally_accessible_plc", "auxiliary_location_normally_inaccessible_discrete_instruments",
             "auxiliary_location_normally_inaccessible_dcs", "auxiliary_location_normally_inaccessible_plc", "orifice", "manual_operator", "diaphragm", "cylinder",
-            "motor_operated", "single_solenoid", "pressure_relief_valve", "vacuum_relief_valve", "pressure_and_vacuum_relief_valve"
+            "motor_operated", "single_solenoid", "pressure_relief_valve", "vacuum_relief_valve", "pressure_and_vacuum_relief_valve",
+            
+            //VisioTypes
+            "Flangedaccesspoint", "Indicator", "CRT", "Diamond", "GenericUtility", "Generaljoint", "Filter2"
         };
 
         private readonly string[] UnspecifiedLineTypes =
@@ -70,12 +86,18 @@ namespace SmartDesign.IntelligentPnID.ObjectIntegrator.ObjectRecognition
 
         private readonly string[] PipeLineTypes =
         {
-            "none", "primary", "secondary"
+            "none", "primary", "secondary",
+
+            //VisioTypes
+            "MajorPipeline", "MinorPipeline", "MajorPipelineR", "MajorPipelineL", "MinorPipelineR", "MinorPipelineL"
         };
 
         private readonly string[] InstrumentLineTypes =
         {
-            "none", "instrument_supply", "pneumatic_signal", "electric_signal"
+            "none", "instrument_supply", "pneumatic_signal", "electric_signal",
+
+            //VisioTypes
+            "Electric", "Data", "Electric3"
         };
 
         public ObjectRecognitionFileReader()
@@ -452,27 +474,20 @@ namespace SmartDesign.IntelligentPnID.ObjectIntegrator.ObjectRecognition
                 connectionObject.Id = id;
             }
 
-            XElement classElement = CheckChildElement(connectionObjectElement, "class");
-            string className = classElement.Value.Trim();
-            connectionObject.ClassName = className;
-
             //ConnectionPoint
-            XElement connectionPointElement = CheckChildElement(connectionObjectElement, "connectionpoint");
-            XElement pointXElement = CheckChildElement(connectionPointElement, "X");
+            XElement connectionPointElement = CheckChildElement(connectionObjectElement, "connection_point");
+            XElement pointXElement = CheckChildElement(connectionPointElement, "x");
             string pointXValue = CheckNonEmptyValue(pointXElement);
             connectionObject.X = pointXValue;
 
-            XElement pointYElement = CheckChildElement(connectionPointElement, "Y");
+            XElement pointYElement = CheckChildElement(connectionPointElement, "y");
             string pointYElementValue = CheckNonEmptyValue(pointYElement);
             connectionObject.Y = pointYElementValue;
 
             //From To informaiton
-            XElement connectionobjectElement = connectionObjectElement.Element("connectionobject");
-
-            if (connectionobjectElement != null)
+            XElement connectionElement = connectionObjectElement.Element("connection");
+            if (connectionElement != null)
             {
-                XElement connectionElement = CheckChildElement(connectionobjectElement, "connection");
-
                 XAttribute fromAttribute = connectionElement.Attribute("From");
                 connectionObject.From = fromAttribute.Value.ToString();
 
