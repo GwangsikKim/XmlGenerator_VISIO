@@ -10,7 +10,7 @@ namespace SmartDesign.DrawingDataGenerator
 {
     class XMLConverter
     {
-        public static double DistanceTolerance = 2.0;
+        public static double DistanceTolerance = 3.0;
 
         public XMLConverter()
         {            
@@ -354,7 +354,7 @@ namespace SmartDesign.DrawingDataGenerator
         {
             XElement xElement = new XElement("connection_object");
 
-            XElement idElement = new XElement("id", connectionLine.ID +"-" +"Connect"+ "-" + id);
+            XElement idElement = new XElement("id", Guid.NewGuid().ToString("N").ToUpper());
             xElement.Add(idElement);
 
             XElement connectLocation = new XElement("connection_point");
@@ -377,7 +377,7 @@ namespace SmartDesign.DrawingDataGenerator
 
         private XElement CreateXmlConnectionStructure(XElement xElement, PlantModel plantModel, ConnectionPoint connectionPoint)
         {
-            XElement idElement = new XElement("id", connectionPoint.ID + "-" + "Connect" + "-" +1);
+            XElement idElement = new XElement("id", Guid.NewGuid().ToString("N").ToUpper());
             xElement.Add(idElement);
 
             XElement connectLocation = new XElement("connection_point");

@@ -11,6 +11,7 @@ namespace SmartDesign.DrawingDataGenerator
         public ConnectionPoint()
         {
             ID = null;
+            ConnetionID = Guid.NewGuid().ToString("N").ToUpper();
 
             ConnetionX = 0;
             ConnetionY = 0;
@@ -19,6 +20,12 @@ namespace SmartDesign.DrawingDataGenerator
         }
 
         public string ID
+        {
+            get;
+            set;
+        }
+
+        public string ConnetionID
         {
             get;
             set;
