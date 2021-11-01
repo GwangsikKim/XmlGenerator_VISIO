@@ -12,6 +12,7 @@ namespace SmartDesign.DrawingDataGenerator
         public SignalLine()
         {
             ID = null;
+            Type = "unspecified_line";
             ClassName = "none";
             LineEndPoints = new LineEndPoint();
             Extent = new Obb2();
@@ -20,6 +21,12 @@ namespace SmartDesign.DrawingDataGenerator
         }
 
         public string ID
+        {
+            get;
+            set;
+        }
+
+        public string Type
         {
             get;
             set;

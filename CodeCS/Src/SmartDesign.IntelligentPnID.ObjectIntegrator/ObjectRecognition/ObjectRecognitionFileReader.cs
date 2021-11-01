@@ -573,28 +573,13 @@ namespace SmartDesign.IntelligentPnID.ObjectIntegrator.ObjectRecognition
             return false;
         }
 
-        private bool IsValveType(string className)
-        {
-            return ValveSymbolTypes.Contains(className);
-        }
-
-        private bool CheckValveEtc(string strEtc)
-        {
-            if (strEtc == "valve_open")
-                return true;
-            else if (strEtc == "valve_close")
-                return true;
-            else
-                return false;
-        }
-
         private bool ParseLineObjectType(string typeValue, out LineObjectType objectType)
         {
             bool result = true;
 
-            if (typeValue == "pipe_line")
+            if (typeValue == "piping_line")
                 objectType = LineObjectType.PipeLine;
-            else if (typeValue == "instrument_line")
+            else if (typeValue == "signal_line")
                 objectType = LineObjectType.InstrumentLine;
             else if (typeValue == "unspecified_line")
                 objectType = LineObjectType.UnspecifiedLine;

@@ -167,6 +167,7 @@ namespace SmartDesign.DrawingDataGenerator
                     PipeLine pipeLine = new PipeLine();
                     ConnectionLine connectionLine = new ConnectionLine();
                     pipeLine.ID = shape.ID.ToString() + "PipeL" + "-" + i;
+                    pipeLine.Type = "piping_line";
                     pipeLine.ClassName = shapeName;
 
                     pipeLine.Extent = ExtractObjectBoxInformationSize(shape);
@@ -206,6 +207,7 @@ namespace SmartDesign.DrawingDataGenerator
                     SignalLine signalLine = new SignalLine();
                     ConnectionLine connectionLine = new ConnectionLine();
                     signalLine.ID = shape.ID.ToString() + "SignalL" + "-" + i;
+                    signalLine.Type = "signal_line";
                     signalLine.ClassName = shapeName;
 
                     signalLine.Extent = ExtractObjectBoxInformationSize(shape);

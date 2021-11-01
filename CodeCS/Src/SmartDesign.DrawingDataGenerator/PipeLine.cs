@@ -12,6 +12,7 @@ namespace SmartDesign.DrawingDataGenerator
         public PipeLine()
         {
             ID = null;
+            Type = "unspecified_line";
             ClassName = "none";
             LineEndPoints = new LineEndPoint();
 
@@ -25,6 +26,13 @@ namespace SmartDesign.DrawingDataGenerator
             get;
             set;
         }
+
+        public string Type
+        {
+            get;
+            set;
+        }
+
 
         public string ClassName
         {

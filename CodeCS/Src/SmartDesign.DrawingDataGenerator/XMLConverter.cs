@@ -144,8 +144,8 @@ namespace SmartDesign.DrawingDataGenerator
                 XElement shapeElement = new XElement("line_object");
 
                 string id = pipeLine.ID;
-                string type = "unspecified_line";
-                string className = "solid";
+                string type = pipeLine.Type;
+                string className = pipeLine.ClassName;
                 int minX = pipeLine.LineEndPoints.BeginPoints.BeginX;
                 int minY = pipeLine.LineEndPoints.BeginPoints.BeginY;
                 int maxX = pipeLine.LineEndPoints.EndPoints.EndX;
@@ -162,8 +162,8 @@ namespace SmartDesign.DrawingDataGenerator
                 XElement shapeElement = new XElement("line_object");
 
                 string id = signalLine.ID;
-                string type = "unspecified_line";
-                string className = "dashed";
+                string type = signalLine.Type;
+                string className = signalLine.ClassName;
                 int minX = signalLine.LineEndPoints.BeginPoints.BeginX;
                 int minY = signalLine.LineEndPoints.BeginPoints.BeginY;
                 int maxX = signalLine.LineEndPoints.EndPoints.EndX;
@@ -354,7 +354,7 @@ namespace SmartDesign.DrawingDataGenerator
         {
             XElement xElement = new XElement("connection_object");
 
-            XElement idElement = new XElement("id", Guid.NewGuid().ToString("N").ToUpper());
+            XElement idElement = new XElement("id", connectionLine.ConnetionID);
             xElement.Add(idElement);
 
             XElement connectLocation = new XElement("connection_point");
@@ -377,7 +377,7 @@ namespace SmartDesign.DrawingDataGenerator
 
         private XElement CreateXmlConnectionStructure(XElement xElement, PlantModel plantModel, ConnectionPoint connectionPoint)
         {
-            XElement idElement = new XElement("id", Guid.NewGuid().ToString("N").ToUpper());
+            XElement idElement = new XElement("id", connectionPoint.ConnetionID);
             xElement.Add(idElement);
 
             XElement connectLocation = new XElement("connection_point");

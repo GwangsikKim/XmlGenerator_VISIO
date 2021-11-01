@@ -17,7 +17,7 @@ namespace SmartDesign.IntelligentPnID.ObjectIntegrator
         public PlantModel Creator(PlantModel plantModel)
         {
             PlantEntity plantEntity = plantModel;
-            List<PipingNetworkSegment> pipingNetworkSegments = new List<PipingNetworkSegment>();
+            List<UnknownLine> unknownLine = new List<UnknownLine>();
 
             foreach (var connection in plantEntity.PlantModel.Connections)
             {
@@ -45,13 +45,13 @@ namespace SmartDesign.IntelligentPnID.ObjectIntegrator
 
                 if (plantEntities.Count > 1)
                 {
-                   // Console.WriteLine("From : {0}  To : {1}", a, b);
-                    PipingNetworkSegment connectLine = ConnectionLineCreat(plantEntities, plantModel);
-                    pipingNetworkSegments.Add(connectLine);
+                    // Console.WriteLine("From : {0}  To : {1}", a, b);
+                    UnknownLine connectLine = ConnectionLineCreat(plantEntities, plantModel);
+                    unknownLine.Add(connectLine);
                 }
             }
 
-            foreach (var item in pipingNetworkSegments)
+            foreach (var item in unknownLine)
             {
                 plantModel.Add(item);
             }
@@ -59,7 +59,7 @@ namespace SmartDesign.IntelligentPnID.ObjectIntegrator
             return plantModel;
         }
 
-        private PipingNetworkSegment ConnectionLineCreat(List<PlantEntity> plantEntities, PlantModel plantModel)
+        private UnknownLine ConnectionLineCreat(List<PlantEntity> plantEntities, PlantModel plantModel)
         {
             Position2 startPosition = new Position2();
             Position2 endPosition = new Position2();
@@ -217,7 +217,7 @@ namespace SmartDesign.IntelligentPnID.ObjectIntegrator
                 Console.WriteLine(plantEntities[0].TypeName);
             }
 
-            PipingNetworkSegment connectLine = new PipingNetworkSegment();
+            UnknownLine connectLine = new UnknownLine();
             connectLine.CenterLine.Start = startPosition;
             connectLine.CenterLine.End = endPosition;
             connectLine.Extent = Obb2.Create(startPosition, endPosition);
