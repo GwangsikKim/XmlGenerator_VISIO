@@ -33,7 +33,6 @@ namespace SmartDesign.DrawingDataGenerator
             set;
         }
 
-
         public string ClassName
         {
             get;

@@ -33,7 +33,7 @@ namespace SmartDesign.IntelligentPnID.ObjectIntegrator.ObjectRecognition
             "general_blower", "general_turbine", "general_electric_motor",
             
             //VisioTypes
-            "Vessel", "Selectablecompressor", "Selectablecompressor1", "Heatexchanger1" ,"Fluidcontacting", "Barrel"
+            "vessel", "selectablecompressor", "selectablecompressor1", "heatexchanger1" ,"fluidcontacting", "barrel"
         };
 
         private readonly string[] PipeSymbolTypes =
@@ -49,11 +49,9 @@ namespace SmartDesign.IntelligentPnID.ObjectIntegrator.ObjectRecognition
             "plug", "blind_flange", "off_page_connector", "utility_connector", "tie_in_symbol",
             
             //VisioTypes
-            "Flangedvalve","Flanged/bolted", "Gatevalve", "Relief", "Junction", "Globevalve", "Checkvalve", "Poweredvalve", "Reducer",
-            "Diaphragmvalve", "Endcaps", "Endcaps2", "Relief(angle)", "Off-SheetLabel3", "Butterflyvalve", "Callout3", "Ballvalve",
-            "Screw-downvalve","CapillaryTube", "Sleevejoint"
-
-
+            "flangedvalve","flanged/bolted", "gatevalve", "relief", "junction", "globevalve", "checkvalve", "poweredvalve", "reducer",
+            "diaphragmvalve", "endcaps", "endcaps2", "relief(angle)", "off-sheetlabel3", "butterflyvalve", "callout3", "ballvalve",
+            "screw-downvalve","capillaryTube", "sleevejoint"
         };
 
         private readonly string[] ValveSymbolTypes =
@@ -61,7 +59,7 @@ namespace SmartDesign.IntelligentPnID.ObjectIntegrator.ObjectRecognition
             "gate_valve", "check_valve", "globe_valve", "butterfly_valve", "ball_valve", "three_way_valve",
 
             //VisioTypes
-            "Gatevalve", "Relief", "Diaphragmvalve", "Globevalve", "Checkvalve", "Poweredvalve", "Butterflyvalve", "Ballvalve"
+            "gatevalve", "relief", "diaphragmvalve", "globevalve", "checkvalve", "poweredvalve", "butterflyvalve", "ballvalve"
         };
 
         private readonly string[] InstrumentSymbolTypes =
@@ -76,7 +74,7 @@ namespace SmartDesign.IntelligentPnID.ObjectIntegrator.ObjectRecognition
             "motor_operated", "single_solenoid", "pressure_relief_valve", "vacuum_relief_valve", "pressure_and_vacuum_relief_valve",
             
             //VisioTypes
-            "Flangedaccesspoint", "Indicator", "CRT", "Diamond", "GenericUtility", "Generaljoint", "Filter2"
+            "flangedaccesspoint", "indicator", "crt", "diamond", "genericutility", "generaljoint", "filter2"
         };
 
         private readonly string[] UnspecifiedLineTypes =
@@ -89,15 +87,15 @@ namespace SmartDesign.IntelligentPnID.ObjectIntegrator.ObjectRecognition
             "none", "primary", "secondary",
 
             //VisioTypes
-            "MajorPipeline", "MinorPipeline", "MajorPipelineR", "MajorPipelineL", "MinorPipelineR", "MinorPipelineL"
+            "majorpipeline", "minorpipeline", "majorpipeliner", "majorpipelinel", "minorpipeliner", "minorpipelinel"
         };
 
         private readonly string[] InstrumentLineTypes =
         {
-            "none", "instrument_supply", "pneumatic_signal", "electric_signal",
+            "none", "instrument_supply", "pneumatic_signal", "electric_signal", "dashed",
 
             //VisioTypes
-            "Electric", "Data", "Electric3"
+            "electric", "data", "electric3"
         };
 
         public ObjectRecognitionFileReader()
@@ -358,12 +356,12 @@ namespace SmartDesign.IntelligentPnID.ObjectIntegrator.ObjectRecognition
                 string position = GetXmlPosition(typeElement);
                 string message = string.Format("<type/> 요소에 허용되지 않는 값이 있습니다: {0}", position);
 
-                //if (log.IsErrorEnabled)
-                //    log.Error(message);
+                if (log.IsErrorEnabled)
+                    log.Error(message);
 
-                //throw new ArgumentNullException(message);
+                throw new ArgumentNullException(message);
             }
-            //
+
 
             //Class
             XElement classElement = CheckChildElement(lineObjectElement, "class");

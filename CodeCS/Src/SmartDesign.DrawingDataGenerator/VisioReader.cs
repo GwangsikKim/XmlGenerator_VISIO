@@ -92,21 +92,21 @@ namespace SmartDesign.DrawingDataGenerator
                 {
                     Equipment equipment = new Equipment();
                     equipment.ID = shape.ID.ToString();
-                    equipment.ClassName = shapeTypeName;
+                    equipment.ClassName = shapeTypeName.ToLower();
                     CreateEquipmentProperties(plantModel, equipment, shape);
                 }
                 else if (PipeSymbolTypes.Contains(shapeTypeName))
                 {
                     PipingComponent pipingComponent = new PipingComponent();
                     pipingComponent.ID = shape.ID.ToString();
-                    pipingComponent.ClassName = shapeTypeName;
+                    pipingComponent.ClassName = shapeTypeName.ToLower();
                     CreatePipingComponentProperties(plantModel, pipingComponent, shape);
                 }
                 else if (InstrumentSymbolTypes.Contains(shapeTypeName))
                 {
                     Instrument instrument = new Instrument();
                     instrument.ID = shape.ID.ToString();
-                    instrument.ClassName = shapeTypeName;
+                    instrument.ClassName = shapeTypeName.ToLower();
                     CreateInstrumentProperties(plantModel, instrument, shape);
                 }
                 else if (PipeLineTypes.Contains(shapeTypeName))
@@ -168,7 +168,11 @@ namespace SmartDesign.DrawingDataGenerator
                     ConnectionLine connectionLine = new ConnectionLine();
                     pipeLine.ID = shape.ID.ToString() + "PipeL" + "-" + i;
                     pipeLine.Type = "piping_line";
-                    pipeLine.ClassName = shapeName;
+
+                    if (PipeLineTypes.Contains(shapeName))
+                    {
+                        pipeLine.ClassName = "primary";
+                    }
 
                     pipeLine.Extent = ExtractObjectBoxInformationSize(shape);
 
@@ -208,7 +212,16 @@ namespace SmartDesign.DrawingDataGenerator
                     ConnectionLine connectionLine = new ConnectionLine();
                     signalLine.ID = shape.ID.ToString() + "SignalL" + "-" + i;
                     signalLine.Type = "signal_line";
-                    signalLine.ClassName = shapeName;
+
+                    if (InstrumentLineTypes.Contains(shapeName))
+                    {
+                        if (shapeName == "Data")
+                        {
+                            signalLine.ClassName = "data";
+                        }
+                        else
+                            signalLine.ClassName = "dashed";
+                    }
 
                     signalLine.Extent = ExtractObjectBoxInformationSize(shape);
 
