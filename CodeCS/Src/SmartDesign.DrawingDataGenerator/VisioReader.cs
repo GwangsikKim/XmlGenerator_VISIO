@@ -14,7 +14,8 @@ namespace SmartDesign.DrawingDataGenerator
         private readonly string[] EquipmentSymbolTypes =
         {
             "none",
-            "Vessel", "Selectablecompressor", "Selectablecompressor1", "Heatexchanger1" ,"Fluidcontacting", "Barrel"
+            "Vessel", "Selectablecompressor", "Selectablecompressor1", "Heatexchanger1" ,"Fluidcontacting", "Barrel", "Tank",
+            "Centrifugalpump", "Shellandtube", "Condenser", "Column", "Gasholder", "Motordriventurbine"
         };
 
         private readonly string[] PipeSymbolTypes =
@@ -22,25 +23,29 @@ namespace SmartDesign.DrawingDataGenerator
             "none",
             "Flangedvalve","Flanged/bolted", "Gatevalve", "Relief", "Junction", "Globevalve", "Checkvalve", "Poweredvalve", "Reducer",
             "Diaphragmvalve", "Endcaps", "Endcaps2", "Relief(angle)", "Off-SheetLabel3", "Butterflyvalve", "Callout3", "Ballvalve",
-            "Screw-downvalve","CapillaryTube", "Sleevejoint"
+            "Screw-downvalve", "Sleevejoint", "Stopcheckvalve", "Buttweld", "Mixingvalve", "Liquidsealopen/closed", "OperatorBox",
+
+            "GenericUtility"
         };
 
         //Valve 값 고민중
         private readonly string[] ValveSymbolTypes =
         {
-           "Gatevalve", "Relief", "Diaphragmvalve", "Globevalve", "Checkvalve", "Poweredvalve", "Butterflyvalve", "Ballvalve"
+           "Gatevalve", "Relief", "Diaphragmvalve", "Globevalve", "Checkvalve", "Poweredvalve", "Butterflyvalve", "Ballvalve", "Mixingvalve"
         };
 
         private readonly string[] InstrumentSymbolTypes =
         {
             "none",
-            "Flangedaccesspoint", "Indicator", "CRT", "Diamond", "GenericUtility", "Generaljoint", "Filter2"
+            "Flangedaccesspoint", "Indicator", "CRT", "Diamond", "Generaljoint", "Filter1", "Filter2", "Refriger-ators",
+            "Indicator/recorder", "Steamtraced", "Thermometers", "Drainsilencer", "Propellermeter", "Computer", "Flowmeter",
+            "Electricallybonded"
         };
 
         private readonly string[] PipeLineTypes =
         {
-            "MajorPipeline", "MinorPipeline", "MajorPipelineR", "MajorPipelineL", "MinorPipelineR", "MinorPipelineL"
-            //,"Dynamicconnector"
+            "MajorPipeline", "MinorPipeline", "MajorPipelineR", "MajorPipelineL", "MinorPipelineR", "MinorPipelineL",
+            "CapillaryTube"
         };
 
         private readonly string[] InstrumentLineTypes =
@@ -166,7 +171,7 @@ namespace SmartDesign.DrawingDataGenerator
                 {
                     PipeLine pipeLine = new PipeLine();
                     ConnectionLine connectionLine = new ConnectionLine();
-                    pipeLine.ID = shape.ID.ToString() + "PipeL" + "-" + i;
+                    pipeLine.ID = shape.ID.ToString() + "." + i;
                     pipeLine.Type = "piping_line";
 
                     if (PipeLineTypes.Contains(shapeName))
@@ -210,7 +215,7 @@ namespace SmartDesign.DrawingDataGenerator
                 {
                     SignalLine signalLine = new SignalLine();
                     ConnectionLine connectionLine = new ConnectionLine();
-                    signalLine.ID = shape.ID.ToString() + "SignalL" + "-" + i;
+                    signalLine.ID = shape.ID.ToString() + "." + i;
                     signalLine.Type = "signal_line";
 
                     if (InstrumentLineTypes.Contains(shapeName))
@@ -374,6 +379,8 @@ namespace SmartDesign.DrawingDataGenerator
         {
             short iRow1 = (short)VisRowIndices.visRowXForm1D;
             short iRow2 = (short)VisRowIndices.visRowVertex;
+
+          
 
             var strLineBeginPointX = shape.get_CellsSRC(
                   (short)VisSectionIndices.visSectionObject,

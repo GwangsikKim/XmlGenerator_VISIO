@@ -15,7 +15,7 @@
     xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
     x:Class="SmartDesign.IntelligentPnID.ObjectIntegrator.Gui.MainWindow"
     mc:Ignorable="d"
-    Height="450" Width="800"
+    Height="600" Width="1000"
     UseLayoutRounding="True" SnapsToDevicePixels="True" WindowState="Maximized"
     Closing="ThemedWindow_Closing">
 

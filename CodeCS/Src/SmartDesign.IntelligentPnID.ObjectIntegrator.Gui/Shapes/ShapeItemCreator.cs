@@ -68,8 +68,8 @@ namespace SmartDesign.IntelligentPnID.ObjectIntegrator.Gui.Shapes
                 lineStyle = DashStyles.Solid;
             else if (lineItem.ComponentClass == "dashed")
                 lineStyle = DashStyles.Dash;
-            else if (lineItem.ComponentClass == "Data")
-                lineStyle = DashStyles.Dot;
+            else if (lineItem.ComponentClass == "data")
+                lineStyle = DashStyles.DashDotDot;
             return lineStyle;
         }
     }

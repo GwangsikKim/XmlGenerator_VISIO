@@ -19,7 +19,7 @@ namespace SmartDesign.IntelligentPnID.ObjectIntegrator.ObjectRecognition
         private readonly string[] UnspecifiedSymbolTypes =
         {
             "none",
-            "diaphragm_with_positioner", "packaged_system_by_plc_of_single_controller",
+            "diaphragm_with_positioner", "packaged_system_by_plc_of_single_controller", "column",
             "unspecified_interface", "indirect_drain", "typical_detail"
         };
 
@@ -33,7 +33,8 @@ namespace SmartDesign.IntelligentPnID.ObjectIntegrator.ObjectRecognition
             "general_blower", "general_turbine", "general_electric_motor",
             
             //VisioTypes
-            "vessel", "selectablecompressor", "selectablecompressor1", "heatexchanger1" ,"fluidcontacting", "barrel"
+            "vessel", "selectablecompressor", "selectablecompressor1", "heatexchanger1" ,"fluidcontacting", "barrel", "tank",
+            "centrifugalpump", "shellandtube", "condenser", "gasholder", "motordriventurbine"
         };
 
         private readonly string[] PipeSymbolTypes =
@@ -51,7 +52,10 @@ namespace SmartDesign.IntelligentPnID.ObjectIntegrator.ObjectRecognition
             //VisioTypes
             "flangedvalve","flanged/bolted", "gatevalve", "relief", "junction", "globevalve", "checkvalve", "poweredvalve", "reducer",
             "diaphragmvalve", "endcaps", "endcaps2", "relief(angle)", "off-sheetlabel3", "butterflyvalve", "callout3", "ballvalve",
-            "screw-downvalve","capillaryTube", "sleevejoint"
+            "screw-downvalve","capillaryTube", "sleevejoint", "stopcheckvalve", "buttweld", "mixingvalve", "mixingvalve", "liquidsealopen/closed",
+            "operatorbox",
+
+            "genericutility"
         };
 
         private readonly string[] ValveSymbolTypes =
@@ -74,7 +78,9 @@ namespace SmartDesign.IntelligentPnID.ObjectIntegrator.ObjectRecognition
             "motor_operated", "single_solenoid", "pressure_relief_valve", "vacuum_relief_valve", "pressure_and_vacuum_relief_valve",
             
             //VisioTypes
-            "flangedaccesspoint", "indicator", "crt", "diamond", "genericutility", "generaljoint", "filter2"
+            "flangedaccesspoint", "indicator", "crt", "diamond", "genericutility", "generaljoint", "filter1", "filter2", "refriger-ators",
+            "indicator/recorder", "steamtraced", "thermometers", "drainsilencer","propellermeter", "computer","flowmeter",
+            "electricallybonded"
         };
 
         private readonly string[] UnspecifiedLineTypes =
@@ -87,7 +93,8 @@ namespace SmartDesign.IntelligentPnID.ObjectIntegrator.ObjectRecognition
             "none", "primary", "secondary",
 
             //VisioTypes
-            "majorpipeline", "minorpipeline", "majorpipeliner", "majorpipelinel", "minorpipeliner", "minorpipelinel"
+            "majorpipeline", "minorpipeline", "majorpipeliner", "majorpipelinel", "minorpipeliner", "minorpipelinel",
+            "capillarytube"
         };
 
         private readonly string[] InstrumentLineTypes =

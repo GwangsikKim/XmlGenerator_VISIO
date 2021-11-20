@@ -36,9 +36,9 @@ namespace SmartDesign.DrawingDataGenerator
             drawinginformationElement.Add(pathElement);
 
             XElement basicSizeElement = new XElement("size");
-            XElement widthElement = new XElement("width", 1500);
+            XElement widthElement = new XElement("width", 1600);
             basicSizeElement.Add(widthElement);
-            XElement heightElement = new XElement("height", 1000);
+            XElement heightElement = new XElement("height", 1100);
             basicSizeElement.Add(heightElement);
             XElement depthElement = new XElement("depth", 4);
             basicSizeElement.Add(depthElement);
@@ -264,6 +264,7 @@ namespace SmartDesign.DrawingDataGenerator
             xElement.Add(flipElement);
         }
 
+        //삭제
         private List<XElement> CheckePipeTee(PlantModel plantModel, ConnectionLine connectionLine)
         {
             List<XElement> xElements = new List<XElement>();
@@ -372,6 +373,11 @@ namespace SmartDesign.DrawingDataGenerator
             connectElement.Add(toAttribute);
             xElement.Add(connectElement);
 
+            if (fromAttribute == null || toAttribute == null)
+            {
+                return null;
+            }
+
             return xElement;
         }
 
@@ -411,6 +417,10 @@ namespace SmartDesign.DrawingDataGenerator
                             connectElement.Add(toAttribute);
                             xElement.Add(connectElement);
 
+                            if (fromAttribute == null || toAttribute == null)
+                            {
+                                return null;
+                            }
                             return xElement;
                         }
                     }
@@ -433,6 +443,11 @@ namespace SmartDesign.DrawingDataGenerator
                             connectElement.Add(toAttribute);
                             xElement.Add(connectElement);
 
+                            if (fromAttribute == null || toAttribute == null)
+                            {
+                                return null;
+                            }
+
                             return xElement;
                         }
                     }
@@ -454,6 +469,11 @@ namespace SmartDesign.DrawingDataGenerator
                             XAttribute toAttribute = new XAttribute("To", pipingComponent.ID);
                             connectElement.Add(toAttribute);
                             xElement.Add(connectElement);
+
+                            if (fromAttribute == null || toAttribute == null)
+                            {
+                                return null;
+                            }
 
                             return xElement;
                         }
@@ -478,6 +498,11 @@ namespace SmartDesign.DrawingDataGenerator
                         XAttribute toAttribute = new XAttribute("To", pipeLine.ID);
                         connectElement.Add(toAttribute);
                         xElement.Add(connectElement);
+                        
+                        if (fromAttribute == null || toAttribute == null)
+                        {
+                            return null;
+                        }
 
                         return xElement;
                     }
@@ -486,6 +511,11 @@ namespace SmartDesign.DrawingDataGenerator
                         XAttribute toAttribute = new XAttribute("To", pipeLine.ID);
                         connectElement.Add(toAttribute);
                         xElement.Add(connectElement);
+                        
+                        if (fromAttribute == null || toAttribute == null)
+                        {
+                            return null;
+                        }
 
                         return xElement;
                     }
@@ -511,6 +541,11 @@ namespace SmartDesign.DrawingDataGenerator
                         connectElement.Add(toAttribute);
                         xElement.Add(connectElement);
 
+                        if (fromAttribute == null || toAttribute == null)
+                        {
+                            return null;
+                        }
+
                         return xElement;
                     }
                     else if (Tolerance.IsZeroDistance(Position2.Distance(symbolConnectPositon, EndPositon), DistanceTolerance))
@@ -518,10 +553,20 @@ namespace SmartDesign.DrawingDataGenerator
                         XAttribute toAttribute = new XAttribute("To", signalLine.ID);
                         connectElement.Add(toAttribute);
                         xElement.Add(connectElement);
+                        
+                        if (fromAttribute == null || toAttribute == null)
+                        {
+                            return null;
+                        }
 
                         return xElement;
                     }
                 }
+            }
+
+            if (fromAttribute == null)
+            {
+                return null;
             }
 
             return xElement;
