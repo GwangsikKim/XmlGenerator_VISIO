@@ -15,7 +15,7 @@ namespace SmartDesign.DrawingDataGenerator
         {
             "none",
             "Vessel", "Selectablecompressor", "Selectablecompressor1", "Heatexchanger1" ,"Fluidcontacting", "Barrel", "Tank",
-            "Centrifugalpump", "Shellandtube", "Condenser", "Column", "Gasholder", "Motordriventurbine"
+            "Centrifugalpump", "Shellandtube", "Condenser", "Column", "Gasholder", "Motordriventurbine", "Filter1", "Filter2"
         };
 
         private readonly string[] PipeSymbolTypes =
@@ -24,7 +24,7 @@ namespace SmartDesign.DrawingDataGenerator
             "Flangedvalve","Flanged/bolted", "Gatevalve", "Relief", "Junction", "Globevalve", "Checkvalve", "Poweredvalve", "Reducer",
             "Diaphragmvalve", "Endcaps", "Endcaps2", "Relief(angle)", "Off-SheetLabel3", "Butterflyvalve", "Callout3", "Ballvalve",
             "Screw-downvalve", "Sleevejoint", "Stopcheckvalve", "Buttweld", "Mixingvalve", "Liquidsealopen/closed", "OperatorBox",
-
+            "Generaljoint", "Thermometers", "Indicator/recorder", "Drainsilencer", "Flowmeter",
             "GenericUtility"
         };
 
@@ -37,8 +37,8 @@ namespace SmartDesign.DrawingDataGenerator
         private readonly string[] InstrumentSymbolTypes =
         {
             "none",
-            "Flangedaccesspoint", "Indicator", "CRT", "Diamond", "Generaljoint", "Filter1", "Filter2", "Refriger-ators",
-            "Indicator/recorder", "Steamtraced", "Thermometers", "Drainsilencer", "Propellermeter", "Computer", "Flowmeter",
+            "Flangedaccesspoint", "Indicator", "CRT", "Diamond", "Refriger-ators",
+            "Steamtraced", "Propellermeter", "Computer", 
             "Electricallybonded"
         };
 

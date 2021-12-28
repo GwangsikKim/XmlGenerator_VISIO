@@ -34,7 +34,7 @@ namespace SmartDesign.IntelligentPnID.ObjectIntegrator.ObjectRecognition
             
             //VisioTypes
             "vessel", "selectablecompressor", "selectablecompressor1", "heatexchanger1" ,"fluidcontacting", "barrel", "tank",
-            "centrifugalpump", "shellandtube", "condenser", "gasholder", "motordriventurbine"
+            "centrifugalpump", "shellandtube", "condenser", "gasholder", "motordriventurbine", "filter1", "column"
         };
 
         private readonly string[] PipeSymbolTypes =
@@ -53,7 +53,7 @@ namespace SmartDesign.IntelligentPnID.ObjectIntegrator.ObjectRecognition
             "flangedvalve","flanged/bolted", "gatevalve", "relief", "junction", "globevalve", "checkvalve", "poweredvalve", "reducer",
             "diaphragmvalve", "endcaps", "endcaps2", "relief(angle)", "off-sheetlabel3", "butterflyvalve", "callout3", "ballvalve",
             "screw-downvalve","capillaryTube", "sleevejoint", "stopcheckvalve", "buttweld", "mixingvalve", "mixingvalve", "liquidsealopen/closed",
-            "operatorbox",
+            "operatorbox", "generaljoint","thermometers", "indicator/recorder", "drainsilencer", "flowmeter",
 
             "genericutility"
         };
@@ -78,8 +78,8 @@ namespace SmartDesign.IntelligentPnID.ObjectIntegrator.ObjectRecognition
             "motor_operated", "single_solenoid", "pressure_relief_valve", "vacuum_relief_valve", "pressure_and_vacuum_relief_valve",
             
             //VisioTypes
-            "flangedaccesspoint", "indicator", "crt", "diamond", "genericutility", "generaljoint", "filter1", "filter2", "refriger-ators",
-            "indicator/recorder", "steamtraced", "thermometers", "drainsilencer","propellermeter", "computer","flowmeter",
+            "flangedaccesspoint", "indicator", "crt", "diamond", "genericutility", "filter2", "refriger-ators",
+            "steamtraced", "propellermeter", "computer",
             "electricallybonded"
         };
 
