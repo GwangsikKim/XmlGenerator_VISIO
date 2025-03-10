@@ -19,7 +19,7 @@
 ### 설치 방법
 1. 이 프로젝트를 클론하거나 다운로드합니다.
     ```bash
-    git clone https://github.com/yourusername/visio-pid-to-xml.git
+    https://github.com/GwangsikKim/XmlGenerator_VISIO.git
     ```
 2. Visual Studio 또는 다른 C# IDE에서 프로젝트를 열어 실행합니다.
 3. `Microsoft.Office.Interop.Visio` 라이브러리를 참조에 추가하여 Visio API를 사용할 수 있도록 설정합니다.
